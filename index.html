@@ -51,27 +51,18 @@
         <circle cx="16" cy="80" r="3"/><circle cx="80" cy="16" r="3"/>
       </svg>
 
-      <div class="cover-monogram">
+      <div class="welcome-initials">
         <span>P</span>
-        <i>✦</i>
+        <em>&</em>
         <span>K</span>
       </div>
-
-      <p class="sanskrit-line">ಶುಭ ವಿವಾಹ</p>
-      <p class="cover-kicker">Welcome to our wedding celebration</p>
-
-      <h1 class="cover-names">
-        <span>Praveen</span>
-        <em>&</em>
-        <span>Kavya</span>
-      </h1>
 
       <div class="fine-divider">
         <span></span><i>✦</i><span></span>
       </div>
 
-      <p class="cover-message cover-message-minimal">
-        Welcome — we are delighted to have you celebrate this beautiful beginning with us.
+      <p class="welcome-message-premium">
+        Welcome to a celebration of love, togetherness, and a beautiful new beginning.
       </p>
 
       <button class="wax-seal" id="openInvitation" aria-label="Open wedding invitation">
@@ -82,7 +73,7 @@
         </span>
       </button>
 
-      <p class="cover-hint">Click the seal to open the invitation</p>
+      <p class="cover-hint">Click the seal to enter</p>
     </div>
   </section>
 
@@ -98,10 +89,11 @@
 
     <nav class="site-nav" id="siteNav">
       <a href="#home">Home</a>
+      <a href="#video-invite">Video Invite</a>
       <a href="#couple">Couple</a>
-      <a href="#events">Celebrations</a>
-      <a href="#story">Our Story</a>
-      <a href="#gallery">Gallery</a>
+      <a href="#events">Save the Date</a>
+      <a href="#countdown">Countdown</a>
+      <a href="#gallery">Our Moments</a>
       <a href="#venue">Location</a>
       <a href="#beegara-oota">Beegara Oota</a>
     </nav>
@@ -129,47 +121,42 @@
         <p class="hero-copy">
           Two hearts. Two families. One beautiful forever.
         </p>
-
-        <a href="#events" class="premium-btn">Explore the Celebration</a>
       </div>
 
-      <div class="scroll-mark">
-        <span>Scroll</span>
+      <a href="#video-invite" class="scroll-mark hero-scroll-cue" aria-label="Scroll to video invitation">
+        <span>Scroll Down</span>
         <i></i>
-      </div>
+        <b>⌄</b>
+      </a>
     </section>
 
-    <!-- BLESSING BAR -->
-    <section class="blessing-bar">
-      <span>✦</span>
-      <p>With the blessings of our elders and the love of our families, we begin our forever.</p>
-      <span>✦</span>
-    </section>
-
-    <!-- COUNTDOWN -->
-    <section class="section pale" id="countdown">
+    <!-- VIDEO INVITATION -->
+    <section class="section video-invite-section" id="video-invite">
       <div class="section-head reveal">
-        <p class="eyebrow">THE CELEBRATION BEGINS IN</p>
-        <h2>Counting Down to Our Forever</h2>
+        <p class="eyebrow">OUR VIDEO INVITATION</p>
+        <h2>A Little Invitation From Our Hearts</h2>
         <div class="head-ornament">✦</div>
+        <p class="video-intro-copy">Press play and join us for a glimpse of the celebration to come.</p>
       </div>
 
-      <div class="countdown reveal">
-        <div class="count-card">
-          <span id="days">00</span>
-          <small>Days</small>
+      <div class="video-invite-card reveal">
+        <div class="video-frame-shell">
+          <video class="wedding-video" controls playsinline preload="metadata"
+                 poster="https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=1600&q=88">
+            <source src="wedding-invite.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+          </video>
+
+          <div class="video-corner video-corner-tl"></div>
+          <div class="video-corner video-corner-tr"></div>
+          <div class="video-corner video-corner-bl"></div>
+          <div class="video-corner video-corner-br"></div>
         </div>
-        <div class="count-card">
-          <span id="hours">00</span>
-          <small>Hours</small>
-        </div>
-        <div class="count-card">
-          <span id="minutes">00</span>
-          <small>Minutes</small>
-        </div>
-        <div class="count-card">
-          <span id="seconds">00</span>
-          <small>Seconds</small>
+
+        <div class="video-note">
+          <span>✦</span>
+          <p>Add your final wedding invitation video as <strong>wedding-invite.mp4</strong> in this folder.</p>
+          <span>✦</span>
         </div>
       </div>
     </section>
@@ -195,7 +182,7 @@
 
         <div class="couple-symbol reveal">
           <div class="symbol-ring">
-            <span>ॐ</span>
+            <span>✦</span>
           </div>
           <p>By destiny</p>
           <strong>Together</strong>
@@ -212,206 +199,114 @@
           <p class="family">Daughter of Mr. & Mrs. [Bride's Parents]</p>
         </article>
       </div>
+          <div class="couple-kannada-blessing reveal">
+        <span>✦</span>
+        <p>ಹೊಸ ಜೀವನದ ಹೊಸ ಹೆಜ್ಜೆಗೆ ನಿಮ್ಮ ಪ್ರೀತಿ ಮತ್ತು ಆಶೀರ್ವಾದ ಇರಲಿ</p>
+        <span>✦</span>
+      </div>
     </section>
 
     <!-- EVENTS -->
-    <section class="section dark-section" id="events">
-      <div class="section-head light reveal">
-        <p class="eyebrow gold">OUR CELEBRATION</p>
+    <section class="section celebration-section royal-date-section" id="events">
+      <div class="section-head celebration-head reveal">
+        <p class="eyebrow">OUR CELEBRATION</p>
         <h2>Save the Date</h2>
-        <div class="head-ornament">✦</div>
+        <p class="celebration-subtitle">A few beautiful moments that mark the beginning of forever.</p>
       </div>
 
-      <div class="events-reveal-shell reveal" id="eventsRevealShell">
-        <div class="events" id="eventsContent">
-          <article class="event-card reveal-left">
-            <div class="event-glow"></div>
-            <div class="event-date">
+      <div class="royal-date-reveal reveal" id="eventsRevealShell">
+
+        <div class="royal-date-timeline" id="eventsContent">
+          <article class="royal-date-item">
+            <div class="royal-date-badge">
               <span>01</span>
-              <div>
-                <small>DECEMBER</small>
-                <b>2026</b>
-              </div>
+              <small>DEC</small>
             </div>
-
-            <p class="event-type">EVENING CELEBRATION</p>
-            <h3>Reception</h3>
-            <p class="event-copy">
-              An elegant evening filled with laughter, music, family and memories we will cherish forever.
-            </p>
-
-            <div class="event-meta">
-              <div>
-                <small>TIME</small>
-                <strong>06:30 PM onwards</strong>
-              </div>
+            <div class="royal-date-info">
+              <p>EVENING CELEBRATION</p>
+              <h3>Reception</h3>
+              <strong>06:30 PM onwards</strong>
             </div>
-
-            <span class="dress-code">Royal / Festive Indian</span>
           </article>
 
-          <div class="event-divider reveal">
-            <span></span>
-            <i>✦</i>
-            <b>Save<br>The<br>Date</b>
-            <i>✦</i>
-            <span></span>
-          </div>
-
-          <article class="event-card reveal-right">
-            <div class="event-glow"></div>
-            <div class="event-date">
+          <article class="royal-date-item">
+            <div class="royal-date-badge">
               <span>02</span>
-              <div>
-                <small>DECEMBER</small>
-                <b>2026</b>
-              </div>
+              <small>DEC</small>
             </div>
-
-            <p class="event-type">THE SACRED CEREMONY</p>
-            <h3>Muhurtha</h3>
-            <p class="event-copy">
-              The sacred moment where traditions, blessings and promises come together to begin our new journey.
-            </p>
-
-            <div class="event-meta">
-              <div>
-                <small>TIME</small>
-                <strong>[Add Muhurtha Time]</strong>
-              </div>
+            <div class="royal-date-info">
+              <p>THE SACRED MOMENT</p>
+              <h3>Muhurtham</h3>
+              <strong>09:30 AM</strong>
             </div>
+          </article>
 
-            <span class="dress-code">Traditional Indian Attire</span>
+          <article class="royal-date-item">
+            <div class="royal-date-badge">
+              <span>13</span>
+              <small>DEC</small>
+            </div>
+            <div class="royal-date-info">
+              <p>FAMILY CELEBRATION</p>
+              <h3>Beegara Oota</h3>
+              <strong>12:30 PM onwards</strong>
+            </div>
           </article>
         </div>
 
-        <div class="save-date-cover" id="saveDateCover">
-          <div class="save-date-half save-date-left">
-            <div class="save-date-inner">
-              <p class="save-date-mini">OUR CELEBRATION</p>
-              <h3>Save the Date</h3>
+        <div class="split-reveal-cover" id="saveDateCover">
+          <div class="split-reveal-panel split-reveal-left">
+            <div class="split-panel-inner left-copy">
+              <p class="split-small">THE CELEBRATION</p>
+              <h3>Awaits</h3>
+              <span class="split-kannada">ಪ್ರವೀಣ್ ♥ ಕಾವ್ಯ</span>
             </div>
           </div>
 
-          <div class="save-date-half save-date-right">
-            <div class="save-date-inner save-date-decorative">
-              <div class="save-date-motif">✦</div>
+          <div class="split-reveal-panel split-reveal-right">
+            <div class="split-panel-inner right-art">
+              <div class="split-monogram">
+                <span>P</span>
+                <i>✦</i>
+                <span>K</span>
+              </div>
+              <p>A beautiful beginning</p>
             </div>
           </div>
 
-          <button class="save-date-btn" id="saveDateBtn" aria-label="Click to reveal Save the Date">
-            Click to Reveal
+          <button class="split-reveal-trigger" id="saveDateBtn" aria-label="Reveal celebration dates">
+            <span>Tap to Reveal</span>
+            <i>✦</i>
           </button>
         </div>
       </div>
     </section>
 
-    <!-- LOCATION -->
-    <section class="section location-section" id="venue">
+    <!-- COUNTDOWN -->
+    <section class="section pale countdown-section-refined" id="countdown">
       <div class="section-head reveal">
-        <p class="eyebrow">LOCATION</p>
-        <h2>The Venue</h2>
+        <p class="eyebrow">UNTIL THE MUHURTHAM</p>
+        <h2>Counting Down to Our Forever</h2>
         <div class="head-ornament">✦</div>
       </div>
 
-      <div class="location-card reveal">
-        <div class="location-details">
-          <p class="location-label">RECEPTION & MUHURTHA</p>
-          <h3>Purvaja Samudhaya Bhavana</h3>
-          <p class="location-address">X6C2+2GJ, Magadi-Kunigal Rd, Aladakattepalya, Karnataka 562120</p>
-
-          <a href="https://www.google.com/maps/search/?api=1&query=Purvaja+Samudhaya+Bhavana%2C+X6C2%2B2GJ%2C+Magadi-Kunigal+Rd%2C+Aladakattepalya%2C+Karnataka+562120" target="_blank" rel="noopener noreferrer" class="premium-btn dark">
-            Open in Google Maps
-          </a>
+      <div class="countdown reveal">
+        <div class="count-card">
+          <span id="days">00</span>
+          <small>Days</small>
         </div>
-
-        <div class="map-frame">
-          <iframe
-            src="https://www.google.com/maps?q=Purvaja+Samudhaya+Bhavana%2C+X6C2%2B2GJ%2C+Magadi-Kunigal+Rd%2C+Aladakattepalya%2C+Karnataka+562120&output=embed"
-            loading="lazy"
-            referrerpolicy="no-referrer-when-downgrade"
-            allowfullscreen
-            title="Purvaja Samudhaya Bhavana map">
-          </iframe>
+        <div class="count-card">
+          <span id="hours">00</span>
+          <small>Hours</small>
         </div>
-      </div>
-    </section>
-
-
-    <!-- BEEGARA OOTA LOCATION -->
-    <section class="section location-section location-section-alt" id="beegara-oota">
-      <div class="section-head reveal">
-        <p class="eyebrow">LOCATION</p>
-        <h2>Beegara Oota</h2>
-        <div class="head-ornament">✦</div>
-      </div>
-
-      <div class="location-card reveal">
-        <div class="location-details">
-          <p class="location-label">BEEGARA OOTA</p>
-          <h3>HB Function Hall</h3>
-          <p class="location-address">133, Magadi Main Rd, opp. Indian petrol pump, Govindaraja Nagar Ward, Pete Channappa Industrial Estate, Kamakshipalya, Bengaluru, Karnataka 560079</p>
-
-          <div class="single-event-time">
-            <span>13 DECEMBER 2026</span>
-            <strong>12:30 PM onwards</strong>
-          </div>
-
-          <a href="https://www.google.com/maps/search/?api=1&query=HB+Function+Hall%2C+133%2C+Magadi+Main+Rd%2C+opp.+Indian+petrol+pump%2C+Govindaraja+Nagar+Ward%2C+Pete+Channappa+Industrial+Estate%2C+Kamakshipalya%2C+Bengaluru%2C+Karnataka+560079" target="_blank" rel="noopener noreferrer" class="premium-btn dark">
-            Open in Google Maps
-          </a>
+        <div class="count-card">
+          <span id="minutes">00</span>
+          <small>Minutes</small>
         </div>
-
-        <div class="map-frame">
-          <iframe
-            src="https://www.google.com/maps?q=HB+Function+Hall%2C+133%2C+Magadi+Main+Rd%2C+opp.+Indian+petrol+pump%2C+Govindaraja+Nagar+Ward%2C+Pete+Channappa+Industrial+Estate%2C+Kamakshipalya%2C+Bengaluru%2C+Karnataka+560079&output=embed"
-            loading="lazy"
-            referrerpolicy="no-referrer-when-downgrade"
-            allowfullscreen
-            title="HB Function Hall map">
-          </iframe>
+        <div class="count-card">
+          <span id="seconds">00</span>
+          <small>Seconds</small>
         </div>
-      </div>
-    </section>
-<!-- STORY -->
-    <section class="section story-section" id="story">
-      <div class="story-photo reveal-left">
-        <div class="story-photo-frame">
-          <img src="https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=1200&q=90" alt="Wedding couple">
-        </div>
-        <div class="story-badge">
-          <small>OUR STORY</small>
-          <strong>Forever starts here</strong>
-        </div>
-      </div>
-
-      <div class="story-copy reveal-right">
-        <p class="eyebrow">A BEAUTIFUL BEGINNING</p>
-        <h2>From Two Journeys to One Forever</h2>
-        <p>
-          Some love stories arrive softly — in familiar conversations, shared laughter, quiet understanding and the feeling of having found home in another person.
-        </p>
-        <p>
-          As we begin this new chapter, we would be honoured to have you with us to share the traditions, blessings and joy that make our celebration complete.
-        </p>
-
-        <div class="signature">
-          <small>WITH LOVE</small>
-          <strong>Praveen & Kavya</strong>
-        </div>
-      </div>
-    </section>
-
-    <!-- QUOTE -->
-    <section class="quote-section">
-      <div class="quote-bg"></div>
-      <div class="quote-overlay"></div>
-      <div class="quote-box reveal">
-        <p class="sanskrit-line">ನಿಮ್ಮ ಜೀವನ ಸದಾ ಪ್ರೀತಿ, ಸಂತೋಷ ಮತ್ತು ಆಶೀರ್ವಾದಗಳಿಂದ ತುಂಬಿರಲಿ</p>
-        <blockquote>
-          “May our home always be filled with love, our hearts with gratitude, and our journey with beautiful memories.”
-        </blockquote>
-        <span>✦</span>
       </div>
     </section>
 
@@ -419,7 +314,7 @@
     <section class="section gallery-section" id="gallery">
       <div class="section-head reveal">
         <p class="eyebrow">OUR MOMENTS</p>
-        <h2>A Few Frames From Our Story</h2>
+        <h2>Moments We’ll Cherish Forever</h2>
         <div class="head-ornament">✦</div>
       </div>
 
@@ -432,63 +327,81 @@
       </div>
     </section>
 
-<!-- RSVP -->
-    <section class="section rsvp-section" id="rsvp">
-      <div class="rsvp-wrap">
-        <div class="rsvp-intro reveal-left">
-          <p class="eyebrow gold">RSVP</p>
-          <h2>Your Presence is Our Greatest Blessing</h2>
-          <p>Kindly let us know if you will be joining our wedding celebrations.</p>
+    <!-- LOCATION -->
+    <section class="section location-section" id="venue">
+      <div class="section-head reveal">
+        <p class="eyebrow">LOCATION</p>
+        <h2>The Venue</h2>
+        <div class="head-ornament">✦</div>
+      </div>
 
-          <div class="rsvp-note">
-            <small>FOR ASSISTANCE</small>
-            <strong>+91 XXXXX XXXXX</strong>
-          </div>
+      <div class="location-card location-card-premium reveal">
+        <div class="location-details">
+          <div class="venue-index">01</div>
+          <p class="location-label">RECEPTION & MUHURTHA</p>
+          <h3>Purvaja Samudhaya Bhavana</h3>
+
+          <figure class="venue-building-photo">
+            <img src="purvaja-samudhaya-bhavana.jpg" alt="Purvaja Samudhaya Bhavana building">
+            <figcaption>Replace this image with the venue building photo</figcaption>
+          </figure>
+
+          <p class="location-address">X6C2+2GJ, Magadi-Kunigal Rd, Aladakattepalya, Karnataka 562120</p>
+
+          <a href="https://www.google.com/maps/search/?api=1&query=Purvaja+Samudhaya+Bhavana%2C+X6C2%2B2GJ%2C+Magadi-Kunigal+Rd%2C+Aladakattepalya%2C+Karnataka+562120" target="_blank" rel="noopener noreferrer" class="map-action">
+            <span>View on Google Maps</span><i>↗</i>
+          </a>
         </div>
 
-        <form class="rsvp-form reveal-right" id="rsvpForm">
-          <div class="field-row">
-            <label>
-              <span>Full Name</span>
-              <input type="text" id="guestName" placeholder="Your name" required>
-            </label>
+        <div class="map-frame map-frame-premium">
+          <div class="map-badge">Wedding Venue</div>
+          <iframe
+            src="https://www.google.com/maps?q=Purvaja+Samudhaya+Bhavana%2C+X6C2%2B2GJ%2C+Magadi-Kunigal+Rd%2C+Aladakattepalya%2C+Karnataka+562120&output=embed"
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"
+            allowfullscreen
+            title="Purvaja Samudhaya Bhavana map">
+          </iframe>
+        </div>
+      </div>
+    </section>
 
-            <label>
-              <span>Phone Number</span>
-              <input type="tel" id="guestPhone" placeholder="+91 00000 00000" required>
-            </label>
-          </div>
+    <!-- BEEGARA OOTA LOCATION -->
+    <section class="section location-section location-section-alt" id="beegara-oota">
+      <div class="section-head reveal">
+        <p class="eyebrow">LOCATION</p>
+        <h2>Beegara Oota</h2>
+        <div class="head-ornament">✦</div>
+      </div>
 
-          <label>
-            <span>Which celebration will you attend?</span>
-            <select id="eventChoice" required>
-              <option value="">Select an option</option>
-              <option value="both">Both Reception & Muhurtha</option>
-              <option value="reception">Reception — 01 December</option>
-              <option value="muhurtha">Muhurtha — 02 December</option>
-              <option value="unable">Unable to attend</option>
-            </select>
-          </label>
+      <div class="location-card location-card-premium reveal">
+        <div class="location-details">
+          <div class="venue-index">02</div>
+          <p class="location-label">BEEGARA OOTA</p>
+          <h3>HB Function Hall</h3>
 
-          <label>
-            <span>Number of Guests</span>
-            <select id="guestCount">
-              <option>1 Guest</option>
-              <option>2 Guests</option>
-              <option>3 Guests</option>
-              <option>4 Guests</option>
-              <option>5 Guests</option>
-            </select>
-          </label>
+          <figure class="venue-building-photo">
+            <img src="hb-function-hall.jpg" alt="HB Function Hall building">
+            <figcaption>Replace this image with the venue building photo</figcaption>
+          </figure>
 
-          <label>
-            <span>Blessings for the Couple</span>
-            <textarea id="message" rows="4" placeholder="Write your wishes..."></textarea>
-          </label>
+          <p class="location-address">133, Magadi Main Rd, opp. Indian petrol pump, Govindaraja Nagar Ward, Pete Channappa Industrial Estate, Kamakshipalya, Bengaluru, Karnataka 560079</p>
 
-          <button type="submit" class="premium-btn form-btn">Send RSVP</button>
-          <p class="form-status" id="formStatus"></p>
-        </form>
+          <a href="https://www.google.com/maps/search/?api=1&query=HB+Function+Hall%2C+133%2C+Magadi+Main+Rd%2C+opp.+Indian+petrol+pump%2C+Govindaraja+Nagar+Ward%2C+Pete+Channappa+Industrial+Estate%2C+Kamakshipalya%2C+Bengaluru%2C+Karnataka+560079" target="_blank" rel="noopener noreferrer" class="map-action">
+            <span>View on Google Maps</span><i>↗</i>
+          </a>
+        </div>
+
+        <div class="map-frame map-frame-premium">
+          <div class="map-badge">Beegara Oota</div>
+          <iframe
+            src="https://www.google.com/maps?q=HB+Function+Hall%2C+133%2C+Magadi+Main+Rd%2C+opp.+Indian+petrol+pump%2C+Govindaraja+Nagar+Ward%2C+Pete+Channappa+Industrial+Estate%2C+Kamakshipalya%2C+Bengaluru%2C+Karnataka+560079&output=embed"
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"
+            allowfullscreen
+            title="HB Function Hall map">
+          </iframe>
+        </div>
       </div>
     </section>
 
@@ -516,6 +429,18 @@
 
   <button class="back-to-top" id="backToTop" aria-label="Back to top">↑</button>
 
+
+  <!-- Background Wedding Music -->
+  <audio id="bgMusic" loop preload="auto">
+    <source src="wedding-music.mp3" type="audio/mpeg">
+  </audio>
   <script src="script.js"></script>
+
+  <div class="designer-credit">
+    <span>✦</span>
+    <p>Crafted with love by <strong>Karthi</strong></p>
+    <span>✦</span>
+  </div>
+
 </body>
 </html>

@@ -6,6 +6,7 @@ const siteHeader = document.getElementById("siteHeader");
 const siteNav = document.getElementById("siteNav");
 const menuBtn = document.getElementById("menuBtn");
 const backToTop = document.getElementById("backToTop");
+const bgMusic = document.getElementById("bgMusic");
 
 // Keep the opening invitation in focus.
 window.addEventListener("load", () => {
@@ -18,6 +19,14 @@ let isOpening = false;
 function enterWedding() {
   if (isOpening) return;
   isOpening = true;
+
+  // The opening click is a user gesture, so browsers allow audio to begin here.
+  if (bgMusic) {
+    bgMusic.volume = 0.38;
+    bgMusic.play().catch(() => {
+      // Some browsers may still block audio until another user interaction.
+    });
+  }
 
   cover.classList.add("is-opening");
 
@@ -49,12 +58,12 @@ document.querySelectorAll(".site-nav a").forEach(link => {
   link.addEventListener("click", () => siteNav.classList.remove("open"));
 });
 
-// Countdown to Reception — 01 December 2026 at 6:30 PM.
-const receptionDate = new Date("December 1, 2026 18:30:00").getTime();
+// Countdown to Muhurtham — 02 December 2026 at 9:30 AM.
+const muhurthamDate = new Date("December 2, 2026 09:30:00").getTime();
 
 function updateCountdown() {
   const now = Date.now();
-  const distance = receptionDate - now;
+  const distance = muhurthamDate - now;
 
   if (distance <= 0) {
     document.querySelector(".countdown").innerHTML = `
@@ -99,7 +108,7 @@ revealItems.forEach(item => revealObserver.observe(item));
 
 
 
-// Save the Date click-to-reveal split animation
+// Save the Date royal-card reveal
 const saveDateBtn = document.getElementById("saveDateBtn");
 const saveDateCover = document.getElementById("saveDateCover");
 
@@ -108,3 +117,4 @@ if (saveDateBtn && saveDateCover) {
     saveDateCover.classList.add("open");
   });
 }
+
