@@ -6,7 +6,6 @@ const siteHeader = document.getElementById("siteHeader");
 const siteNav = document.getElementById("siteNav");
 const menuBtn = document.getElementById("menuBtn");
 const backToTop = document.getElementById("backToTop");
-const bgMusic = document.getElementById("bgMusic");
 
 // Keep the opening invitation in focus.
 window.addEventListener("load", () => {
@@ -20,42 +19,42 @@ function enterWedding() {
   if (isOpening) return;
   isOpening = true;
 
-  // The opening click is a user gesture, so browsers allow audio to begin here.
-  if (bgMusic) {
-    bgMusic.volume = 0.38;
-    bgMusic.play().catch(() => {
-      // Some browsers may still block audio until another user interaction.
-    });
-  }
-
   cover.classList.add("is-opening");
 
   setTimeout(() => {
     cover.classList.add("is-hidden");
     document.body.classList.remove("no-scroll");
-    window.scrollTo({ top: 0, behavior: "instant" });
+    window.scrollTo({ top: 0, behavior: "auto" });
   }, 800);
 }
 
-openInvitation.addEventListener("click", enterWedding);
+if (openInvitation && cover) {
+  openInvitation.addEventListener("click", enterWedding);
+}
 
 // Header and top button.
 window.addEventListener("scroll", () => {
-  siteHeader.classList.toggle("scrolled", window.scrollY > 45);
-  backToTop.classList.toggle("show", window.scrollY > 520);
+  if (siteHeader) siteHeader.classList.toggle("scrolled", window.scrollY > 45);
+  if (backToTop) backToTop.classList.toggle("show", window.scrollY > 520);
 });
 
-backToTop.addEventListener("click", () => {
-  window.scrollTo({ top: 0, behavior: "smooth" });
-});
+if (backToTop) {
+  backToTop.addEventListener("click", () => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  });
+}
 
 // Mobile menu.
-menuBtn.addEventListener("click", () => {
-  siteNav.classList.toggle("open");
-});
+if (menuBtn && siteNav) {
+  menuBtn.addEventListener("click", () => {
+    siteNav.classList.toggle("open");
+  });
+}
 
 document.querySelectorAll(".site-nav a").forEach(link => {
-  link.addEventListener("click", () => siteNav.classList.remove("open"));
+  link.addEventListener("click", () => {
+    if (siteNav) siteNav.classList.remove("open");
+  });
 });
 
 // Countdown to Muhurtham — 02 December 2026 at 9:30 AM.
@@ -108,13 +107,94 @@ revealItems.forEach(item => revealObserver.observe(item));
 
 
 
-// Save the Date royal-card reveal
+// Save the Date premium reveal with celebration burst
 const saveDateBtn = document.getElementById("saveDateBtn");
 const saveDateCover = document.getElementById("saveDateCover");
+const revealCelebration = document.getElementById("revealCelebration");
+const royalDateFrame = document.querySelector(".royal-date-reveal");
+
+function launchRevealCelebration() {
+  if (!revealCelebration) return;
+
+  revealCelebration.innerHTML = "";
+  revealCelebration.classList.add("is-active");
+  if (royalDateFrame) royalDateFrame.classList.add("celebrate-flash");
+
+  // Expanding gold burst rings from the center.
+  for (let r = 0; r < 3; r++) {
+    const ring = document.createElement("span");
+    ring.className = "celebration-ring";
+    ring.style.setProperty("--ring-delay", `${r * 0.12}s`);
+    revealCelebration.appendChild(ring);
+  }
+
+  const colors = ["#c9a25e", "#efd9b0", "#8b2634", "#ffffff", "#f7e6c1", "#b8893f"];
+  const particleCount = window.innerWidth < 640 ? 44 : 68;
+
+  for (let i = 0; i < particleCount; i++) {
+    const piece = document.createElement("span");
+    piece.className = i % 6 === 0 ? "celebration-spark" : "celebration-piece";
+
+    const angle = (Math.PI * 2 * i) / particleCount + (Math.random() * 0.26);
+    const distance = 145 + Math.random() * (window.innerWidth < 640 ? 120 : 245);
+    const dx = Math.cos(angle) * distance;
+    const dy = Math.sin(angle) * distance - (35 + Math.random() * 100);
+    const rot = `${(Math.random() * 760 - 380).toFixed(0)}deg`;
+    const size = 7 + Math.random() * 11;
+
+    piece.style.setProperty("--tx", `${dx.toFixed(0)}px`);
+    piece.style.setProperty("--ty", `${dy.toFixed(0)}px`);
+    piece.style.setProperty("--rot", rot);
+    piece.style.setProperty("--delay", `${(Math.random() * 0.10).toFixed(2)}s`);
+    piece.style.setProperty("--dur", `${(1.15 + Math.random() * 0.65).toFixed(2)}s`);
+    piece.style.setProperty("--bg", colors[Math.floor(Math.random() * colors.length)]);
+    piece.style.setProperty("--w", `${size}px`);
+    piece.style.setProperty("--h", `${Math.max(9, size * 1.9)}px`);
+
+    revealCelebration.appendChild(piece);
+  }
+
+  setTimeout(() => {
+    revealCelebration.classList.remove("is-active");
+    revealCelebration.innerHTML = "";
+    if (royalDateFrame) royalDateFrame.classList.remove("celebrate-flash");
+  }, 2100);
+}
 
 if (saveDateBtn && saveDateCover) {
   saveDateBtn.addEventListener("click", () => {
+    launchRevealCelebration();
     saveDateCover.classList.add("open");
   });
 }
 
+
+
+// V21 premium interaction polish
+function updatePremiumHeader() {
+  if (!siteHeader) return;
+  siteHeader.classList.toggle("scrolled", window.scrollY > 32);
+}
+
+updatePremiumHeader();
+window.addEventListener("scroll", updatePremiumHeader, { passive: true });
+
+// Gentle hero parallax on capable devices
+const heroSection = document.querySelector(".hero");
+const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+if (heroSection && !reduceMotion && window.innerWidth > 768) {
+  window.addEventListener("scroll", () => {
+    const y = Math.min(window.scrollY, window.innerHeight);
+    heroSection.style.backgroundPosition = `center calc(50% + ${y * 0.08}px)`;
+  }, { passive: true });
+}
+
+// Add slight reveal stagger to visible card groups
+document.querySelectorAll(".countdown, .gallery-grid, .couple-grid").forEach(group => {
+  [...group.children].forEach((child, index) => {
+    if (child.classList.contains("reveal")) {
+      child.style.transitionDelay = `${Math.min(index * 0.07, 0.28)}s`;
+    }
+  });
+});
