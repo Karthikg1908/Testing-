@@ -3,8 +3,11 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="theme-color" content="#24100f" />
-  <meta name="description" content="Wedding invitation of groom Praveen and bride Kavya" />
+  <meta name="theme-color" content="#24080d" />
+  <meta name="description" content="Wedding invitation of Praveen and Kavya — celebrating love, family and a beautiful new beginning." />
+  <meta property="og:title" content="Praveen & Kavya — Wedding Invitation" />
+  <meta property="og:description" content="Join Praveen and Kavya as they celebrate their beautiful new beginning." />
+  <meta property="og:type" content="website" />
   <title>Praveen & Kavya — Wedding Invitation</title>
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -14,6 +17,13 @@
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
+  <div class="scroll-progress-ornament" id="scrollProgress" aria-hidden="true">
+    <div class="scroll-progress-track">
+      <span class="scroll-progress-fill" id="scrollProgressFill"></span>
+    </div>
+    <div class="scroll-progress-flower" id="scrollProgressFlower">✦</div>
+  </div>
+
 
   <!-- =========================
        LUXURY OPENING EXPERIENCE
@@ -76,6 +86,8 @@
       <p class="cover-hint">Click the seal to enter</p>
     </div>
   </section>
+<!-- Temporary flower petals shown only for a few seconds -->
+  <div class="petal-layer" id="petalLayer" aria-hidden="true"></div>
 
   <!-- =========================
        MAIN WEBSITE
@@ -152,13 +164,7 @@
           <div class="video-corner video-corner-bl"></div>
           <div class="video-corner video-corner-br"></div>
         </div>
-
-        <div class="video-note">
-          <span>✦</span>
-          <p>Add your final wedding invitation video as <strong>wedding-invite.mp4</strong> in this folder.</p>
-          <span>✦</span>
-      </div>
-    </section>
+</section>
 
     <!-- COUPLE -->
     <section class="section couple-section" id="couple">
@@ -281,8 +287,7 @@
         <div class="reveal-celebration" id="revealCelebration" aria-hidden="true"></div>
       </div>
     </section>
-
-    <!-- COUNTDOWN -->
+<!-- COUNTDOWN -->
     <section class="section pale countdown-section-refined" id="countdown">
       <div class="section-head reveal">
         <p class="eyebrow">UNTIL THE MUHURTHAM</p>
@@ -319,11 +324,11 @@
       </div>
 
       <div class="gallery">
-        <figure class="photo-a reveal"><img src="https://images.unsplash.com/photo-1511285560929-80b456fea0bc?auto=format&fit=crop&w=1200&q=90" alt="Wedding memory"></figure>
-        <figure class="photo-b reveal"><img src="https://images.unsplash.com/photo-1606800052052-a08af7148866?auto=format&fit=crop&w=900&q=90" alt="Wedding memory"></figure>
-        <figure class="photo-c reveal"><img src="https://images.unsplash.com/photo-1520854221256-17451cc331bf?auto=format&fit=crop&w=900&q=90" alt="Wedding memory"></figure>
-        <figure class="photo-d reveal"><img src="https://images.unsplash.com/photo-1519225421980-715cb0215aed?auto=format&fit=crop&w=1200&q=90" alt="Wedding memory"></figure>
-        <figure class="photo-e reveal"><img src="https://images.unsplash.com/photo-1469371670807-013ccf25f16a?auto=format&fit=crop&w=1000&q=90" alt="Wedding memory"></figure>
+        <figure class="photo-a reveal lightbox-item" tabindex="0" role="button" aria-label="Open photo"><img src="https://images.unsplash.com/photo-1511285560929-80b456fea0bc?auto=format&fit=crop&w=1200&q=90" alt="Wedding memory"></figure>
+        <figure class="photo-b reveal lightbox-item" tabindex="0" role="button" aria-label="Open photo"><img src="https://images.unsplash.com/photo-1606800052052-a08af7148866?auto=format&fit=crop&w=900&q=90" alt="Wedding memory"></figure>
+        <figure class="photo-c reveal lightbox-item" tabindex="0" role="button" aria-label="Open photo"><img src="https://images.unsplash.com/photo-1520854221256-17451cc331bf?auto=format&fit=crop&w=900&q=90" alt="Wedding memory"></figure>
+        <figure class="photo-d reveal lightbox-item" tabindex="0" role="button" aria-label="Open photo"><img src="https://images.unsplash.com/photo-1519225421980-715cb0215aed?auto=format&fit=crop&w=1200&q=90" alt="Wedding memory"></figure>
+        <figure class="photo-e reveal lightbox-item" tabindex="0" role="button" aria-label="Open photo"><img src="https://images.unsplash.com/photo-1469371670807-013ccf25f16a?auto=format&fit=crop&w=1000&q=90" alt="Wedding memory"></figure>
       </div>
     </section>
 
@@ -343,14 +348,15 @@
 
           <figure class="venue-building-photo">
             <img src="purvaja-samudhaya-bhavana.jpg" alt="Purvaja Samudhaya Bhavana building">
-            <figcaption>Replace this image with the venue building photo</figcaption>
           </figure>
 
           <p class="location-address">X6C2+2GJ, Magadi-Kunigal Rd, Aladakattepalya, Karnataka 562120</p>
-
-          <a href="https://www.google.com/maps/search/?api=1&query=Purvaja+Samudhaya+Bhavana%2C+X6C2%2B2GJ%2C+Magadi-Kunigal+Rd%2C+Aladakattepalya%2C+Karnataka+562120" target="_blank" rel="noopener noreferrer" class="map-action">
-            <span>View on Google Maps</span><i>↗</i>
-          </a>
+          <div class="venue-actions">
+            <a href="https://www.google.com/maps/dir/?api=1&destination=Purvaja+Samudhaya+Bhavana%2C+X6C2%2B2GJ%2C+Magadi-Kunigal+Rd%2C+Aladakattepalya%2C+Karnataka+562120"
+               target="_blank" rel="noopener noreferrer" class="direction-btn">
+              <span>Get Directions</span><i>➜</i>
+            </a>
+          </div>
         </div>
 
         <div class="map-frame map-frame-premium">
@@ -382,14 +388,15 @@
 
           <figure class="venue-building-photo">
             <img src="hb-function-hall.jpg" alt="HB Function Hall building">
-            <figcaption>Replace this image with the venue building photo</figcaption>
           </figure>
 
           <p class="location-address">133, Magadi Main Rd, opp. Indian petrol pump, Govindaraja Nagar Ward, Pete Channappa Industrial Estate, Kamakshipalya, Bengaluru, Karnataka 560079</p>
-
-          <a href="https://www.google.com/maps/search/?api=1&query=HB+Function+Hall%2C+133%2C+Magadi+Main+Rd%2C+opp.+Indian+petrol+pump%2C+Govindaraja+Nagar+Ward%2C+Pete+Channappa+Industrial+Estate%2C+Kamakshipalya%2C+Bengaluru%2C+Karnataka+560079" target="_blank" rel="noopener noreferrer" class="map-action">
-            <span>View on Google Maps</span><i>↗</i>
-          </a>
+          <div class="venue-actions">
+            <a href="https://www.google.com/maps/dir/?api=1&destination=HB+Function+Hall%2C+133%2C+Magadi+Main+Rd%2C+opp.+Indian+petrol+pump%2C+Govindaraja+Nagar+Ward%2C+Pete+Channappa+Industrial+Estate%2C+Kamakshipalya%2C+Bengaluru%2C+Karnataka+560079"
+               target="_blank" rel="noopener noreferrer" class="direction-btn">
+              <span>Get Directions</span><i>➜</i>
+            </a>
+          </div>
         </div>
 
         <div class="map-frame map-frame-premium">
@@ -407,21 +414,58 @@
 
     <!-- CLOSING -->
     <section class="closing">
-      <div class="closing-bg"></div>
-      <div class="closing-overlay"></div>
       <div class="closing-content reveal">
-        <p class="sanskrit-line">ಶುಭ ವಿವಾಹ</p>
-        <p class="eyebrow gold">WITH LOVE & GRATITUDE</p>
+        <p class="closing-kannada">ಶುಭ ವಿವಾಹ</p>
+        <p class="closing-kicker">WITH LOVE &amp; GRATITUDE</p>
+
         <h2>We Can't Wait to Celebrate With You</h2>
-        <div class="closing-names">
-          <span>Praveen</span>
-          <i>&</i>
-          <span>Kavya</span>
+
+        <div class="closing-message-block">
+          <p>
+            With joyful hearts, we warmly invite <strong>you and your family</strong>
+            to be a part of our special celebration.
+          </p>
+
+          <p>
+            Your presence, love, and blessings will make this beautiful beginning
+            even more memorable.
+          </p>
+
+          <div class="closing-divider"><span></span><i>✦</i><span></span></div>
+
+          <p class="closing-message-kannada">
+            ನಮ್ಮ ಈ ವಿಶೇಷ ಸಂಭ್ರಮದಲ್ಲಿ ನೀವು ಮತ್ತು ನಿಮ್ಮ ಕುಟುಂಬದವರು ಭಾಗವಹಿಸಿ,
+            ನಿಮ್ಮ ಪ್ರೀತಿ ಮತ್ತು ಆಶೀರ್ವಾದಗಳಿಂದ ನಮ್ಮ ಸಂತೋಷವನ್ನು ಇನ್ನಷ್ಟು ಹೆಚ್ಚಿಸಬೇಕೆಂದು
+            ಹೃತ್ಪೂರ್ವಕವಾಗಿ ಆಹ್ವಾನಿಸುತ್ತೇವೆ.
+          </p>
+
+          <p class="closing-message-kannada closing-kannada-emphasis">
+            ನಿಮ್ಮ ಆಗಮನವೇ ನಮ್ಮ ಸಂಭ್ರಮಕ್ಕೆ ಮತ್ತಷ್ಟು ಮೆರುಗು ನೀಡುತ್ತದೆ.
+          </p>
         </div>
+
+        <div class="closing-couple-name">Praveen <span>&amp;</span> Kavya</div>
       </div>
-          <p class="closing-signature">Together, with love and blessings.</p>
-    </section>
+</section>
   </main>
+
+
+  <!-- Premium gallery lightbox -->
+  <div class="photo-lightbox" id="photoLightbox" aria-hidden="true" role="dialog" aria-modal="true" aria-label="Wedding photo viewer">
+    <div class="lightbox-backdrop" data-lightbox-close></div>
+
+    <div class="lightbox-shell">
+      <button class="lightbox-close" id="lightboxClose" aria-label="Close photo viewer">×</button>
+      <button class="lightbox-nav lightbox-prev" id="lightboxPrev" aria-label="Previous photo">‹</button>
+
+      <figure class="lightbox-stage">
+        <img id="lightboxImage" src="" alt="Wedding memory">
+        <figcaption id="lightboxCounter">1 / 5</figcaption>
+      </figure>
+
+      <button class="lightbox-nav lightbox-next" id="lightboxNext" aria-label="Next photo">›</button>
+    </div>
+  </div>
 
   <footer>
     <p>Made with love for a beautiful beginning.</p>
@@ -430,8 +474,7 @@
 
   <button class="back-to-top" id="backToTop" aria-label="Back to top">↑</button>
 <script src="script.js"></script>
-
-  <div class="designer-credit">
+<div class="designer-credit">
     <span>✦</span>
     <p>Designed with love by <strong>Karthi</strong></p>
     <span>✦</span>

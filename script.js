@@ -6,6 +6,7 @@ const siteHeader = document.getElementById("siteHeader");
 const siteNav = document.getElementById("siteNav");
 const menuBtn = document.getElementById("menuBtn");
 const backToTop = document.getElementById("backToTop");
+const petalLayer = document.getElementById("petalLayer");
 
 // Keep the opening invitation in focus.
 window.addEventListener("load", () => {
@@ -25,6 +26,8 @@ function enterWedding() {
     cover.classList.add("is-hidden");
     document.body.classList.remove("no-scroll");
     window.scrollTo({ top: 0, behavior: "auto" });
+
+    launchOpeningPetals();
   }, 800);
 }
 
@@ -47,18 +50,20 @@ if (backToTop) {
 // Mobile menu.
 if (menuBtn && siteNav) {
   menuBtn.addEventListener("click", () => {
-    siteNav.classList.toggle("open");
+    const isOpen = siteNav.classList.toggle("open");
+    menuBtn.setAttribute("aria-expanded", String(isOpen));
   });
 }
 
 document.querySelectorAll(".site-nav a").forEach(link => {
   link.addEventListener("click", () => {
     if (siteNav) siteNav.classList.remove("open");
+    if (menuBtn) menuBtn.setAttribute("aria-expanded", "false");
   });
 });
 
 // Countdown to Muhurtham — 02 December 2026 at 9:30 AM.
-const muhurthamDate = new Date("December 2, 2026 09:30:00").getTime();
+const muhurthamDate = new Date("2026-12-02T09:30:00+05:30").getTime();
 
 function updateCountdown() {
   const now = Date.now();
@@ -198,3 +203,184 @@ document.querySelectorAll(".countdown, .gallery-grid, .couple-grid").forEach(gro
     }
   });
 });
+
+
+
+// ---------------------------------------------------------
+// Flower petals — brief only, not a continuous effect
+// ---------------------------------------------------------
+function launchOpeningPetals() {
+  if (!petalLayer) return;
+
+  petalLayer.innerHTML = "";
+  petalLayer.classList.add("active");
+
+  const petalCount = window.innerWidth < 640 ? 16 : 24;
+  const petalTypes = ["rose", "jasmine", "champagne"];
+
+  for (let i = 0; i < petalCount; i++) {
+    const petal = document.createElement("span");
+    const type = petalTypes[i % petalTypes.length];
+    petal.className = `flower-petal ${type}`;
+
+    petal.style.setProperty("--left", `${Math.random() * 100}%`);
+    petal.style.setProperty("--delay", `${(Math.random() * 1.4).toFixed(2)}s`);
+    petal.style.setProperty("--duration", `${(3.1 + Math.random() * 1.8).toFixed(2)}s`);
+    petal.style.setProperty("--drift", `${(-75 + Math.random() * 150).toFixed(0)}px`);
+    petal.style.setProperty("--spin", `${(180 + Math.random() * 520).toFixed(0)}deg`);
+    petal.style.setProperty("--scale", `${(0.65 + Math.random() * 0.65).toFixed(2)}`);
+
+    petalLayer.appendChild(petal);
+  }
+
+  setTimeout(() => {
+    petalLayer.classList.remove("active");
+    petalLayer.innerHTML = "";
+  }, 5300);
+}
+
+
+// ---------------------------------------------------------
+// Premium photo lightbox with keyboard + mobile swipe
+// ---------------------------------------------------------
+const galleryItems = [...document.querySelectorAll(".gallery .lightbox-item")];
+const photoLightbox = document.getElementById("photoLightbox");
+const lightboxImage = document.getElementById("lightboxImage");
+const lightboxCounter = document.getElementById("lightboxCounter");
+const lightboxClose = document.getElementById("lightboxClose");
+const lightboxPrev = document.getElementById("lightboxPrev");
+const lightboxNext = document.getElementById("lightboxNext");
+
+let currentPhotoIndex = 0;
+let lightboxTouchStartX = 0;
+let lightboxTouchEndX = 0;
+
+function renderLightboxPhoto(direction = 0) {
+  if (!lightboxImage || !galleryItems.length) return;
+
+  const source = galleryItems[currentPhotoIndex].querySelector("img");
+  if (!source) return;
+
+  lightboxImage.classList.remove("slide-next", "slide-prev");
+  void lightboxImage.offsetWidth;
+
+  if (direction > 0) lightboxImage.classList.add("slide-next");
+  if (direction < 0) lightboxImage.classList.add("slide-prev");
+
+  lightboxImage.src = source.currentSrc || source.src;
+  lightboxImage.alt = source.alt || "Wedding memory";
+
+  if (lightboxCounter) {
+    lightboxCounter.textContent = `${currentPhotoIndex + 1} / ${galleryItems.length}`;
+  }
+}
+
+function openLightbox(index) {
+  if (!photoLightbox) return;
+
+  currentPhotoIndex = index;
+  renderLightboxPhoto();
+  photoLightbox.classList.add("open");
+  photoLightbox.setAttribute("aria-hidden", "false");
+  document.body.classList.add("lightbox-open");
+  lightboxClose?.focus();
+}
+
+function closeLightbox() {
+  if (!photoLightbox) return;
+
+  photoLightbox.classList.remove("open");
+  photoLightbox.setAttribute("aria-hidden", "true");
+  document.body.classList.remove("lightbox-open");
+}
+
+function moveLightbox(step) {
+  if (!galleryItems.length) return;
+
+  currentPhotoIndex = (currentPhotoIndex + step + galleryItems.length) % galleryItems.length;
+  renderLightboxPhoto(step);
+}
+
+galleryItems.forEach((item, index) => {
+  item.addEventListener("click", () => openLightbox(index));
+
+  item.addEventListener("keydown", event => {
+    if (event.key === "Enter" || event.key === " ") {
+      event.preventDefault();
+      openLightbox(index);
+    }
+  });
+});
+
+lightboxClose?.addEventListener("click", closeLightbox);
+lightboxPrev?.addEventListener("click", () => moveLightbox(-1));
+lightboxNext?.addEventListener("click", () => moveLightbox(1));
+
+photoLightbox?.querySelectorAll("[data-lightbox-close]").forEach(el => {
+  el.addEventListener("click", closeLightbox);
+});
+
+document.addEventListener("keydown", event => {
+  if (!photoLightbox?.classList.contains("open")) return;
+
+  if (event.key === "Escape") closeLightbox();
+  if (event.key === "ArrowLeft") moveLightbox(-1);
+  if (event.key === "ArrowRight") moveLightbox(1);
+});
+
+photoLightbox?.addEventListener("touchstart", event => {
+  lightboxTouchStartX = event.changedTouches[0].screenX;
+}, { passive: true });
+
+photoLightbox?.addEventListener("touchend", event => {
+  lightboxTouchEndX = event.changedTouches[0].screenX;
+  const distance = lightboxTouchEndX - lightboxTouchStartX;
+
+  if (Math.abs(distance) < 45) return;
+  if (distance < 0) moveLightbox(1);
+  if (distance > 0) moveLightbox(-1);
+}, { passive: true });
+
+
+// ---------------------------------------------------------
+// Scroll progress ornament
+// ---------------------------------------------------------
+const scrollProgress = document.getElementById("scrollProgress");
+const scrollProgressFill = document.getElementById("scrollProgressFill");
+const scrollProgressFlower = document.getElementById("scrollProgressFlower");
+
+function updateScrollProgress() {
+  if (!scrollProgress || !scrollProgressFill || !scrollProgressFlower) return;
+
+  const scrollable = document.documentElement.scrollHeight - window.innerHeight;
+  const progress = scrollable > 0 ? Math.min(1, Math.max(0, window.scrollY / scrollable)) : 0;
+
+  scrollProgressFill.style.transform = `scaleY(${progress})`;
+  scrollProgressFlower.style.top = `${progress * 100}%`;
+  scrollProgress.classList.toggle("visible", window.scrollY > 120);
+}
+
+updateScrollProgress();
+window.addEventListener("scroll", updateScrollProgress, { passive: true });
+window.addEventListener("resize", updateScrollProgress);
+
+// ---------------------------------------------------------
+// Final thank-you animation
+// ---------------------------------------------------------
+const finalThankYou = document.getElementById("finalThankYou");
+
+if (finalThankYou) {
+  const thankYouObserver = new IntersectionObserver(
+    entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          finalThankYou.classList.add("thankyou-visible");
+          thankYouObserver.unobserve(entry.target);
+        }
+      });
+    },
+    { threshold: 0.15 }
+  );
+
+  thankYouObserver.observe(finalThankYou);
+}
