@@ -6659,3 +6659,1280 @@ footer {
     animation: none !important;
   }
 }
+
+
+/* =========================================================
+   V28 — MIDNIGHT BLUE + CHAMPAGNE GOLD + CREAM
+========================================================= */
+:root {
+  --midnight: #0B1020;
+  --navy: #17213D;
+  --navy-soft: #263452;
+  --champagne-gold: #D8B873;
+  --champagne-light: #EAD5A2;
+  --cream: #FFF8EC;
+  --cream-soft: #F4EAD9;
+
+  --espresso: #0B1020;
+  --wine: #17213D;
+  --wine-2: #263452;
+  --black-wine: #070B15;
+  --gold: #D8B873;
+  --gold-bright: #EAD5A2;
+  --champagne: #EAD5A2;
+  --ivory: #FFF8EC;
+  --rose: #7D86A0;
+  --ink: #24304D;
+  --muted: #6F7890;
+
+  --luxury-wine: #17213D;
+  --luxury-wine-deep: #0B1020;
+  --luxury-burgundy: #263452;
+  --luxury-ivory: #FFF8EC;
+  --luxury-cream: #F4EAD9;
+  --luxury-gold: #D8B873;
+  --luxury-gold-soft: #EAD5A2;
+  --luxury-ink: #24304D;
+  --luxury-muted: #6F7890;
+  --luxury-shadow: 0 30px 82px rgba(13,24,49,.14);
+  --luxury-border: 1px solid rgba(216,184,115,.24);
+}
+
+body {
+  background:
+    radial-gradient(circle at 10% 8%, rgba(216,184,115,.06), transparent 18%),
+    radial-gradient(circle at 90% 40%, rgba(23,33,61,.055), transparent 23%),
+    #F8F1E6;
+  color: #24304D;
+}
+
+::selection { background:#D8B873; color:#0B1020; }
+
+.site-header {
+  background: linear-gradient(180deg, rgba(8,13,28,.94), rgba(8,13,28,.78));
+  border-bottom-color: rgba(234,213,162,.12);
+  box-shadow: 0 6px 28px rgba(5,9,20,.11);
+}
+.site-header.scrolled { background: rgba(8,13,28,.96); }
+.site-logo { color:#F2DFB3; }
+.site-nav a { color:rgba(255,248,236,.76); }
+.site-nav a:hover { color:#EAD5A2; }
+
+.luxury-cover {
+  background:
+    radial-gradient(circle at 50% 30%, rgba(216,184,115,.085), transparent 25%),
+    linear-gradient(145deg, #111A33 0%, #070B15 72%);
+}
+.invitation-box-minimal {
+  border-color: rgba(234,213,162,.22);
+  background: rgba(10,16,33,.38);
+}
+.welcome-initials span { color:#F6E7C4; }
+.welcome-initials em { color:#D8B873; }
+.welcome-message-premium { color:rgba(255,248,236,.76); }
+.wax-seal {
+  border-color: rgba(234,213,162,.58);
+  background: radial-gradient(circle at 35% 28%, #31456F, #17213D 58%, #0B1020);
+}
+
+.hero::after {
+  background:
+    linear-gradient(180deg, rgba(7,11,21,.40), rgba(7,11,21,.74)),
+    radial-gradient(circle at 50% 36%, rgba(216,184,115,.09), transparent 30%);
+}
+.hero-content .eyebrow { color:#D8B873; }
+.hero-script { color:#E3C887; }
+.hero-names { color:#FFF0CC; }
+.hero-copy { color:rgba(255,248,236,.68); }
+.hero-date { color:#E8D1A0; }
+.scroll-mark { color:rgba(255,248,236,.56); }
+
+.section-head .eyebrow { color:#B68F4C; }
+.section-head h2 { color:#17213D; }
+.head-ornament, .section-head .ornament { color:#D8B873; }
+
+.video-invite-section {
+  background:
+    radial-gradient(circle at 88% 10%, rgba(216,184,115,.11), transparent 21%),
+    linear-gradient(180deg, #FFF9EF 0%, #EEE4D5 100%);
+}
+.video-frame-shell {
+  background: linear-gradient(145deg, #0B1020, #17213D);
+  border-color: rgba(234,213,162,.42);
+  box-shadow: 0 36px 88px rgba(13,24,49,.20), 0 0 0 8px rgba(216,184,115,.025);
+}
+.wedding-video { background:#070B15; }
+
+.couple-section {
+  background:
+    radial-gradient(circle at 12% 86%, rgba(23,33,61,.05), transparent 22%),
+    linear-gradient(180deg, #EEE4D6 0%, #FFF9EF 100%);
+}
+.couple-card {
+  background: rgba(255,252,246,.88);
+  border-color: rgba(216,184,115,.24);
+  box-shadow: 0 30px 72px rgba(13,24,49,.12);
+}
+.couple-card h3 { color:#17213D; }
+.couple-card .role { color:#AD8744; }
+.couple-card p { color:#657089; }
+.couple-kannada-blessing {
+  background: linear-gradient(90deg, rgba(255,255,255,.46), rgba(255,249,239,.88), rgba(255,255,255,.46));
+  border-color: rgba(216,184,115,.26);
+  color:#31405D;
+}
+
+.royal-date-section {
+  background:
+    radial-gradient(circle at 12% 12%, rgba(216,184,115,.12), transparent 22%),
+    radial-gradient(circle at 90% 85%, rgba(23,33,61,.07), transparent 25%),
+    linear-gradient(145deg, #EEE0C7 0%, #FFF8EC 52%, #DCC6A5 100%);
+}
+.royal-date-reveal {
+  border-color: rgba(216,184,115,.32);
+  box-shadow: 0 42px 105px rgba(13,24,49,.18), inset 0 0 0 1px rgba(255,255,255,.58);
+}
+.split-reveal-left {
+  background:
+    radial-gradient(circle at 78% 20%, rgba(216,184,115,.20), transparent 28%),
+    linear-gradient(145deg, #F0DFBC 0%, #FFF8EC 100%);
+}
+.split-reveal-right {
+  background:
+    radial-gradient(circle at 20% 78%, rgba(234,213,162,.12), transparent 30%),
+    linear-gradient(145deg, #1B294B 0%, #0B1020 100%);
+}
+.left-copy h3 { color:#17213D; }
+.split-kannada { color:#5F6880; }
+.right-monogram, .right-copy { color:#F8E4B8; }
+.split-reveal-trigger {
+  background: linear-gradient(145deg, #1E2C50, #0B1020);
+  border-color: rgba(234,213,162,.72);
+  color:#FFF0CC;
+  box-shadow: 0 18px 45px rgba(8,13,28,.32), 0 0 0 7px rgba(216,184,115,.035);
+}
+.royal-date-badge { border-color:rgba(216,184,115,.64); color:#C39D58; }
+.royal-date-info h3 { color:#17213D; }
+.royal-date-info p { color:#647087; }
+.celebration-ring { border-color:rgba(216,184,115,.76)!important; }
+
+.countdown-section-refined {
+  background:
+    radial-gradient(circle at 50% 0%, rgba(216,184,115,.10), transparent 25%),
+    linear-gradient(180deg, #FFF8EE 0%, #EEE4D6 100%);
+}
+.count-card {
+  background: linear-gradient(180deg, rgba(255,255,255,.94), rgba(244,234,217,.90));
+  border-color: rgba(216,184,115,.25);
+  box-shadow: 0 24px 58px rgba(13,24,49,.10);
+}
+.count-card span { color:#17213D; }
+.count-card small { color:#8D7956; }
+
+.gallery-section {
+  background:
+    radial-gradient(circle at 8% 12%, rgba(216,184,115,.06), transparent 18%),
+    #FFF9F0;
+}
+.gallery figure {
+  border-color: rgba(216,184,115,.18);
+  box-shadow: 0 23px 52px rgba(13,24,49,.12);
+}
+.gallery .lightbox-item::after {
+  color:#FFF0C9;
+  background:rgba(8,13,28,.74);
+  border-color:rgba(234,213,162,.34);
+}
+.lightbox-backdrop {
+  background: radial-gradient(circle at center, rgba(23,33,61,.40), rgba(5,8,17,.96) 70%);
+}
+.lightbox-stage { border-color:rgba(234,213,162,.22); background:rgba(7,11,21,.70); }
+.lightbox-close, .lightbox-nav {
+  color:#FFF0CC;
+  background:rgba(11,16,32,.74);
+  border-color:rgba(234,213,162,.30);
+}
+.lightbox-close:hover, .lightbox-nav:hover {
+  background:rgba(23,33,61,.90);
+  border-color:rgba(234,213,162,.62);
+}
+
+.location-section {
+  background:
+    radial-gradient(circle at 92% 8%, rgba(216,184,115,.07), transparent 19%),
+    #EEE4D6;
+}
+.location-section-alt {
+  background:
+    radial-gradient(circle at 7% 88%, rgba(23,33,61,.045), transparent 22%),
+    #FFF8EE;
+}
+.location-card-premium {
+  border-color:rgba(216,184,115,.25);
+  box-shadow:0 30px 74px rgba(13,24,49,.13);
+}
+.location-card-premium .location-details {
+  background:linear-gradient(180deg, rgba(255,253,248,.98), rgba(242,232,215,.96));
+}
+.location-card-premium .location-details h3 { color:#17213D; }
+.location-address { color:#69738A; }
+.venue-building-photo {
+  border-color:rgba(216,184,115,.26)!important;
+  box-shadow:0 16px 38px rgba(13,24,49,.10);
+}
+.direction-btn {
+  color:#FFF1CF;
+  background:linear-gradient(145deg, #1E2C50, #0B1020);
+  border-color:rgba(234,213,162,.56);
+  box-shadow:0 12px 28px rgba(8,13,28,.16);
+}
+.direction-btn:hover { background:linear-gradient(145deg, #2A3B68, #111A33); }
+
+.closing::before {
+  background:
+    linear-gradient(180deg, rgba(7,11,21,.60), rgba(5,8,17,.84)),
+    radial-gradient(circle at 50% 34%, rgba(216,184,115,.11), transparent 30%);
+}
+.closing-content {
+  border-color:rgba(234,213,162,.20);
+  background:rgba(8,13,28,.34);
+}
+.closing-content::before, .closing-content::after {
+  background:linear-gradient(90deg, transparent, rgba(234,213,162,.32), transparent);
+}
+.closing-kannada { color:#E7CA8F; }
+.closing-kicker { color:rgba(255,244,221,.56); }
+.closing-content h2 { color:#FFF0CF; }
+.closing-message-block > p:not(.closing-message-kannada) { color:rgba(255,247,232,.78); }
+.closing-message-block strong { color:#F0D59D; }
+.closing-message-kannada { color:rgba(255,240,214,.83); }
+.closing-kannada-emphasis { color:#EFD7A2; }
+.closing-couple-name { color:#F5DFB3; }
+
+footer { background:#070B15; border-top-color:rgba(216,184,115,.11); }
+.footer-monogram { color:#E8CE95; }
+.designer-credit {
+  background:#050812;
+  border-top-color:rgba(216,184,115,.14);
+  color:rgba(255,246,229,.58);
+}
+
+.scroll-progress-track { background:rgba(216,184,115,.20); }
+.scroll-progress-fill { background:linear-gradient(180deg, #EAD5A2, #B58C45); }
+.scroll-progress-flower {
+  color:#D8B873;
+  text-shadow:0 0 12px rgba(216,184,115,.40);
+}
+
+.back-to-top {
+  background:rgba(8,13,28,.92);
+  border-color:rgba(234,213,162,.36);
+  color:#EAD5A2;
+}
+
+.flower-petal.rose {
+  background:linear-gradient(145deg, #6B7FA9, #27385F);
+  box-shadow:0 3px 9px rgba(10,19,40,.14);
+}
+.flower-petal.jasmine { background:linear-gradient(145deg, #FFFDF7, #EADFCF); }
+.flower-petal.champagne { background:linear-gradient(145deg, #ECD7AA, #C89F59); }
+
+@media (max-width:720px) {
+  .site-nav {
+    background:rgba(8,13,28,.97);
+    border-color:rgba(234,213,162,.14);
+  }
+}
+
+
+/* =========================================================
+   V29 — LAVENDER LUXE
+   Deep Plum • Soft Lavender • Champagne Gold • Warm Ivory
+========================================================= */
+
+:root {
+  --lavender: #B8A7D9;
+  --lavender-soft: #D8CDEC;
+  --dusty-lilac: #8E78B4;
+  --deep-plum: #2F2238;
+  --plum: #4A3558;
+  --champagne-gold: #D6B36A;
+  --champagne-light: #EAD3A1;
+  --warm-ivory: #FFF9F1;
+  --mist: #F2EDF7;
+  --soft-cream: #F6EFE6;
+  --ink-plum: #44384D;
+  --muted-plum: #7A6E84;
+
+  --espresso: #2F2238;
+  --wine: #4A3558;
+  --wine-2: #6C5680;
+  --black-wine: #211727;
+  --gold: #D6B36A;
+  --gold-bright: #EAD3A1;
+  --champagne: #EAD3A1;
+  --ivory: #FFF9F1;
+  --cream: #F6EFE6;
+  --rose: #B8A7D9;
+  --ink: #44384D;
+  --muted: #7A6E84;
+
+  --luxury-wine: #4A3558;
+  --luxury-wine-deep: #2F2238;
+  --luxury-burgundy: #6C5680;
+  --luxury-ivory: #FFF9F1;
+  --luxury-cream: #F6EFE6;
+  --luxury-gold: #D6B36A;
+  --luxury-gold-soft: #EAD3A1;
+  --luxury-ink: #44384D;
+  --luxury-muted: #7A6E84;
+  --luxury-shadow: 0 30px 82px rgba(65, 44, 78, .14);
+  --luxury-border: 1px solid rgba(214,179,106,.24);
+}
+
+body {
+  background:
+    radial-gradient(circle at 10% 8%, rgba(184,167,217,.12), transparent 19%),
+    radial-gradient(circle at 92% 40%, rgba(142,120,180,.07), transparent 24%),
+    #F8F2F8;
+  color: #44384D;
+}
+
+::selection {
+  background: #B8A7D9;
+  color: #2F2238;
+}
+
+/* Header */
+.site-header {
+  background: linear-gradient(180deg, rgba(47,34,56,.95), rgba(47,34,56,.80));
+  border-bottom-color: rgba(234,211,161,.13);
+  box-shadow: 0 6px 28px rgba(43,29,53,.12);
+}
+
+.site-header.scrolled {
+  background: rgba(47,34,56,.97);
+  box-shadow: 0 12px 34px rgba(43,29,53,.18);
+}
+
+.site-logo {
+  color: #F1DEB5;
+}
+
+.site-nav a {
+  color: rgba(255,249,241,.78);
+}
+
+.site-nav a:hover {
+  color: #EAD3A1;
+}
+
+/* Opening */
+.luxury-cover {
+  background:
+    radial-gradient(circle at 50% 30%, rgba(184,167,217,.12), transparent 25%),
+    linear-gradient(145deg, #4A3558 0%, #2F2238 55%, #211727 100%);
+}
+
+.invitation-box-minimal {
+  background: rgba(47,34,56,.42);
+  border-color: rgba(234,211,161,.22);
+}
+
+.welcome-initials span {
+  color: #F8EAC8;
+}
+
+.welcome-initials em {
+  color: #D6B36A;
+}
+
+.welcome-message-premium {
+  color: rgba(255,249,241,.78);
+}
+
+.wax-seal {
+  border-color: rgba(234,211,161,.60);
+  background:
+    radial-gradient(circle at 35% 28%, #8E78B4, #5A4568 58%, #2F2238);
+}
+
+/* Hero */
+.hero::after {
+  background:
+    linear-gradient(180deg, rgba(47,34,56,.42), rgba(33,23,39,.76)),
+    radial-gradient(circle at 50% 34%, rgba(184,167,217,.12), transparent 31%);
+}
+
+.hero-content .eyebrow {
+  color: #D6B36A;
+}
+
+.hero-script {
+  color: #E7C98E;
+}
+
+.hero-names {
+  color: #FFF0CE;
+}
+
+.hero-copy {
+  color: rgba(255,249,241,.72);
+}
+
+.hero-date {
+  color: #E5C98F;
+}
+
+.scroll-mark {
+  color: rgba(255,249,241,.58);
+}
+
+/* Shared headings */
+.section-head .eyebrow {
+  color: #B28A43;
+}
+
+.section-head h2 {
+  color: #4A3558;
+}
+
+.head-ornament,
+.section-head .ornament {
+  color: #D6B36A;
+}
+
+/* Video */
+.video-invite-section {
+  background:
+    radial-gradient(circle at 88% 10%, rgba(184,167,217,.14), transparent 21%),
+    linear-gradient(180deg, #FFF9F1 0%, #F0E7F4 100%);
+}
+
+.video-frame-shell {
+  background: linear-gradient(145deg, #2F2238, #5A4568);
+  border-color: rgba(234,211,161,.44);
+  box-shadow:
+    0 36px 88px rgba(65,44,78,.21),
+    0 0 0 8px rgba(214,179,106,.025);
+}
+
+.wedding-video {
+  background: #211727;
+}
+
+/* Couple */
+.couple-section {
+  background:
+    radial-gradient(circle at 12% 86%, rgba(184,167,217,.10), transparent 22%),
+    linear-gradient(180deg, #F0E7F4 0%, #FFF9F1 100%);
+}
+
+.couple-card {
+  background: rgba(255,252,248,.90);
+  border-color: rgba(214,179,106,.24);
+  box-shadow: 0 30px 72px rgba(65,44,78,.12);
+}
+
+.couple-card h3 {
+  color: #4A3558;
+}
+
+.couple-card .role {
+  color: #B08848;
+}
+
+.couple-card p {
+  color: #756A7C;
+}
+
+.couple-kannada-blessing {
+  background:
+    linear-gradient(90deg, rgba(255,255,255,.48), rgba(247,241,250,.90), rgba(255,255,255,.48));
+  border-color: rgba(214,179,106,.26);
+  color: #584A62;
+}
+
+/* Save the Date */
+.royal-date-section {
+  background:
+    radial-gradient(circle at 12% 12%, rgba(184,167,217,.18), transparent 23%),
+    radial-gradient(circle at 90% 85%, rgba(142,120,180,.10), transparent 25%),
+    linear-gradient(145deg, #E8DFF0 0%, #FFF8EF 52%, #E2D4EA 100%);
+}
+
+.royal-date-reveal {
+  border-color: rgba(214,179,106,.33);
+  box-shadow:
+    0 42px 105px rgba(65,44,78,.18),
+    inset 0 0 0 1px rgba(255,255,255,.60);
+}
+
+.split-reveal-left {
+  background:
+    radial-gradient(circle at 78% 20%, rgba(184,167,217,.23), transparent 28%),
+    linear-gradient(145deg, #EEE5F4 0%, #FFF9F1 100%);
+}
+
+.split-reveal-right {
+  background:
+    radial-gradient(circle at 20% 78%, rgba(234,211,161,.12), transparent 30%),
+    linear-gradient(145deg, #5A4568 0%, #2F2238 100%);
+}
+
+.left-copy h3 {
+  color: #4A3558;
+}
+
+.split-kannada {
+  color: #786887;
+}
+
+.right-monogram,
+.right-copy {
+  color: #F6E3BA;
+}
+
+.split-reveal-trigger {
+  background: linear-gradient(145deg, #684F79, #2F2238);
+  border-color: rgba(234,211,161,.72);
+  color: #FFF0CE;
+  box-shadow:
+    0 18px 45px rgba(47,34,56,.32),
+    0 0 0 7px rgba(214,179,106,.035);
+}
+
+.royal-date-badge {
+  border-color: rgba(214,179,106,.64);
+  color: #B58E4B;
+}
+
+.royal-date-info h3 {
+  color: #4A3558;
+}
+
+.royal-date-info p {
+  color: #756A7D;
+}
+
+.celebration-ring {
+  border-color: rgba(214,179,106,.78) !important;
+}
+
+/* Countdown */
+.countdown-section-refined {
+  background:
+    radial-gradient(circle at 50% 0%, rgba(184,167,217,.12), transparent 25%),
+    linear-gradient(180deg, #FFF9F1 0%, #F0E7F4 100%);
+}
+
+.count-card {
+  background:
+    linear-gradient(180deg, rgba(255,255,255,.95), rgba(246,239,246,.92));
+  border-color: rgba(214,179,106,.25);
+  box-shadow: 0 24px 58px rgba(65,44,78,.10);
+}
+
+.count-card span {
+  color: #4A3558;
+}
+
+.count-card small {
+  color: #8B765A;
+}
+
+/* Gallery */
+.gallery-section {
+  background:
+    radial-gradient(circle at 8% 12%, rgba(184,167,217,.10), transparent 18%),
+    #FFF9F2;
+}
+
+.gallery figure {
+  border-color: rgba(214,179,106,.18);
+  box-shadow: 0 23px 52px rgba(65,44,78,.12);
+}
+
+.gallery .lightbox-item::after {
+  color: #FFF0CC;
+  background: rgba(47,34,56,.78);
+  border-color: rgba(234,211,161,.34);
+}
+
+.lightbox-backdrop {
+  background:
+    radial-gradient(circle at center, rgba(90,69,104,.42), rgba(29,20,34,.96) 70%);
+}
+
+.lightbox-stage {
+  border-color: rgba(234,211,161,.22);
+  background: rgba(33,23,39,.74);
+}
+
+.lightbox-close,
+.lightbox-nav {
+  color: #FFF0CC;
+  background: rgba(47,34,56,.76);
+  border-color: rgba(234,211,161,.30);
+}
+
+.lightbox-close:hover,
+.lightbox-nav:hover {
+  background: rgba(90,69,104,.92);
+  border-color: rgba(234,211,161,.62);
+}
+
+/* Locations */
+.location-section {
+  background:
+    radial-gradient(circle at 92% 8%, rgba(184,167,217,.12), transparent 19%),
+    #F0E8F2;
+}
+
+.location-section-alt {
+  background:
+    radial-gradient(circle at 7% 88%, rgba(142,120,180,.07), transparent 22%),
+    #FFF9F1;
+}
+
+.location-card-premium {
+  border-color: rgba(214,179,106,.25);
+  box-shadow: 0 30px 74px rgba(65,44,78,.13);
+}
+
+.location-card-premium .location-details {
+  background:
+    linear-gradient(180deg, rgba(255,253,249,.98), rgba(244,237,245,.96));
+}
+
+.location-card-premium .location-details h3 {
+  color: #4A3558;
+}
+
+.location-address {
+  color: #756A7D;
+}
+
+.venue-building-photo {
+  border-color: rgba(214,179,106,.26) !important;
+  box-shadow: 0 16px 38px rgba(65,44,78,.10);
+}
+
+.direction-btn {
+  color: #FFF1CF;
+  background: linear-gradient(145deg, #684F79, #2F2238);
+  border-color: rgba(234,211,161,.56);
+  box-shadow: 0 12px 28px rgba(47,34,56,.16);
+}
+
+.direction-btn:hover {
+  background: linear-gradient(145deg, #7B6490, #4A3558);
+}
+
+/* Closing */
+.closing::before {
+  background:
+    linear-gradient(180deg, rgba(47,34,56,.60), rgba(29,20,34,.84)),
+    radial-gradient(circle at 50% 34%, rgba(184,167,217,.13), transparent 30%);
+}
+
+.closing-content {
+  border-color: rgba(234,211,161,.20);
+  background: rgba(47,34,56,.34);
+}
+
+.closing-content::before,
+.closing-content::after {
+  background:
+    linear-gradient(90deg, transparent, rgba(234,211,161,.32), transparent);
+}
+
+.closing-kannada {
+  color: #E5C78E;
+}
+
+.closing-kicker {
+  color: rgba(255,244,221,.58);
+}
+
+.closing-content h2 {
+  color: #FFF0CF;
+}
+
+.closing-message-block > p:not(.closing-message-kannada) {
+  color: rgba(255,247,232,.80);
+}
+
+.closing-message-block strong {
+  color: #F0D49C;
+}
+
+.closing-message-kannada {
+  color: rgba(255,240,214,.84);
+}
+
+.closing-kannada-emphasis {
+  color: #EFD5A0;
+}
+
+.closing-couple-name {
+  color: #F6DFB4;
+}
+
+/* Footer */
+footer {
+  background: #211727;
+  border-top-color: rgba(214,179,106,.11);
+}
+
+.footer-monogram {
+  color: #E7CC95;
+}
+
+.designer-credit {
+  background: #1A121F;
+  border-top-color: rgba(214,179,106,.14);
+  color: rgba(255,246,229,.60);
+}
+
+/* Progress + utility */
+.scroll-progress-track {
+  background: rgba(214,179,106,.20);
+}
+
+.scroll-progress-fill {
+  background: linear-gradient(180deg, #EAD3A1, #B18847);
+}
+
+.scroll-progress-flower {
+  color: #D6B36A;
+  text-shadow: 0 0 12px rgba(214,179,106,.40);
+}
+
+.back-to-top {
+  background: rgba(47,34,56,.92);
+  border-color: rgba(234,211,161,.36);
+  color: #EAD3A1;
+}
+
+/* Petals tuned for lavender theme */
+.flower-petal.rose {
+  background: linear-gradient(145deg, #C3B3E0, #8E78B4);
+  box-shadow: 0 3px 9px rgba(65,44,78,.15);
+}
+
+.flower-petal.jasmine {
+  background: linear-gradient(145deg, #FFFDF8, #EFE7F3);
+}
+
+.flower-petal.champagne {
+  background: linear-gradient(145deg, #ECD6A6, #C99F58);
+}
+
+@media (max-width: 720px) {
+  .site-nav {
+    background: rgba(47,34,56,.98);
+    border-color: rgba(234,211,161,.14);
+  }
+}
+
+
+/* =========================================================
+   V30 — FULL LAVENDER THEME
+   Deep Plum • Royal Lavender • Soft Lilac • Lavender Mist
+   Gold removed from the primary visual language.
+========================================================= */
+
+:root {
+  --lavender-deep: #2B1E35;
+  --lavender-dark: #3A2848;
+  --lavender-rich: #5E4673;
+  --lavender-royal: #8067A0;
+  --lavender: #B9A6D6;
+  --lavender-soft: #D9CDED;
+  --lavender-mist: #F1ECF7;
+  --lavender-pale: #F8F4FB;
+  --lavender-ink: #44384D;
+  --lavender-muted: #7C7087;
+  --ivory-text: #FFF9F4;
+
+  --espresso: #2B1E35;
+  --wine: #5E4673;
+  --wine-2: #8067A0;
+  --black-wine: #211728;
+  --gold: #B9A6D6;
+  --gold-bright: #D9CDED;
+  --champagne: #D9CDED;
+  --ivory: #F8F4FB;
+  --cream: #F1ECF7;
+  --rose: #B9A6D6;
+  --ink: #44384D;
+  --muted: #7C7087;
+
+  --luxury-wine: #5E4673;
+  --luxury-wine-deep: #2B1E35;
+  --luxury-burgundy: #8067A0;
+  --luxury-ivory: #F8F4FB;
+  --luxury-cream: #F1ECF7;
+  --luxury-gold: #B9A6D6;
+  --luxury-gold-soft: #D9CDED;
+  --luxury-ink: #44384D;
+  --luxury-muted: #7C7087;
+  --luxury-shadow: 0 30px 82px rgba(54, 38, 68, .15);
+  --luxury-border: 1px solid rgba(185,166,214,.30);
+}
+
+/* PAGE */
+body {
+  background:
+    radial-gradient(circle at 10% 10%, rgba(185,166,214,.18), transparent 20%),
+    radial-gradient(circle at 90% 42%, rgba(128,103,160,.10), transparent 25%),
+    linear-gradient(180deg, #F7F2FA 0%, #EEE7F4 100%);
+  color: #44384D;
+}
+
+::selection {
+  background: #B9A6D6;
+  color: #2B1E35;
+}
+
+/* HEADER */
+.site-header {
+  background: linear-gradient(180deg, rgba(43,30,53,.96), rgba(43,30,53,.82));
+  border-bottom-color: rgba(217,205,237,.15);
+  box-shadow: 0 7px 28px rgba(39,26,49,.14);
+}
+
+.site-header.scrolled {
+  background: rgba(43,30,53,.98);
+  box-shadow: 0 14px 36px rgba(39,26,49,.20);
+}
+
+.site-logo {
+  color: #E4D8F2;
+}
+
+.site-nav a {
+  color: rgba(248,244,251,.80);
+}
+
+.site-nav a:hover {
+  color: #D9CDED;
+}
+
+/* OPENING */
+.luxury-cover {
+  background:
+    radial-gradient(circle at 50% 28%, rgba(185,166,214,.18), transparent 26%),
+    linear-gradient(145deg, #5E4673 0%, #3A2848 44%, #211728 100%);
+}
+
+.invitation-box-minimal {
+  background: rgba(43,30,53,.45);
+  border-color: rgba(217,205,237,.24);
+  box-shadow:
+    0 42px 115px rgba(24,15,30,.45),
+    0 0 0 1px rgba(217,205,237,.07);
+}
+
+.welcome-initials span {
+  color: #F8F2FC;
+}
+
+.welcome-initials em {
+  color: #C8B8DF;
+}
+
+.welcome-message-premium {
+  color: rgba(248,244,251,.80);
+}
+
+.wax-seal {
+  border-color: rgba(217,205,237,.64);
+  background:
+    radial-gradient(circle at 35% 28%, #9D87BC, #684F7D 58%, #3A2848);
+  box-shadow:
+    inset 0 0 0 8px rgba(217,205,237,.06),
+    0 14px 36px rgba(30,18,38,.34);
+}
+
+/* HERO */
+.hero::after {
+  background:
+    linear-gradient(180deg, rgba(43,30,53,.44), rgba(33,23,40,.78)),
+    radial-gradient(circle at 50% 34%, rgba(185,166,214,.15), transparent 31%);
+}
+
+.hero-content .eyebrow {
+  color: #C6B4DC;
+}
+
+.hero-script {
+  color: #D6C5E7;
+}
+
+.hero-names {
+  color: #FAF6FC;
+}
+
+.hero-copy {
+  color: rgba(248,244,251,.74);
+}
+
+.hero-date {
+  color: #DCCFEB;
+}
+
+.scroll-mark {
+  color: rgba(248,244,251,.60);
+}
+
+/* SECTION HEADINGS */
+.section-head .eyebrow {
+  color: #8067A0;
+}
+
+.section-head h2 {
+  color: #4B3858;
+}
+
+.head-ornament,
+.section-head .ornament {
+  color: #A38ABD;
+}
+
+/* VIDEO */
+.video-invite-section {
+  background:
+    radial-gradient(circle at 88% 10%, rgba(185,166,214,.18), transparent 22%),
+    linear-gradient(180deg, #F8F4FB 0%, #EDE5F3 100%);
+}
+
+.video-frame-shell {
+  background: linear-gradient(145deg, #2B1E35, #5E4673);
+  border-color: rgba(217,205,237,.45);
+  box-shadow:
+    0 36px 88px rgba(54,38,68,.23),
+    0 0 0 8px rgba(185,166,214,.03);
+}
+
+.wedding-video {
+  background: #211728;
+}
+
+/* COUPLE */
+.couple-section {
+  background:
+    radial-gradient(circle at 12% 86%, rgba(185,166,214,.13), transparent 23%),
+    linear-gradient(180deg, #ECE5F2 0%, #F8F4FB 100%);
+}
+
+.couple-card {
+  background: rgba(250,247,252,.94);
+  border-color: rgba(185,166,214,.30);
+  box-shadow: 0 30px 72px rgba(54,38,68,.13);
+}
+
+.couple-card h3 {
+  color: #4B3858;
+}
+
+.couple-card .role {
+  color: #8067A0;
+}
+
+.couple-card p {
+  color: #74677E;
+}
+
+.couple-kannada-blessing {
+  background:
+    linear-gradient(90deg, rgba(255,255,255,.56), rgba(241,236,247,.94), rgba(255,255,255,.56));
+  border-color: rgba(185,166,214,.32);
+  color: #584A62;
+  box-shadow: 0 18px 45px rgba(54,38,68,.07);
+}
+
+/* SAVE THE DATE */
+.royal-date-section {
+  background:
+    radial-gradient(circle at 12% 12%, rgba(185,166,214,.22), transparent 23%),
+    radial-gradient(circle at 90% 85%, rgba(128,103,160,.13), transparent 26%),
+    linear-gradient(145deg, #E6DCF0 0%, #F8F3FA 50%, #D9CDED 100%);
+}
+
+.royal-date-reveal {
+  border-color: rgba(185,166,214,.34);
+  box-shadow:
+    0 42px 105px rgba(54,38,68,.20),
+    inset 0 0 0 1px rgba(255,255,255,.62);
+}
+
+.split-reveal-left {
+  background:
+    radial-gradient(circle at 78% 20%, rgba(185,166,214,.26), transparent 29%),
+    linear-gradient(145deg, #EDE6F4 0%, #F9F5FB 100%);
+}
+
+.split-reveal-right {
+  background:
+    radial-gradient(circle at 20% 78%, rgba(217,205,237,.15), transparent 31%),
+    linear-gradient(145deg, #684F7D 0%, #2B1E35 100%);
+}
+
+.left-copy h3 {
+  color: #4B3858;
+}
+
+.split-kannada {
+  color: #7E6C8A;
+}
+
+.right-monogram,
+.right-copy {
+  color: #EEE6F6;
+}
+
+.split-reveal-trigger {
+  background: linear-gradient(145deg, #73598A, #3A2848);
+  border-color: rgba(217,205,237,.74);
+  color: #F8F4FB;
+  box-shadow:
+    0 18px 45px rgba(43,30,53,.34),
+    0 0 0 7px rgba(185,166,214,.04);
+}
+
+.royal-date-badge {
+  border-color: rgba(185,166,214,.68);
+  color: #8067A0;
+}
+
+.royal-date-info h3 {
+  color: #4B3858;
+}
+
+.royal-date-info p {
+  color: #766A80;
+}
+
+.celebration-ring {
+  border-color: rgba(185,166,214,.82) !important;
+}
+
+/* COUNTDOWN */
+.countdown-section-refined {
+  background:
+    radial-gradient(circle at 50% 0%, rgba(185,166,214,.16), transparent 25%),
+    linear-gradient(180deg, #F8F4FB 0%, #ECE4F2 100%);
+}
+
+.count-card {
+  background:
+    linear-gradient(180deg, rgba(252,249,253,.98), rgba(239,233,245,.95));
+  border-color: rgba(185,166,214,.30);
+  box-shadow: 0 24px 58px rgba(54,38,68,.11);
+}
+
+.count-card span {
+  color: #4B3858;
+}
+
+.count-card small {
+  color: #806F89;
+}
+
+/* GALLERY */
+.gallery-section {
+  background:
+    radial-gradient(circle at 8% 12%, rgba(185,166,214,.14), transparent 19%),
+    #F8F4FB;
+}
+
+.gallery figure {
+  border-color: rgba(185,166,214,.22);
+  box-shadow: 0 23px 52px rgba(54,38,68,.13);
+}
+
+.gallery .lightbox-item::after {
+  color: #F8F4FB;
+  background: rgba(43,30,53,.80);
+  border-color: rgba(217,205,237,.38);
+}
+
+.lightbox-backdrop {
+  background:
+    radial-gradient(circle at center, rgba(104,79,125,.46), rgba(29,20,35,.97) 70%);
+}
+
+.lightbox-stage {
+  border-color: rgba(217,205,237,.26);
+  background: rgba(33,23,40,.78);
+}
+
+.lightbox-close,
+.lightbox-nav {
+  color: #F8F4FB;
+  background: rgba(43,30,53,.80);
+  border-color: rgba(217,205,237,.34);
+}
+
+.lightbox-close:hover,
+.lightbox-nav:hover {
+  background: rgba(104,79,125,.95);
+  border-color: rgba(217,205,237,.68);
+}
+
+/* LOCATIONS */
+.location-section {
+  background:
+    radial-gradient(circle at 92% 8%, rgba(185,166,214,.16), transparent 20%),
+    #ECE5F2;
+}
+
+.location-section-alt {
+  background:
+    radial-gradient(circle at 7% 88%, rgba(128,103,160,.10), transparent 23%),
+    #F8F4FB;
+}
+
+.location-card-premium {
+  border-color: rgba(185,166,214,.30);
+  box-shadow: 0 30px 74px rgba(54,38,68,.14);
+}
+
+.location-card-premium .location-details {
+  background:
+    linear-gradient(180deg, rgba(252,249,253,.99), rgba(239,233,245,.97));
+}
+
+.location-card-premium .location-details h3 {
+  color: #4B3858;
+}
+
+.location-address {
+  color: #766A80;
+}
+
+.venue-building-photo {
+  border-color: rgba(185,166,214,.32) !important;
+  box-shadow: 0 16px 38px rgba(54,38,68,.11);
+}
+
+.direction-btn {
+  color: #F8F4FB;
+  background: linear-gradient(145deg, #73598A, #3A2848);
+  border-color: rgba(217,205,237,.60);
+  box-shadow: 0 12px 28px rgba(43,30,53,.18);
+}
+
+.direction-btn:hover {
+  background: linear-gradient(145deg, #8067A0, #5E4673);
+}
+
+/* CLOSING */
+.closing::before {
+  background:
+    linear-gradient(180deg, rgba(43,30,53,.62), rgba(29,20,35,.86)),
+    radial-gradient(circle at 50% 34%, rgba(185,166,214,.16), transparent 31%);
+}
+
+.closing-content {
+  border-color: rgba(217,205,237,.24);
+  background: rgba(43,30,53,.38);
+}
+
+.closing-content::before,
+.closing-content::after {
+  background:
+    linear-gradient(90deg, transparent, rgba(217,205,237,.38), transparent);
+}
+
+.closing-kannada {
+  color: #D8C9E8;
+}
+
+.closing-kicker {
+  color: rgba(248,244,251,.62);
+}
+
+.closing-content h2 {
+  color: #F8F4FB;
+}
+
+.closing-message-block > p:not(.closing-message-kannada) {
+  color: rgba(248,244,251,.82);
+}
+
+.closing-message-block strong {
+  color: #DDD0EB;
+}
+
+.closing-message-kannada {
+  color: rgba(241,235,247,.86);
+}
+
+.closing-kannada-emphasis {
+  color: #D9CDED;
+}
+
+.closing-couple-name {
+  color: #EEE6F6;
+}
+
+/* FOOTER */
+footer {
+  background: #211728;
+  border-top-color: rgba(185,166,214,.14);
+}
+
+.footer-monogram {
+  color: #D8CDED;
+}
+
+.designer-credit {
+  background: #1A121F;
+  border-top-color: rgba(185,166,214,.16);
+  color: rgba(248,244,251,.62);
+}
+
+/* PROGRESS / UTILITY */
+.scroll-progress-track {
+  background: rgba(185,166,214,.24);
+}
+
+.scroll-progress-fill {
+  background: linear-gradient(180deg, #D9CDED, #8067A0);
+}
+
+.scroll-progress-flower {
+  color: #B9A6D6;
+  text-shadow: 0 0 12px rgba(185,166,214,.44);
+}
+
+.back-to-top {
+  background: rgba(43,30,53,.94);
+  border-color: rgba(217,205,237,.40);
+  color: #D9CDED;
+}
+
+/* PETALS */
+.flower-petal.rose {
+  background: linear-gradient(145deg, #D0C1E4, #8E78B4);
+  box-shadow: 0 3px 9px rgba(54,38,68,.16);
+}
+
+.flower-petal.jasmine {
+  background: linear-gradient(145deg, #FBF8FC, #E7DDF0);
+}
+
+.flower-petal.champagne {
+  background: linear-gradient(145deg, #C8B8DF, #8067A0);
+}
+
+/* Mobile */
+@media (max-width: 720px) {
+  .site-nav {
+    background: rgba(43,30,53,.985);
+    border-color: rgba(217,205,237,.18);
+  }
+}
