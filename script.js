@@ -20,15 +20,21 @@ function enterWedding() {
   if (isOpening) return;
   isOpening = true;
 
-  cover.classList.add("is-opening");
+  cover.classList.add("cinematic-opening", "is-opening");
 
   setTimeout(() => {
     cover.classList.add("is-hidden");
+    cover.setAttribute("aria-hidden", "true");
     document.body.classList.remove("no-scroll");
     window.scrollTo({ top: 0, behavior: "auto" });
 
     launchOpeningPetals();
-  }, 800);
+
+    // Remove the full-screen cover completely after the fade.
+    setTimeout(() => {
+      cover.style.display = "none";
+    }, 430);
+  }, 1080);
 }
 
 if (openInvitation && cover) {
@@ -384,3 +390,79 @@ if (finalThankYou) {
 
   thankYouObserver.observe(finalThankYou);
 }
+
+
+// ---------------------------------------------------------
+// V32 premium lavender parallax
+// ---------------------------------------------------------
+const premiumParallaxFlorals = [...document.querySelectorAll("[data-parallax]")];
+
+function updatePremiumParallax() {
+  if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+
+  premiumParallaxFlorals.forEach(layer => {
+    const parent = layer.parentElement;
+    if (!parent) return;
+
+    const rect = parent.getBoundingClientRect();
+    const speed = Number(layer.dataset.parallax || 0.08);
+    const viewportCenter = window.innerHeight / 2;
+    const sectionCenter = rect.top + rect.height / 2;
+    const offset = (sectionCenter - viewportCenter) * speed;
+
+    layer.style.transform = `translate3d(0, ${offset.toFixed(1)}px, 0)`;
+  });
+}
+
+updatePremiumParallax();
+window.addEventListener("scroll", updatePremiumParallax, { passive: true });
+window.addEventListener("resize", updatePremiumParallax);
+
+// Save the Date soft reveal glow
+const signatureRevealShell = document.getElementById("eventsRevealShell");
+const signatureRevealButton = document.getElementById("saveDateBtn");
+
+signatureRevealButton?.addEventListener("click", () => {
+  if (!signatureRevealShell) return;
+
+  signatureRevealShell.classList.remove("reveal-complete");
+  void signatureRevealShell.offsetWidth;
+  signatureRevealShell.classList.add("reveal-complete");
+
+  setTimeout(() => signatureRevealShell.classList.remove("reveal-complete"), 1800);
+});
+
+
+// ---------------------------------------------------------
+// V33 — event depth interaction for touch devices
+// ---------------------------------------------------------
+const premiumEventTimeline = document.querySelector(".royal-date-timeline");
+const premiumEventCards = [...document.querySelectorAll(".royal-date-item")];
+
+premiumEventCards.forEach(card => {
+  card.addEventListener("click", event => {
+    if (event.target.closest(".calendar-add-btn")) return;
+
+    const isTouchLike = window.matchMedia("(hover: none)").matches;
+    if (!isTouchLike || !premiumEventTimeline) return;
+
+    const wasFocused = card.classList.contains("is-focused");
+    premiumEventCards.forEach(item => item.classList.remove("is-focused"));
+
+    if (wasFocused) {
+      premiumEventTimeline.classList.remove("has-mobile-focus");
+      return;
+    }
+
+    card.classList.add("is-focused");
+    premiumEventTimeline.classList.add("has-mobile-focus");
+  });
+});
+
+document.addEventListener("click", event => {
+  if (!premiumEventTimeline) return;
+  if (event.target.closest(".royal-date-item")) return;
+
+  premiumEventCards.forEach(item => item.classList.remove("is-focused"));
+  premiumEventTimeline.classList.remove("has-mobile-focus");
+});
