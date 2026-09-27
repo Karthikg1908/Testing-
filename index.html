@@ -25,7 +25,7 @@
 <!-- =========================
        LUXURY OPENING EXPERIENCE
   ========================== -->
-<section class="luxury-cover" id="luxuryCover"><div aria-hidden="true" class="cinematic-curtain cinematic-curtain-left"></div><div aria-hidden="true" class="cinematic-curtain cinematic-curtain-right"></div>
+<section aria-hidden="false" class="luxury-cover" id="luxuryCover"><div aria-hidden="true" class="cinematic-curtain cinematic-curtain-left"></div><div aria-hidden="true" class="cinematic-curtain cinematic-curtain-right"></div>
 <div class="cover-photo"></div>
 <div class="cover-vignette"></div>
 <div class="cover-noise"></div>
@@ -33,7 +33,7 @@
 <span></span><span></span><span></span><span></span><span></span>
 <span></span><span></span><span></span><span></span><span></span>
 </div>
-<div class="invitation-box invitation-box-minimal" id="invitationBox">
+<div aria-label="Praveen and Kavya wedding invitation opening" class="invitation-box invitation-box-minimal" id="invitationBox" role="dialog">
 <div class="box-glow"></div>
 <div class="box-frame frame-one"></div>
 <div class="box-frame frame-two"></div>
@@ -53,18 +53,18 @@
 <path d="M16 80C16 34 34 16 80 16M16 44C35 44 44 35 44 16M23 92c18-13 31-31 38-53M36 102c21-9 42-27 54-53"></path>
 <circle cx="16" cy="80" r="3"></circle><circle cx="80" cy="16" r="3"></circle>
 </svg>
-<div class="welcome-initials">
+<p class="opening-kicker-premium">WEDDING INVITATION</p><div class="welcome-initials">
 <span>P</span>
 <em>&amp;</em>
 <span>K</span>
 </div>
 <div class="fine-divider">
 <span></span><i>✦</i><span></span>
-</div>
+</div><p class="opening-couple-line">Praveen <span>&amp;</span> Kavya</p>
 <p class="welcome-message-premium">
         Welcome to a celebration of love, togetherness, and a beautiful new beginning.
       </p>
-<button aria-label="Open wedding invitation" class="wax-seal" id="openInvitation"><div aria-hidden="true" class="pk-monogram pk-monogram-opening">
+<div aria-hidden="true" class="opening-seal-divider"><span></span><i>✦</i><span></span></div><button aria-describedby="coverEnterHint" aria-label="Open wedding invitation" class="wax-seal" id="openInvitation" type="button"><div aria-hidden="true" class="pk-monogram pk-monogram-opening">
 <svg role="img" viewbox="0 0 120 120">
 <circle class="mono-ring mono-ring-outer" cx="60" cy="60" r="49"></circle>
 <circle class="mono-ring mono-ring-inner" cx="60" cy="60" r="42"></circle>
@@ -73,7 +73,7 @@
 <text class="mono-text" text-anchor="middle" x="60" y="64">P &amp; K</text>
 </svg>
 </div><span class="seal-open-label">OPEN</span></button>
-<p class="cover-hint">Click the seal to enter</p>
+<p class="cover-hint" id="coverEnterHint">Click the seal to enter</p>
 </div>
 </section>
 <!-- Temporary flower petals shown only for a few seconds -->
@@ -123,7 +123,7 @@
 </a>
 </section>
 <!-- VIDEO INVITATION -->
-<div aria-hidden="true" class="luxury-section-separator"><span></span><i>✦</i><b>P ♥ K</b><i>✦</i><span></span></div><section class="section video-invite-section" id="video-invite">
+<div aria-hidden="true" class="luxury-section-separator"><span></span><i>✦</i><b>P ♥ K</b><i>✦</i><span></span></div><section class="section video-invite-section premium-texture-section" id="video-invite">
 <div class="section-head reveal">
 <p class="eyebrow">OUR VIDEO INVITATION</p>
 <h2>A Little Invitation From Our Hearts</h2>
@@ -143,14 +143,14 @@
 </div>
 </div></section>
 <!-- COUPLE -->
-<div aria-hidden="true" class="luxury-section-separator"><span></span><i>✦</i><b>P ♥ K</b><i>✦</i><span></span></div><section class="section couple-section" id="couple">
+<div aria-hidden="true" class="luxury-section-separator"><span></span><i>✦</i><b>P ♥ K</b><i>✦</i><span></span></div><section class="section couple-section premium-texture-section" id="couple">
 <div class="section-head reveal">
 <p class="eyebrow">MEET THE COUPLE</p>
 <h2>Two Hearts, One Journey</h2>
 <div class="head-ornament">✦</div>
 </div>
 <div class="couple-grid">
-<article class="couple-card reveal-left">
+<article class="couple-card reveal-left editorial-groom"><span aria-hidden="true" class="portrait-initial">P</span>
 <div class="portrait-wrap">
 <div class="portrait-halo"></div>
 <img alt="Groom Praveen" src="https://images.unsplash.com/photo-1616683693504-3ea7e9ad6fec?auto=format&amp;fit=crop&amp;w=1000&amp;q=90"/>
@@ -159,15 +159,15 @@
 <h3>Praveen</h3>
 <p class="family">Son of Mr. &amp; Mrs. [Groom's Parents]</p>
 </article>
-<div class="couple-symbol reveal">
+<div class="couple-symbol reveal editorial-couple-ornament"><span class="editorial-vertical-line line-top"></span>
 <div class="symbol-ring">
 <span>✦</span>
 </div>
 <p>By destiny</p>
 <strong>Together</strong>
 <p>For forever</p>
-</div>
-<article class="couple-card reveal-right">
+<span class="editorial-vertical-line line-bottom"></span></div>
+<article class="couple-card reveal-right editorial-bride"><span aria-hidden="true" class="portrait-initial">K</span>
 <div class="portrait-wrap">
 <div class="portrait-halo"></div>
 <img alt="Bride Kavya" src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&amp;fit=crop&amp;w=1000&amp;q=90"/>
@@ -184,7 +184,7 @@
 </div>
 </section>
 <!-- EVENTS -->
-<div aria-hidden="true" class="luxury-section-separator"><span></span><i>✦</i><b>P ♥ K</b><i>✦</i><span></span></div><section class="section celebration-section royal-date-section" id="events">
+<div aria-hidden="true" class="luxury-section-separator"><span></span><i>✦</i><b>P ♥ K</b><i>✦</i><span></span></div><section class="section celebration-section royal-date-section premium-texture-section" id="events">
 <div class="section-head celebration-head reveal">
 <p class="eyebrow">OUR CELEBRATION</p>
 <h2>Save the Date</h2>
@@ -201,7 +201,7 @@
 <p>EVENING CELEBRATION</p>
 <h3>Reception</h3>
 <strong>06:30 PM onwards</strong>
-<a aria-label="Add Praveen &amp; Kavya - Reception to Google Calendar" class="calendar-add-btn" href="https://calendar.google.com/calendar/render?action=TEMPLATE&amp;text=Praveen+%26+Kavya+-+Reception&amp;dates=20261201T183000%2F20261201T220000&amp;details=Wedding+Reception+of+Praveen+and+Kavya.+6%3A30+PM+onwards.&amp;location=Purvaja+Samudhaya+Bhavana%2C+X6C2%2B2GJ%2C+Magadi-Kunigal+Rd%2C+Aladakattepalya%2C+Karnataka+562120&amp;ctz=Asia%2FKolkata" rel="noopener noreferrer" target="_blank"><span aria-hidden="true">＋</span><b>Add to Calendar</b></a></div>
+</div>
 </article>
 <article class="royal-date-item" tabindex="0">
 <div class="royal-date-badge">
@@ -212,7 +212,7 @@
 <p>THE SACRED MOMENT</p>
 <h3>Muhurtham</h3>
 <strong>09:30 AM</strong>
-<a aria-label="Add Praveen &amp; Kavya - Muhurtham to Google Calendar" class="calendar-add-btn" href="https://calendar.google.com/calendar/render?action=TEMPLATE&amp;text=Praveen+%26+Kavya+-+Muhurtham&amp;dates=20261202T093000%2F20261202T113000&amp;details=Muhurtham+of+Praveen+and+Kavya+at+9%3A30+AM.&amp;location=Purvaja+Samudhaya+Bhavana%2C+X6C2%2B2GJ%2C+Magadi-Kunigal+Rd%2C+Aladakattepalya%2C+Karnataka+562120&amp;ctz=Asia%2FKolkata" rel="noopener noreferrer" target="_blank"><span aria-hidden="true">＋</span><b>Add to Calendar</b></a></div>
+</div>
 </article>
 <article class="royal-date-item" tabindex="0">
 <div class="royal-date-badge">
@@ -223,7 +223,7 @@
 <p>FAMILY CELEBRATION</p>
 <h3>Beegara Oota</h3>
 <strong>12:30 PM onwards</strong>
-<a aria-label="Add Praveen &amp; Kavya - Beegara Oota to Google Calendar" class="calendar-add-btn" href="https://calendar.google.com/calendar/render?action=TEMPLATE&amp;text=Praveen+%26+Kavya+-+Beegara+Oota&amp;dates=20261213T123000%2F20261213T153000&amp;details=Beegara+Oota+celebration.+12%3A30+PM+onwards.&amp;location=HB+Function+Hall%2C+133%2C+Magadi+Main+Rd%2C+opp.+Indian+petrol+pump%2C+Govindaraja+Nagar+Ward%2C+Pete+Channappa+Industrial+Estate%2C+Kamakshipalya%2C+Bengaluru%2C+Karnataka+560079&amp;ctz=Asia%2FKolkata" rel="noopener noreferrer" target="_blank"><span aria-hidden="true">＋</span><b>Add to Calendar</b></a></div>
+</div>
 </article>
 </div>
 <div class="split-reveal-cover" id="saveDateCover">
@@ -253,7 +253,7 @@
 </div>
 </section>
 <!-- COUNTDOWN -->
-<div aria-hidden="true" class="luxury-section-separator"><span></span><i>✦</i><b>P ♥ K</b><i>✦</i><span></span></div><section class="section pale countdown-section-refined" id="countdown">
+<div aria-hidden="true" class="luxury-section-separator"><span></span><i>✦</i><b>P ♥ K</b><i>✦</i><span></span></div><section class="section pale countdown-section-refined premium-texture-section" id="countdown">
 <div class="section-head reveal">
 <p class="eyebrow">UNTIL THE MUHURTHAM</p>
 <h2>Counting Down to Our Forever</h2>
@@ -279,22 +279,22 @@
 </div>
 </section>
 <!-- GALLERY -->
-<div aria-hidden="true" class="luxury-section-separator"><span></span><i>✦</i><b>P ♥ K</b><i>✦</i><span></span></div><section class="section gallery-section" id="gallery">
+<div aria-hidden="true" class="luxury-section-separator"><span></span><i>✦</i><b>P ♥ K</b><i>✦</i><span></span></div><section class="section gallery-section premium-texture-section" id="gallery">
 <div class="section-head reveal">
 <p class="eyebrow">OUR MOMENTS</p>
 <h2>Moments We’ll Cherish Forever</h2>
 <div class="head-ornament">✦</div>
 </div>
 <div class="gallery">
-<figure aria-label="Open photo" class="photo-a reveal lightbox-item" data-moment="01" role="button" tabindex="0"><img alt="Wedding memory" src="https://images.unsplash.com/photo-1511285560929-80b456fea0bc?auto=format&amp;fit=crop&amp;w=1200&amp;q=90"/></figure>
-<figure aria-label="Open photo" class="photo-b reveal lightbox-item" data-moment="02" role="button" tabindex="0"><img alt="Wedding memory" src="https://images.unsplash.com/photo-1606800052052-a08af7148866?auto=format&amp;fit=crop&amp;w=900&amp;q=90"/></figure>
-<figure aria-label="Open photo" class="photo-c reveal lightbox-item" data-moment="03" role="button" tabindex="0"><img alt="Wedding memory" src="https://images.unsplash.com/photo-1520854221256-17451cc331bf?auto=format&amp;fit=crop&amp;w=900&amp;q=90"/></figure>
-<figure aria-label="Open photo" class="photo-d reveal lightbox-item" data-moment="04" role="button" tabindex="0"><img alt="Wedding memory" src="https://images.unsplash.com/photo-1519225421980-715cb0215aed?auto=format&amp;fit=crop&amp;w=1200&amp;q=90"/></figure>
-<figure aria-label="Open photo" class="photo-e reveal lightbox-item" data-moment="05" role="button" tabindex="0"><img alt="Wedding memory" src="https://images.unsplash.com/photo-1469371670807-013ccf25f16a?auto=format&amp;fit=crop&amp;w=1000&amp;q=90"/></figure>
+<figure aria-label="Open photo" class="photo-a reveal lightbox-item" role="button" tabindex="0"><img alt="Wedding memory" src="https://images.unsplash.com/photo-1511285560929-80b456fea0bc?auto=format&amp;fit=crop&amp;w=1200&amp;q=90"/></figure>
+<figure aria-label="Open photo" class="photo-b reveal lightbox-item" role="button" tabindex="0"><img alt="Wedding memory" src="https://images.unsplash.com/photo-1606800052052-a08af7148866?auto=format&amp;fit=crop&amp;w=900&amp;q=90"/></figure>
+<figure aria-label="Open photo" class="photo-c reveal lightbox-item" role="button" tabindex="0"><img alt="Wedding memory" src="https://images.unsplash.com/photo-1520854221256-17451cc331bf?auto=format&amp;fit=crop&amp;w=900&amp;q=90"/></figure>
+<figure aria-label="Open photo" class="photo-d reveal lightbox-item" role="button" tabindex="0"><img alt="Wedding memory" src="https://images.unsplash.com/photo-1519225421980-715cb0215aed?auto=format&amp;fit=crop&amp;w=1200&amp;q=90"/></figure>
+<figure aria-label="Open photo" class="photo-e reveal lightbox-item" role="button" tabindex="0"><img alt="Wedding memory" src="https://images.unsplash.com/photo-1469371670807-013ccf25f16a?auto=format&amp;fit=crop&amp;w=1000&amp;q=90"/></figure>
 </div>
 </section>
 <!-- LOCATION -->
-<div aria-hidden="true" class="luxury-section-separator"><span></span><i>✦</i><b>P ♥ K</b><i>✦</i><span></span></div><section class="section location-section" id="venue">
+<div aria-hidden="true" class="luxury-section-separator"><span></span><i>✦</i><b>P ♥ K</b><i>✦</i><span></span></div><section class="section location-section premium-texture-section" id="venue">
 <div class="section-head reveal">
 <p class="eyebrow">LOCATION</p>
 <h2>The Venue</h2>
@@ -323,7 +323,7 @@
 </div>
 </section>
 <!-- BEEGARA OOTA LOCATION -->
-<div aria-hidden="true" class="luxury-section-separator"><span></span><i>✦</i><b>P ♥ K</b><i>✦</i><span></span></div><section class="section location-section location-section-alt" id="beegara-oota">
+<div aria-hidden="true" class="luxury-section-separator"><span></span><i>✦</i><b>P ♥ K</b><i>✦</i><span></span></div><section class="section location-section location-section-alt premium-texture-section" id="beegara-oota">
 <div class="section-head reveal">
 <p class="eyebrow">LOCATION</p>
 <h2>Beegara Oota</h2>

@@ -20,21 +20,19 @@ function enterWedding() {
   if (isOpening) return;
   isOpening = true;
 
-  cover.classList.add("cinematic-opening", "is-opening");
+  cover.classList.add("opening-exit");
 
   setTimeout(() => {
     cover.classList.add("is-hidden");
     cover.setAttribute("aria-hidden", "true");
     document.body.classList.remove("no-scroll");
     window.scrollTo({ top: 0, behavior: "auto" });
-
     launchOpeningPetals();
 
-    // Remove the full-screen cover completely after the fade.
     setTimeout(() => {
       cover.style.display = "none";
-    }, 430);
-  }, 1080);
+    }, 520);
+  }, 1120);
 }
 
 if (openInvitation && cover) {
@@ -441,8 +439,6 @@ const premiumEventCards = [...document.querySelectorAll(".royal-date-item")];
 
 premiumEventCards.forEach(card => {
   card.addEventListener("click", event => {
-    if (event.target.closest(".calendar-add-btn")) return;
-
     const isTouchLike = window.matchMedia("(hover: none)").matches;
     if (!isTouchLike || !premiumEventTimeline) return;
 
@@ -465,4 +461,32 @@ document.addEventListener("click", event => {
 
   premiumEventCards.forEach(item => item.classList.remove("is-focused"));
   premiumEventTimeline.classList.remove("has-mobile-focus");
+});
+
+
+// ---------------------------------------------------------
+// V36 editorial event focus
+// ---------------------------------------------------------
+const v36EventTimeline = document.querySelector(".royal-date-timeline");
+const v36EventCards = [...document.querySelectorAll(".royal-date-item")];
+
+function clearV36EventFocus() {
+  v36EventCards.forEach(card => card.classList.remove("is-focused"));
+  v36EventTimeline?.classList.remove("has-mobile-focus");
+}
+
+v36EventCards.forEach(card => {
+  card.addEventListener("focus", () => {
+    clearV36EventFocus();
+    card.classList.add("is-focused");
+    v36EventTimeline?.classList.add("has-mobile-focus");
+  });
+
+  card.addEventListener("blur", () => {
+    setTimeout(() => {
+      if (!v36EventTimeline?.contains(document.activeElement)) {
+        clearV36EventFocus();
+      }
+    }, 0);
+  });
 });

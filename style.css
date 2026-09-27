@@ -8824,3 +8824,1365 @@ footer {
   visibility: hidden !important;
   pointer-events: none !important;
 }
+
+
+/* =========================================================
+   V35 — CLEAN FINAL FIXES
+========================================================= */
+
+/* Calendar removed; gallery photo numbers removed */
+.calendar-add-btn { display:none !important; }
+.gallery figure::before { content:none !important; display:none !important; }
+
+/* Stable opening screen */
+.luxury-cover{
+  position:fixed !important;
+  inset:0 !important;
+  z-index:6000 !important;
+  display:flex !important;
+  align-items:center !important;
+  justify-content:center !important;
+  padding:max(18px,env(safe-area-inset-top)) max(16px,env(safe-area-inset-right))
+          max(18px,env(safe-area-inset-bottom)) max(16px,env(safe-area-inset-left)) !important;
+  overflow:hidden !important;
+  opacity:1 !important;
+  visibility:visible !important;
+  perspective:none !important;
+  background:
+    radial-gradient(circle at 50% 28%,rgba(185,166,214,.20),transparent 28%),
+    linear-gradient(145deg,#5E4673 0%,#3A2848 45%,#211728 100%) !important;
+  transition:opacity .48s ease,visibility .48s ease !important;
+}
+
+.cover-photo{z-index:0 !important}
+.cinematic-curtain{
+  position:absolute !important;
+  top:0 !important;
+  bottom:0 !important;
+  width:50.2% !important;
+  z-index:1 !important;
+  pointer-events:none !important;
+  opacity:.30 !important;
+  filter:none !important;
+  background:linear-gradient(145deg,rgba(128,103,160,.30),rgba(43,30,53,.18)) !important;
+  transition:transform .92s cubic-bezier(.67,.01,.22,1),opacity .7s ease !important;
+}
+.cinematic-curtain-left{left:0 !important;transform:translateX(0) !important}
+.cinematic-curtain-right{right:0 !important;transform:translateX(0) !important}
+.cover-vignette{z-index:2 !important}
+.cover-noise,.floating-specks{z-index:3 !important;pointer-events:none !important}
+
+/* Ensure the invitation frame is always visible before clicking */
+.invitation-box,
+.invitation-box-minimal,
+.luxury-cover:not(.opening-exit) .invitation-box,
+.luxury-cover:not(.cinematic-opening) .invitation-box{
+  position:relative !important;
+  z-index:20 !important;
+  width:min(680px,92vw) !important;
+  min-height:min(650px,84dvh) !important;
+  max-height:90dvh !important;
+  padding:clamp(36px,5vh,54px) clamp(22px,5vw,46px) clamp(28px,4vh,38px) !important;
+  display:flex !important;
+  flex-direction:column !important;
+  align-items:center !important;
+  justify-content:center !important;
+  overflow:hidden !important;
+  opacity:1 !important;
+  visibility:visible !important;
+  transform:none !important;
+  filter:none !important;
+  animation:none !important;
+  color:#fff !important;
+  text-align:center !important;
+  background:linear-gradient(180deg,rgba(80,59,96,.76),rgba(39,27,48,.88)) !important;
+  border:1px solid rgba(217,205,237,.36) !important;
+  box-shadow:0 38px 105px rgba(17,10,22,.42),0 0 0 8px rgba(185,166,214,.025),
+             inset 0 0 80px rgba(185,166,214,.035) !important;
+  backdrop-filter:blur(12px) !important;
+  -webkit-backdrop-filter:blur(12px) !important;
+}
+
+/* Seal / hint */
+#openInvitation{
+  position:relative !important;
+  z-index:30 !important;
+  width:96px !important;
+  height:96px !important;
+  min-width:96px !important;
+  min-height:96px !important;
+  margin-top:26px !important;
+  display:grid !important;
+  place-items:center !important;
+  border:1px solid rgba(217,205,237,.64) !important;
+  border-radius:50% !important;
+  cursor:pointer !important;
+  touch-action:manipulation !important;
+  pointer-events:auto !important;
+  overflow:visible !important;
+  background:radial-gradient(circle at 35% 28%,#A894C3,#71588A 58%,#3A2848) !important;
+  box-shadow:0 16px 42px rgba(20,12,25,.38),0 0 0 8px rgba(185,166,214,.045),
+             inset 0 1px 2px rgba(255,255,255,.14) !important;
+  transition:transform .25s ease,box-shadow .25s ease !important;
+}
+#openInvitation:hover{transform:translateY(-4px) scale(1.035) !important}
+#openInvitation:focus-visible{outline:2px solid #D9CDED !important;outline-offset:7px !important}
+
+.pk-monogram-opening{
+  width:82px !important;
+  height:82px !important;
+  display:inline-grid !important;
+  place-items:center !important;
+  color:#F0E8F7 !important;
+}
+
+.cover-hint,#coverEnterHint{
+  position:relative !important;
+  z-index:25 !important;
+  margin:18px 0 0 !important;
+  color:rgba(248,244,251,.66) !important;
+  font-size:9px !important;
+  line-height:1.4 !important;
+  letter-spacing:2.2px !important;
+  text-transform:uppercase !important;
+  opacity:1 !important;
+  visibility:visible !important;
+}
+
+/* Clean exit */
+.luxury-cover.opening-exit .invitation-box{
+  animation:openingFrameExit .82s cubic-bezier(.2,.7,.2,1) forwards !important;
+  pointer-events:none !important;
+}
+.luxury-cover.opening-exit .cinematic-curtain-left{
+  transform:translateX(-102%) !important;
+  opacity:0 !important;
+}
+.luxury-cover.opening-exit .cinematic-curtain-right{
+  transform:translateX(102%) !important;
+  opacity:0 !important;
+}
+@keyframes openingFrameExit{
+  0%{opacity:1;transform:translateY(0) scale(1);filter:blur(0)}
+  55%{opacity:.82;transform:translateY(-3px) scale(.992)}
+  100%{opacity:0;transform:translateY(-12px) scale(.97);filter:blur(3px)}
+}
+.luxury-cover.is-hidden{
+  opacity:0 !important;
+  visibility:hidden !important;
+  pointer-events:none !important;
+}
+
+@media(max-width:620px){
+  .invitation-box,.invitation-box-minimal,.luxury-cover:not(.opening-exit) .invitation-box{
+    width:min(92vw,540px) !important;
+    min-height:min(610px,82dvh) !important;
+    max-height:88dvh !important;
+    padding:34px 20px 28px !important;
+  }
+  #openInvitation{
+    width:90px !important;height:90px !important;min-width:90px !important;min-height:90px !important;
+    margin-top:22px !important;
+  }
+  .pk-monogram-opening{width:76px !important;height:76px !important}
+  .cover-hint,#coverEnterHint{margin-top:16px !important;font-size:8px !important;letter-spacing:1.7px !important}
+}
+
+@media(max-height:700px){
+  .invitation-box,.invitation-box-minimal,.luxury-cover:not(.opening-exit) .invitation-box{
+    min-height:88dvh !important;
+    padding-top:24px !important;
+    padding-bottom:22px !important;
+  }
+  #openInvitation{margin-top:18px !important}
+}
+
+@media(prefers-reduced-motion:reduce){
+  .luxury-cover.opening-exit .invitation-box{
+    animation:none !important;
+    opacity:0 !important;
+  }
+  .cinematic-curtain{transition:none !important}
+}
+
+
+/* =========================================================
+   V35.1 — TRUE 50 / 50 SPLIT OPENING
+========================================================= */
+
+/* Two exact half-screen panels */
+.cinematic-curtain {
+  position: absolute !important;
+  top: 0 !important;
+  bottom: 0 !important;
+  width: 50vw !important;
+  height: 100% !important;
+  z-index: 8 !important;
+  opacity: 1 !important;
+  pointer-events: none !important;
+  filter: none !important;
+  background:
+    radial-gradient(circle at 50% 34%, rgba(185,166,214,.10), transparent 34%),
+    linear-gradient(145deg, #5E4673 0%, #3A2848 48%, #211728 100%) !important;
+  transition:
+    transform 1.05s cubic-bezier(.72,.02,.20,1),
+    opacity .95s ease !important;
+}
+
+/* Left half occupies exactly the left 50% */
+.cinematic-curtain-left {
+  left: 0 !important;
+  right: auto !important;
+  transform: translateX(0) !important;
+  transform-origin: left center !important;
+  border-right: 1px solid rgba(217,205,237,.16) !important;
+}
+
+/* Right half occupies exactly the right 50% */
+.cinematic-curtain-right {
+  right: 0 !important;
+  left: auto !important;
+  transform: translateX(0) !important;
+  transform-origin: right center !important;
+  border-left: 1px solid rgba(217,205,237,.16) !important;
+}
+
+/* Invitation stays above the two halves before click */
+.invitation-box,
+.invitation-box-minimal {
+  z-index: 20 !important;
+}
+
+/* On click:
+   left 50% moves one full half-screen left,
+   right 50% moves one full half-screen right.
+*/
+.luxury-cover.opening-exit .cinematic-curtain-left {
+  transform: translateX(-100%) !important;
+  opacity: .96 !important;
+}
+
+.luxury-cover.opening-exit .cinematic-curtain-right {
+  transform: translateX(100%) !important;
+  opacity: .96 !important;
+}
+
+/* Let the centered card disappear just before the split completes */
+.luxury-cover.opening-exit .invitation-box {
+  animation: openingCardSplitFade .72s cubic-bezier(.2,.7,.2,1) forwards !important;
+}
+
+@keyframes openingCardSplitFade {
+  0% {
+    opacity: 1;
+    transform: scale(1);
+    filter: blur(0);
+  }
+  48% {
+    opacity: .86;
+    transform: scale(.992);
+  }
+  100% {
+    opacity: 0;
+    transform: scale(.97);
+    filter: blur(3px);
+  }
+}
+
+/* A visible center seam before opening makes the split intentional */
+.luxury-cover:not(.opening-exit)::after {
+  content: "";
+  position: absolute;
+  z-index: 9;
+  top: 0;
+  bottom: 0;
+  left: 50%;
+  width: 1px;
+  transform: translateX(-.5px);
+  background: linear-gradient(
+    180deg,
+    transparent,
+    rgba(217,205,237,.20) 18%,
+    rgba(217,205,237,.34) 50%,
+    rgba(217,205,237,.20) 82%,
+    transparent
+  );
+  pointer-events: none;
+}
+
+/* During opening, the seam vanishes with the halves */
+.luxury-cover.opening-exit::after {
+  opacity: 0;
+}
+
+/* Mobile uses the same exact 50/50 behavior */
+@media (max-width: 620px) {
+  .cinematic-curtain {
+    width: 50vw !important;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .luxury-cover.opening-exit .cinematic-curtain-left {
+    transform: translateX(-100%) !important;
+  }
+
+  .luxury-cover.opening-exit .cinematic-curtain-right {
+    transform: translateX(100%) !important;
+  }
+}
+
+
+/* =========================================================
+   V36 — LAVENDER EDITORIAL PREMIUM
+========================================================= */
+
+/* ---------------------------------------------------------
+   ROYAL MONOGRAM HERO
+--------------------------------------------------------- */
+.hero-royal-monogram{
+  position:absolute;
+  z-index:2;
+  left:50%;
+  top:49%;
+  transform:translate(-50%,-50%) scale(.96);
+  width:100%;
+  text-align:center;
+  font-family:var(--display);
+  font-size:clamp(110px,23vw,310px);
+  font-weight:500;
+  line-height:.8;
+  letter-spacing:-.055em;
+  color:rgba(222,210,238,.075);
+  text-shadow:
+    0 0 38px rgba(185,166,214,.10),
+    0 0 90px rgba(128,103,160,.08);
+  opacity:0;
+  pointer-events:none;
+  user-select:none;
+  animation:heroMonogramArrival 2.4s 1.05s cubic-bezier(.2,.7,.2,1) forwards;
+}
+
+@keyframes heroMonogramArrival{
+  0%{
+    opacity:0;
+    transform:translate(-50%,-48%) scale(.90);
+    filter:blur(9px);
+  }
+  100%{
+    opacity:1;
+    transform:translate(-50%,-50%) scale(1);
+    filter:blur(0);
+  }
+}
+
+.hero-content{
+  position:relative;
+  z-index:4!important;
+}
+
+/* ---------------------------------------------------------
+   LUXURY FLORAL ARCH — THIN LINE ART
+--------------------------------------------------------- */
+.luxury-floral-arch{
+  position:absolute;
+  z-index:1;
+  width:clamp(110px,13vw,190px);
+  aspect-ratio:1;
+  pointer-events:none;
+  opacity:.18;
+}
+
+.luxury-floral-arch svg{
+  width:100%;
+  height:100%;
+  fill:none;
+  stroke:#8067A0;
+  stroke-width:1.15;
+  stroke-linecap:round;
+  stroke-linejoin:round;
+}
+
+.floral-arch-tl{
+  left:clamp(12px,2vw,32px);
+  top:clamp(20px,3vw,44px);
+  transform:rotate(-4deg);
+}
+
+.floral-arch-br{
+  right:clamp(12px,2vw,32px);
+  bottom:clamp(18px,3vw,42px);
+  transform:rotate(176deg);
+  opacity:.14;
+}
+
+/* ---------------------------------------------------------
+   LUXURY PAPER / SILK TEXTURE
+--------------------------------------------------------- */
+.premium-texture-section{
+  position:relative;
+  isolation:isolate;
+}
+
+.premium-texture-section::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  z-index:0;
+  pointer-events:none;
+  opacity:.20;
+  background:
+    repeating-linear-gradient(
+      8deg,
+      rgba(91,68,108,.018) 0px,
+      rgba(91,68,108,.018) 1px,
+      transparent 1px,
+      transparent 5px
+    ),
+    repeating-linear-gradient(
+      98deg,
+      rgba(255,255,255,.14) 0px,
+      rgba(255,255,255,.14) 1px,
+      transparent 1px,
+      transparent 6px
+    );
+  mix-blend-mode:multiply;
+}
+
+.premium-texture-section > *{
+  position:relative;
+  z-index:2;
+}
+
+/* ---------------------------------------------------------
+   EDITORIAL COUPLE SECTION
+--------------------------------------------------------- */
+.couple-section{
+  overflow:hidden;
+}
+
+.couple-grid{
+  width:min(1080px,92%);
+  margin:64px auto 42px!important;
+  display:grid!important;
+  grid-template-columns:minmax(0,1fr) 126px minmax(0,1fr)!important;
+  gap:24px!important;
+  align-items:center!important;
+  perspective:1200px;
+}
+
+.couple-card{
+  min-height:610px;
+  padding:22px 22px 34px!important;
+  overflow:visible!important;
+  border-radius:26px!important;
+}
+
+.editorial-groom{
+  transform:translateY(-28px) rotate(-.55deg);
+}
+
+.editorial-bride{
+  transform:translateY(28px) rotate(.55deg);
+}
+
+.couple-card.visible.editorial-groom{
+  transform:translateY(-28px) rotate(-.55deg)!important;
+}
+
+.couple-card.visible.editorial-bride{
+  transform:translateY(28px) rotate(.55deg)!important;
+}
+
+.couple-card::before{
+  content:"";
+  position:absolute;
+  z-index:-1;
+  inset:-13px 14px 13px -13px;
+  border:1px solid rgba(128,103,160,.18);
+  border-radius:28px;
+  pointer-events:none;
+}
+
+.editorial-bride::before{
+  inset:13px -13px -13px 14px;
+}
+
+.portrait-wrap{
+  position:relative;
+  height:430px!important;
+  border-radius:20px 20px 120px 20px!important;
+  overflow:hidden!important;
+  box-shadow:
+    0 24px 50px rgba(54,38,68,.17),
+    0 0 0 8px rgba(255,255,255,.45);
+}
+
+.editorial-bride .portrait-wrap{
+  border-radius:20px 20px 20px 120px!important;
+}
+
+.portrait-wrap::after{
+  content:"";
+  position:absolute;
+  inset:0;
+  pointer-events:none;
+  border:1px solid rgba(217,205,237,.28);
+  border-radius:inherit;
+  box-shadow:inset 0 0 60px rgba(43,30,53,.06);
+}
+
+.portrait-initial{
+  position:absolute;
+  z-index:8;
+  top:-33px;
+  font-family:var(--display);
+  font-size:clamp(76px,9vw,124px);
+  font-weight:500;
+  line-height:1;
+  color:rgba(128,103,160,.13);
+  text-shadow:0 10px 30px rgba(54,38,68,.05);
+  pointer-events:none;
+}
+
+.editorial-groom .portrait-initial{
+  left:-12px;
+}
+
+.editorial-bride .portrait-initial{
+  right:-9px;
+}
+
+.couple-card .role{
+  margin-top:30px!important;
+}
+
+.couple-card h3{
+  font-size:clamp(34px,4vw,54px)!important;
+  line-height:1!important;
+  margin-top:8px!important;
+}
+
+.editorial-couple-ornament{
+  position:relative;
+  min-height:360px;
+  display:flex!important;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  gap:10px;
+}
+
+.editorial-vertical-line{
+  width:1px;
+  height:74px;
+  display:block;
+  background:linear-gradient(180deg,transparent,rgba(128,103,160,.46),transparent);
+}
+
+.editorial-couple-ornament .symbol-ring{
+  position:relative;
+  width:72px!important;
+  height:72px!important;
+  background:rgba(248,244,251,.58);
+  box-shadow:
+    0 14px 36px rgba(54,38,68,.10),
+    0 0 0 8px rgba(185,166,214,.035);
+}
+
+.editorial-couple-ornament .symbol-ring::after{
+  content:"P  •  K";
+  position:absolute;
+  left:50%;
+  bottom:-34px;
+  transform:translateX(-50%);
+  white-space:nowrap;
+  font-family:var(--serif);
+  font-size:8px;
+  letter-spacing:2.4px;
+  color:#8067A0;
+}
+
+.editorial-couple-ornament p:first-of-type{
+  margin-top:30px!important;
+}
+
+/* ---------------------------------------------------------
+   CINEMATIC SCROLL TRANSITIONS
+--------------------------------------------------------- */
+.reveal,
+.reveal-left,
+.reveal-right{
+  opacity:0!important;
+  filter:blur(8px);
+  transition:
+    opacity .92s cubic-bezier(.2,.7,.2,1),
+    transform .92s cubic-bezier(.2,.7,.2,1),
+    filter 1.0s ease!important;
+  will-change:opacity,transform,filter;
+}
+
+.reveal{
+  transform:translateY(28px)!important;
+}
+
+.reveal-left{
+  transform:translate(-26px,18px)!important;
+}
+
+.reveal-right{
+  transform:translate(26px,18px)!important;
+}
+
+.reveal.visible,
+.reveal-left.visible,
+.reveal-right.visible{
+  opacity:1!important;
+  filter:blur(0)!important;
+}
+
+.reveal.visible{
+  transform:translateY(0)!important;
+}
+
+.reveal-left.visible:not(.editorial-groom){
+  transform:translate(0,0)!important;
+}
+
+.reveal-right.visible:not(.editorial-bride){
+  transform:translate(0,0)!important;
+}
+
+/* Preserve intentional editorial card offsets after reveal */
+.reveal-left.visible.editorial-groom{
+  transform:translateY(-28px) rotate(-.55deg)!important;
+}
+
+.reveal-right.visible.editorial-bride{
+  transform:translateY(28px) rotate(.55deg)!important;
+}
+
+/* Stagger content inside visible section headings */
+.section-head.reveal > *{
+  opacity:0;
+  transform:translateY(12px);
+  transition:opacity .65s ease,transform .65s ease;
+}
+
+.section-head.reveal.visible > *{
+  opacity:1;
+  transform:translateY(0);
+}
+
+.section-head.reveal.visible > *:nth-child(1){transition-delay:.06s}
+.section-head.reveal.visible > *:nth-child(2){transition-delay:.14s}
+.section-head.reveal.visible > *:nth-child(3){transition-delay:.22s}
+.section-head.reveal.visible > *:nth-child(4){transition-delay:.30s}
+
+/* ---------------------------------------------------------
+   EVENT FOCUS INTERACTION
+--------------------------------------------------------- */
+.royal-date-timeline{
+  gap:14px;
+}
+
+.royal-date-item{
+  position:relative;
+  border-radius:20px;
+  background:rgba(255,255,255,.18);
+  transition:
+    transform .32s cubic-bezier(.2,.7,.2,1),
+    opacity .32s ease,
+    filter .32s ease,
+    background .32s ease,
+    box-shadow .32s ease!important;
+}
+
+@media(hover:hover){
+  .royal-date-timeline:hover .royal-date-item{
+    opacity:.52;
+    filter:blur(.2px) saturate(.80);
+    transform:scale(.985);
+  }
+
+  .royal-date-timeline .royal-date-item:hover{
+    z-index:6;
+    opacity:1;
+    filter:none;
+    transform:translateY(-9px) scale(1.018);
+    background:rgba(255,255,255,.42);
+    box-shadow:
+      0 20px 46px rgba(54,38,68,.12),
+      inset 0 1px 0 rgba(255,255,255,.58);
+  }
+}
+
+.royal-date-timeline.has-mobile-focus .royal-date-item{
+  opacity:.52;
+  transform:scale(.985);
+}
+
+.royal-date-timeline.has-mobile-focus .royal-date-item.is-focused{
+  opacity:1;
+  filter:none;
+  transform:translateY(-5px) scale(1.012);
+  background:rgba(255,255,255,.40);
+  box-shadow:0 18px 40px rgba(54,38,68,.11);
+}
+
+/* ---------------------------------------------------------
+   MOBILE POLISH
+--------------------------------------------------------- */
+@media(max-width:820px){
+  .section{
+    padding-top:74px!important;
+    padding-bottom:74px!important;
+  }
+
+  .section-head{
+    margin-bottom:34px!important;
+  }
+
+  .section-head h2{
+    font-size:clamp(31px,7.8vw,46px)!important;
+    line-height:1.08!important;
+  }
+
+  .hero-royal-monogram{
+    top:48%;
+    font-size:clamp(96px,28vw,180px);
+  }
+
+  .couple-grid{
+    width:min(92%,640px);
+    grid-template-columns:1fr!important;
+    gap:28px!important;
+    margin:38px auto 30px!important;
+  }
+
+  .editorial-groom,
+  .editorial-bride,
+  .couple-card.visible.editorial-groom,
+  .couple-card.visible.editorial-bride{
+    transform:none!important;
+  }
+
+  .couple-card{
+    min-height:auto;
+    padding:18px 18px 30px!important;
+  }
+
+  .portrait-wrap{
+    height:min(460px,112vw)!important;
+  }
+
+  .editorial-couple-ornament{
+    min-height:190px;
+    order:2;
+  }
+
+  .editorial-groom{order:1}
+  .editorial-bride{order:3}
+
+  .editorial-vertical-line{
+    height:38px;
+  }
+
+  .couple-card .role{
+    margin-top:24px!important;
+  }
+
+  .luxury-floral-arch{
+    width:108px;
+    opacity:.12;
+  }
+
+  .royal-date-item{
+    min-height:126px;
+    padding:18px!important;
+  }
+
+  .royal-date-badge{
+    min-width:74px!important;
+  }
+
+  .split-reveal-trigger,
+  .direction-btn,
+  .lightbox-close,
+  .lightbox-nav{
+    min-height:48px;
+  }
+
+  .location-card-premium{
+    border-radius:24px!important;
+  }
+
+  .map-frame-premium{
+    min-height:300px!important;
+  }
+}
+
+@media(max-width:560px){
+  .section{
+    padding-top:62px!important;
+    padding-bottom:62px!important;
+  }
+
+  .section-head{
+    width:92%;
+    margin-left:auto;
+    margin-right:auto;
+  }
+
+  .section-head .eyebrow{
+    font-size:8px!important;
+    letter-spacing:2.2px!important;
+  }
+
+  .hero-content{
+    width:90%;
+  }
+
+  .hero-names{
+    font-size:clamp(46px,14vw,68px)!important;
+  }
+
+  .hero-copy{
+    max-width:290px;
+    margin-left:auto;
+    margin-right:auto;
+  }
+
+  .couple-grid{
+    width:90%;
+  }
+
+  .portrait-wrap{
+    height:min(405px,108vw)!important;
+  }
+
+  .portrait-initial{
+    font-size:84px;
+    top:-24px;
+  }
+
+  .royal-date-timeline{
+    gap:10px;
+  }
+
+  .royal-date-item{
+    min-height:116px;
+    border-radius:18px;
+  }
+
+  .royal-date-info h3{
+    font-size:25px!important;
+  }
+
+  .gallery{
+    gap:15px!important;
+  }
+
+  .gallery figure{
+    border-radius:16px!important;
+  }
+
+  .location-card-premium{
+    width:92%!important;
+    margin-left:auto!important;
+    margin-right:auto!important;
+  }
+
+  .location-details{
+    padding-left:20px!important;
+    padding-right:20px!important;
+  }
+
+  .direction-btn{
+    width:100%;
+    justify-content:center;
+    padding:14px 18px!important;
+  }
+
+  .closing-content{
+    width:92%!important;
+  }
+}
+
+@media(prefers-reduced-motion:reduce){
+  .hero-royal-monogram{
+    animation:none!important;
+    opacity:1!important;
+    filter:none!important;
+    transform:translate(-50%,-50%)!important;
+  }
+
+  .reveal,
+  .reveal-left,
+  .reveal-right,
+  .section-head.reveal > *{
+    transition:none!important;
+    filter:none!important;
+  }
+}
+
+
+/* =========================================================
+   V36.1 — CLEAN PREMIUM UPDATE
+   Removed Royal Hero Monogram + Floral Line-Art Arches
+========================================================= */
+
+.hero-royal-monogram,
+.luxury-floral-arch,
+.floral-arch-tl,
+.floral-arch-br {
+  display: none !important;
+}
+
+
+/* =========================================================
+   V37 — PREMIUM VELLUM OPENING
+   Deep Lavender Split Doors + Frosted Invitation Card
+========================================================= */
+
+/* Deep lavender doors with silk-like texture */
+.luxury-cover{
+  background:
+    radial-gradient(circle at 50% 18%, rgba(207,192,226,.12), transparent 34%),
+    linear-gradient(145deg,#4F3A61 0%,#342441 48%,#1E1425 100%) !important;
+}
+
+.cinematic-curtain{
+  opacity:1!important;
+  background:
+    repeating-linear-gradient(
+      90deg,
+      rgba(255,255,255,.012) 0px,
+      rgba(255,255,255,.012) 1px,
+      transparent 1px,
+      transparent 7px
+    ),
+    radial-gradient(circle at 50% 38%,rgba(185,166,214,.10),transparent 38%),
+    linear-gradient(145deg,#5D4771 0%,#3A2948 55%,#24192C 100%) !important;
+  box-shadow:
+    inset 0 0 90px rgba(18,10,23,.24),
+    inset 0 0 0 1px rgba(217,205,237,.025) !important;
+}
+
+.cinematic-curtain-left::after,
+.cinematic-curtain-right::after{
+  content:"";
+  position:absolute;
+  top:8%;
+  bottom:8%;
+  width:1px;
+  pointer-events:none;
+  background:linear-gradient(
+    180deg,
+    transparent,
+    rgba(225,214,238,.22) 20%,
+    rgba(225,214,238,.34) 50%,
+    rgba(225,214,238,.22) 80%,
+    transparent
+  );
+}
+
+.cinematic-curtain-left::after{right:16px}
+.cinematic-curtain-right::after{left:16px}
+
+/* Premium vellum invitation card */
+.invitation-box,
+.invitation-box-minimal,
+.luxury-cover:not(.opening-exit) .invitation-box{
+  width:min(590px,88vw)!important;
+  min-height:min(560px,78dvh)!important;
+  max-height:86dvh!important;
+  padding:54px 58px 42px!important;
+  color:#42354C!important;
+  overflow:hidden!important;
+  background:
+    linear-gradient(180deg,rgba(251,248,253,.94),rgba(239,232,246,.91))!important;
+  border:1px solid rgba(224,213,236,.78)!important;
+  border-radius:10px!important;
+  box-shadow:
+    0 42px 110px rgba(12,7,16,.38),
+    0 0 0 10px rgba(185,166,214,.026),
+    inset 0 1px 0 rgba(255,255,255,.90),
+    inset 0 0 70px rgba(128,103,160,.045)!important;
+  backdrop-filter:blur(18px)!important;
+  -webkit-backdrop-filter:blur(18px)!important;
+}
+
+/* Fine inner frame */
+.invitation-box::before{
+  content:"";
+  position:absolute;
+  inset:16px;
+  z-index:-1;
+  border:1px solid rgba(128,103,160,.20);
+  border-radius:5px;
+  pointer-events:none;
+}
+
+.invitation-box::after{
+  content:"";
+  position:absolute;
+  inset:24px;
+  z-index:-1;
+  border:1px solid rgba(128,103,160,.07);
+  border-radius:3px;
+  pointer-events:none;
+}
+
+/* Restore the old frame divs only as ultra-subtle details */
+.box-frame.frame-one{
+  inset:11px!important;
+  border-color:rgba(128,103,160,.10)!important;
+  opacity:.60!important;
+}
+
+.box-frame.frame-two{
+  inset:29px!important;
+  border-color:rgba(128,103,160,.05)!important;
+  opacity:.55!important;
+}
+
+.box-glow{
+  background:
+    radial-gradient(circle at 50% 24%,rgba(185,166,214,.16),transparent 36%)!important;
+  opacity:1!important;
+}
+
+/* Elegant corner ornaments */
+.corner-ornament{
+  width:88px!important;
+  height:88px!important;
+  stroke:#8E78A8!important;
+  stroke-width:1!important;
+  opacity:.20!important;
+}
+
+.corner-ornament.top-left{top:14px!important;left:14px!important}
+.corner-ornament.top-right{top:14px!important;right:14px!important}
+.corner-ornament.bottom-left{bottom:14px!important;left:14px!important}
+.corner-ornament.bottom-right{bottom:14px!important;right:14px!important}
+
+/* Premium title hierarchy */
+.opening-kicker-premium{
+  margin:0 0 18px;
+  color:#806B93;
+  font-family:var(--sans);
+  font-size:9px;
+  font-weight:600;
+  letter-spacing:4.2px;
+  text-transform:uppercase;
+}
+
+.welcome-initials{
+  margin:0!important;
+  display:flex!important;
+  align-items:center!important;
+  justify-content:center!important;
+  gap:18px!important;
+}
+
+.welcome-initials span{
+  color:#4D3B59!important;
+  font-family:var(--display)!important;
+  font-size:clamp(74px,10vw,112px)!important;
+  font-weight:500!important;
+  line-height:.92!important;
+  text-shadow:0 14px 34px rgba(94,70,115,.08);
+}
+
+.welcome-initials em{
+  color:#A58DBB!important;
+  font-family:var(--serif)!important;
+  font-size:clamp(30px,4vw,44px)!important;
+  font-style:italic!important;
+}
+
+.fine-divider{
+  width:min(240px,68%)!important;
+  margin:20px auto 14px!important;
+  color:#9A83B0!important;
+}
+
+.fine-divider span{
+  background:linear-gradient(90deg,transparent,rgba(128,103,160,.42))!important;
+}
+
+.fine-divider span:last-child{
+  background:linear-gradient(90deg,rgba(128,103,160,.42),transparent)!important;
+}
+
+.opening-couple-line{
+  margin:0 0 15px;
+  color:#5A4866;
+  font-family:var(--display);
+  font-size:clamp(25px,4vw,36px);
+  font-weight:500;
+  line-height:1;
+}
+
+.opening-couple-line span{
+  color:#9B84B0;
+  font-family:var(--serif);
+  font-size:.72em;
+  margin:0 6px;
+}
+
+.welcome-message-premium{
+  max-width:410px!important;
+  margin:0 auto!important;
+  color:#74687D!important;
+  font-family:var(--serif)!important;
+  font-size:13px!important;
+  line-height:1.9!important;
+  letter-spacing:.15px!important;
+}
+
+/* Divider before seal */
+.opening-seal-divider{
+  width:min(190px,58%);
+  margin:25px auto 17px;
+  display:grid;
+  grid-template-columns:1fr auto 1fr;
+  align-items:center;
+  gap:10px;
+  color:#9B84B0;
+}
+
+.opening-seal-divider span{
+  height:1px;
+  background:linear-gradient(90deg,transparent,rgba(128,103,160,.28));
+}
+
+.opening-seal-divider span:last-child{
+  background:linear-gradient(90deg,rgba(128,103,160,.28),transparent);
+}
+
+.opening-seal-divider i{
+  font-style:normal;
+  font-size:8px;
+}
+
+/* Premium seal */
+#openInvitation{
+  width:92px!important;
+  height:92px!important;
+  min-width:92px!important;
+  min-height:92px!important;
+  margin-top:0!important;
+  border:1px solid rgba(223,211,237,.68)!important;
+  background:
+    radial-gradient(circle at 32% 26%,#B09BC8,#7E6396 58%,#4C385B) !important;
+  box-shadow:
+    0 16px 34px rgba(54,38,68,.24),
+    0 0 0 7px rgba(128,103,160,.045),
+    inset 0 1px 2px rgba(255,255,255,.24),
+    inset 0 -10px 18px rgba(43,30,53,.12)!important;
+  animation:premiumSealBreath 3.2s ease-in-out infinite!important;
+}
+
+#openInvitation:hover{
+  transform:translateY(-3px) scale(1.035)!important;
+  box-shadow:
+    0 22px 42px rgba(54,38,68,.30),
+    0 0 0 10px rgba(128,103,160,.065),
+    inset 0 1px 2px rgba(255,255,255,.24)!important;
+}
+
+@keyframes premiumSealBreath{
+  0%,100%{
+    box-shadow:
+      0 16px 34px rgba(54,38,68,.24),
+      0 0 0 7px rgba(128,103,160,.040),
+      inset 0 1px 2px rgba(255,255,255,.24);
+  }
+  50%{
+    box-shadow:
+      0 19px 40px rgba(54,38,68,.27),
+      0 0 0 11px rgba(128,103,160,.065),
+      inset 0 1px 2px rgba(255,255,255,.24);
+  }
+}
+
+.pk-monogram-opening{
+  width:78px!important;
+  height:78px!important;
+  color:#F7F1FB!important;
+}
+
+.wax-seal .seal-open-label{
+  bottom:5px!important;
+  color:rgba(252,248,255,.84)!important;
+  font-size:6.5px!important;
+  letter-spacing:1.7px!important;
+}
+
+/* Hint becomes softer and more editorial */
+.cover-hint,
+#coverEnterHint{
+  margin:15px 0 0!important;
+  color:#8D7C99!important;
+  font-family:var(--sans)!important;
+  font-size:8px!important;
+  font-weight:600!important;
+  letter-spacing:2.5px!important;
+}
+
+/* Initial card arrival */
+.luxury-cover:not(.opening-exit) .invitation-box{
+  animation:premiumOpeningCardArrival 1.05s .12s cubic-bezier(.2,.7,.2,1) both!important;
+}
+
+@keyframes premiumOpeningCardArrival{
+  0%{
+    opacity:0;
+    transform:translateY(12px) scale(.985);
+    filter:blur(5px);
+  }
+  100%{
+    opacity:1;
+    transform:translateY(0) scale(1);
+    filter:blur(0);
+  }
+}
+
+/* Opening split retains exact 50/50 movement */
+.luxury-cover.opening-exit .cinematic-curtain-left{
+  transform:translateX(-100%)!important;
+}
+
+.luxury-cover.opening-exit .cinematic-curtain-right{
+  transform:translateX(100%)!important;
+}
+
+.luxury-cover.opening-exit .invitation-box{
+  animation:premiumCardExit .78s cubic-bezier(.2,.7,.2,1) forwards!important;
+}
+
+@keyframes premiumCardExit{
+  0%{
+    opacity:1;
+    transform:translateY(0) scale(1);
+    filter:blur(0);
+  }
+  60%{
+    opacity:.68;
+    transform:translateY(-4px) scale(.992);
+  }
+  100%{
+    opacity:0;
+    transform:translateY(-12px) scale(.972);
+    filter:blur(4px);
+  }
+}
+
+/* Center seam becomes subtle metallic lavender */
+.luxury-cover:not(.opening-exit)::after{
+  width:1px!important;
+  background:
+    linear-gradient(
+      180deg,
+      transparent,
+      rgba(225,214,238,.18) 12%,
+      rgba(225,214,238,.42) 50%,
+      rgba(225,214,238,.18) 88%,
+      transparent
+    )!important;
+  box-shadow:0 0 14px rgba(185,166,214,.08);
+}
+
+/* Mobile refinement */
+@media(max-width:620px){
+  .invitation-box,
+  .invitation-box-minimal,
+  .luxury-cover:not(.opening-exit) .invitation-box{
+    width:min(91vw,520px)!important;
+    min-height:min(550px,80dvh)!important;
+    max-height:86dvh!important;
+    padding:40px 26px 31px!important;
+  }
+
+  .opening-kicker-premium{
+    margin-bottom:14px;
+    font-size:8px;
+    letter-spacing:3.3px;
+  }
+
+  .welcome-initials{
+    gap:13px!important;
+  }
+
+  .welcome-initials span{
+    font-size:clamp(64px,21vw,86px)!important;
+  }
+
+  .welcome-initials em{
+    font-size:31px!important;
+  }
+
+  .fine-divider{
+    margin:16px auto 12px!important;
+  }
+
+  .opening-couple-line{
+    font-size:27px;
+    margin-bottom:13px;
+  }
+
+  .welcome-message-premium{
+    max-width:320px!important;
+    font-size:12px!important;
+    line-height:1.75!important;
+  }
+
+  .opening-seal-divider{
+    margin:20px auto 14px;
+  }
+
+  #openInvitation{
+    width:86px!important;
+    height:86px!important;
+    min-width:86px!important;
+    min-height:86px!important;
+  }
+
+  .pk-monogram-opening{
+    width:72px!important;
+    height:72px!important;
+  }
+
+  .corner-ornament{
+    width:66px!important;
+    height:66px!important;
+    opacity:.16!important;
+  }
+}
+
+@media(max-height:700px){
+  .invitation-box,
+  .invitation-box-minimal,
+  .luxury-cover:not(.opening-exit) .invitation-box{
+    min-height:88dvh!important;
+    padding-top:27px!important;
+    padding-bottom:23px!important;
+  }
+
+  .opening-kicker-premium{margin-bottom:10px}
+  .fine-divider{margin-top:12px!important;margin-bottom:9px!important}
+  .opening-seal-divider{margin-top:14px;margin-bottom:10px}
+  .cover-hint,#coverEnterHint{margin-top:10px!important}
+}
+
+@media(prefers-reduced-motion:reduce){
+  .luxury-cover:not(.opening-exit) .invitation-box{
+    animation:none!important;
+  }
+
+  #openInvitation{
+    animation:none!important;
+  }
+}
