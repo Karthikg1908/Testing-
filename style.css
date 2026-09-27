@@ -11676,3 +11676,269 @@ body.opening-complete .hero-names{
     animation:none!important;
   }
 }
+
+
+/* =========================================================
+   V42 — CINEMATIC HOME HERO
+   Traditional opening + modern cinematic hero
+========================================================= */
+
+/* Darker, cleaner hero image treatment for legibility */
+.hero-overlay{
+  background:
+    linear-gradient(180deg,rgba(28,18,35,.34) 0%,rgba(28,18,35,.26) 28%,rgba(28,18,35,.48) 100%),
+    radial-gradient(circle at 50% 50%,transparent 28%,rgba(30,20,37,.18) 78%)!important;
+}
+
+/* Keep the overall hero content elegant and spacious */
+.hero-content{
+  width:min(920px,92%)!important;
+}
+
+.hero-content .eyebrow{
+  margin-bottom:14px!important;
+  letter-spacing:3.8px!important;
+}
+
+/* Kannada line arrives first */
+.hero-script{
+  margin-bottom:18px!important;
+  color:#E0D3ED!important;
+  text-shadow:0 4px 18px rgba(22,13,28,.28);
+  opacity:0;
+  transform:translateY(14px);
+}
+
+body.opening-complete .hero-script{
+  animation:v42KannadaIn 1.05s .08s cubic-bezier(.2,.7,.2,1) forwards;
+}
+
+/* Cinematic stacked names */
+.hero-names{
+  display:flex!important;
+  flex-direction:column!important;
+  align-items:center!important;
+  justify-content:center!important;
+  gap:0!important;
+  margin:0 auto 18px!important;
+  line-height:.82!important;
+  opacity:1!important;
+  transform:none!important;
+  animation:none!important;
+}
+
+.hero-names span{
+  display:block!important;
+  font-size:clamp(70px,10vw,138px)!important;
+  font-weight:500!important;
+  line-height:.82!important;
+  letter-spacing:-.055em!important;
+  color:#F8F4FB!important;
+  text-shadow:
+    0 10px 34px rgba(18,11,22,.38),
+    0 0 22px rgba(217,205,237,.10)!important;
+}
+
+.hero-name-praveen{
+  opacity:0;
+  transform:translateX(-36px);
+}
+
+.hero-name-kavya{
+  opacity:0;
+  transform:translateX(36px);
+}
+
+.hero-name-amp{
+  display:block!important;
+  margin:14px 0 13px!important;
+  color:#CDBBDE!important;
+  font-family:var(--serif)!important;
+  font-size:clamp(24px,3vw,38px)!important;
+  font-weight:400!important;
+  font-style:italic!important;
+  line-height:1!important;
+  text-shadow:0 0 16px rgba(217,205,237,.22);
+  opacity:0;
+  transform:scale(.72);
+}
+
+/* Open-frame completion triggers staggered hero arrival */
+body.opening-complete .hero-name-praveen{
+  animation:v42PraveenIn 1.25s .34s cubic-bezier(.18,.72,.18,1) forwards;
+}
+
+body.opening-complete .hero-name-kavya{
+  animation:v42KavyaIn 1.25s .48s cubic-bezier(.18,.72,.18,1) forwards;
+}
+
+body.opening-complete .hero-name-amp{
+  animation:v42AmpIn .85s 1.02s cubic-bezier(.2,.8,.2,1.2) forwards;
+}
+
+.hero-copy{
+  max-width:520px!important;
+  margin:0 auto!important;
+  color:rgba(248,244,251,.86)!important;
+  font-size:clamp(13px,1.5vw,16px)!important;
+  line-height:1.7!important;
+  text-shadow:0 3px 14px rgba(22,13,28,.32);
+  opacity:0;
+  transform:translateY(12px);
+}
+
+body.opening-complete .hero-copy{
+  animation:v42CopyIn .9s 1.18s ease forwards;
+}
+
+.hero-together-line{
+  margin:12px auto 0;
+  color:#CBB9DB;
+  font-family:var(--serif);
+  font-size:11px;
+  font-style:italic;
+  letter-spacing:1.8px;
+  text-transform:none;
+  opacity:0;
+  transform:translateY(8px);
+  text-shadow:0 3px 12px rgba(22,13,28,.26);
+}
+
+body.opening-complete .hero-together-line{
+  animation:v42TogetherIn .85s 1.42s ease forwards;
+}
+
+@keyframes v42KannadaIn{
+  to{opacity:1;transform:translateY(0)}
+}
+
+@keyframes v42PraveenIn{
+  0%{opacity:0;transform:translateX(-36px);filter:blur(4px)}
+  100%{opacity:1;transform:translateX(0);filter:blur(0)}
+}
+
+@keyframes v42KavyaIn{
+  0%{opacity:0;transform:translateX(36px);filter:blur(4px)}
+  100%{opacity:1;transform:translateX(0);filter:blur(0)}
+}
+
+@keyframes v42AmpIn{
+  0%{opacity:0;transform:scale(.72)}
+  100%{opacity:1;transform:scale(1)}
+}
+
+@keyframes v42CopyIn{
+  to{opacity:1;transform:translateY(0)}
+}
+
+@keyframes v42TogetherIn{
+  to{opacity:1;transform:translateY(0)}
+}
+
+/* Keep the scroll cue separated from the stacked names */
+.hero-scroll-cue{
+  bottom:28px!important;
+}
+
+/* Mobile hero proportions */
+@media(max-width:768px){
+  .hero-content{
+    width:92%!important;
+  }
+
+  .hero-content .eyebrow{
+    margin-bottom:11px!important;
+    font-size:8px!important;
+    letter-spacing:2.8px!important;
+  }
+
+  .hero-script{
+    margin-bottom:14px!important;
+    font-size:clamp(18px,5vw,25px)!important;
+  }
+
+  .hero-names{
+    margin-bottom:14px!important;
+  }
+
+  .hero-names span{
+    font-size:clamp(56px,16vw,88px)!important;
+  }
+
+  .hero-name-amp{
+    margin:10px 0 9px!important;
+    font-size:26px!important;
+  }
+
+  .hero-copy{
+    max-width:330px!important;
+    font-size:12.5px!important;
+    line-height:1.6!important;
+  }
+
+  .hero-together-line{
+    margin-top:9px;
+    font-size:10px;
+    letter-spacing:1.4px;
+  }
+}
+
+@media(max-width:430px){
+  .hero-names span{
+    font-size:clamp(50px,15.2vw,70px)!important;
+  }
+
+  .hero-name-amp{
+    margin:8px 0 7px!important;
+    font-size:23px!important;
+  }
+
+  .hero-copy{
+    max-width:290px!important;
+    font-size:11.5px!important;
+  }
+
+  .hero-together-line{
+    font-size:9.5px;
+  }
+}
+
+@media(max-height:680px){
+  .hero-content{
+    transform:translateY(-10px);
+  }
+
+  .hero-script{
+    margin-bottom:10px!important;
+  }
+
+  .hero-names span{
+    font-size:clamp(48px,11vh,82px)!important;
+  }
+
+  .hero-name-amp{
+    margin:7px 0!important;
+  }
+
+  .hero-copy{
+    line-height:1.45!important;
+  }
+
+  .hero-together-line{
+    margin-top:6px;
+  }
+}
+
+@media(prefers-reduced-motion:reduce){
+  .hero-script,
+  .hero-name-praveen,
+  .hero-name-kavya,
+  .hero-name-amp,
+  .hero-copy,
+  .hero-together-line{
+    opacity:1!important;
+    transform:none!important;
+    animation:none!important;
+    filter:none!important;
+  }
+}
