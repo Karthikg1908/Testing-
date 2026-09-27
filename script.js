@@ -20,7 +20,37 @@ function enterWedding() {
   if (isOpening) return;
   isOpening = true;
 
-  cover.classList.add("opening-exit");
+  const invitationBox = document.getElementById("invitationBox");
+
+  if (invitationBox) {
+    const leftHalf = invitationBox.cloneNode(true);
+    const rightHalf = invitationBox.cloneNode(true);
+
+    [leftHalf, rightHalf].forEach(clone => {
+      clone.removeAttribute("id");
+      clone.removeAttribute("role");
+      clone.removeAttribute("aria-label");
+      clone.setAttribute("aria-hidden", "true");
+      clone.querySelectorAll("[id]").forEach(el => el.removeAttribute("id"));
+      clone.querySelectorAll("button, a").forEach(el => {
+        el.setAttribute("tabindex", "-1");
+        el.style.pointerEvents = "none";
+      });
+    });
+
+    leftHalf.classList.add("opening-card-half", "opening-card-half-left");
+    rightHalf.classList.add("opening-card-half", "opening-card-half-right");
+
+    cover.appendChild(leftHalf);
+    cover.appendChild(rightHalf);
+
+    invitationBox.classList.add("opening-original-hidden");
+    leftHalf.getBoundingClientRect();
+
+    requestAnimationFrame(() => {
+      cover.classList.add("opening-card-split");
+    });
+  }
 
   setTimeout(() => {
     cover.classList.add("is-hidden");
@@ -31,8 +61,8 @@ function enterWedding() {
 
     setTimeout(() => {
       cover.style.display = "none";
-    }, 520);
-  }, 1120);
+    }, 500);
+  }, 1180);
 }
 
 if (openInvitation && cover) {
