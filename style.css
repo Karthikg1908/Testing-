@@ -90,7 +90,7 @@ select {
   position: absolute;
   inset: -3%;
   background:
-    url("https://images.unsplash.com/photo-1511285560929-80b456fea0bc?auto=format&fit=crop&w=2200&q=92")
+    url("https://images.unsplash.com/photo-1511285560929-80b456fea0bc?auto=format&fit=crop&w=1800&q=84&fm=webp")
     center 44% / cover no-repeat;
   filter: saturate(.72) contrast(1.04);
   transform: scale(1.03);
@@ -510,7 +510,7 @@ select {
   position: absolute;
   inset: 0;
   background:
-    url("https://images.unsplash.com/photo-1511285560929-80b456fea0bc?auto=format&fit=crop&w=2200&q=92")
+    url("https://images.unsplash.com/photo-1511285560929-80b456fea0bc?auto=format&fit=crop&w=1800&q=84&fm=webp")
     center 45% / cover no-repeat;
 }
 
@@ -10819,5 +10819,860 @@ main{
     min-width:90px!important;
     min-height:90px!important;
     margin-top:22px!important;
+  }
+}
+
+
+/* =========================================================
+   V40 — MOBILE-FIRST PREMIUM POLISH
+   Built on approved V39.2 true-frame opening
+========================================================= */
+
+/* ---------------------------------------------------------
+   HERO TYPOGRAPHY POLISH
+--------------------------------------------------------- */
+.hero-names{
+  display:flex!important;
+  align-items:baseline;
+  justify-content:center;
+  gap:clamp(12px,2.3vw,28px)!important;
+  margin-top:14px!important;
+  margin-bottom:16px!important;
+  letter-spacing:-.025em!important;
+  text-shadow:
+    0 7px 28px rgba(25,15,31,.35),
+    0 0 34px rgba(185,166,214,.13);
+}
+
+.hero-names span{
+  display:inline-block;
+  letter-spacing:-.035em;
+  text-shadow:
+    0 8px 28px rgba(22,14,28,.38),
+    0 0 26px rgba(217,205,237,.11);
+}
+
+.hero-names i{
+  position:relative;
+  top:-.05em;
+  margin:0!important;
+  color:#D8C9E8!important;
+  font-size:.46em!important;
+  font-weight:400!important;
+  opacity:.92;
+  text-shadow:0 0 18px rgba(217,205,237,.28);
+}
+
+/* The names animate only after the opening frame has fully opened. */
+.hero-names{
+  opacity:0;
+  transform:translateY(18px);
+}
+
+body.opening-complete .hero-names{
+  animation:v40HeroNamesArrival 1.75s .18s cubic-bezier(.18,.70,.18,1) forwards;
+}
+
+@keyframes v40HeroNamesArrival{
+  0%{
+    opacity:0;
+    transform:translateY(18px);
+    filter:blur(4px);
+  }
+  100%{
+    opacity:1;
+    transform:translateY(0);
+    filter:blur(0);
+  }
+}
+
+/* ---------------------------------------------------------
+   LUXURY EVENT DATE TREATMENT
+--------------------------------------------------------- */
+.royal-date-badge{
+  position:relative!important;
+  min-width:92px!important;
+  width:92px!important;
+  height:112px!important;
+  padding:13px 10px 11px!important;
+  display:flex!important;
+  flex-direction:column!important;
+  justify-content:center!important;
+  align-items:center!important;
+  border-radius:20px!important;
+  background:
+    linear-gradient(160deg,rgba(255,255,255,.72),rgba(225,214,237,.48))!important;
+  border:1px solid rgba(128,103,160,.24)!important;
+  box-shadow:
+    0 12px 30px rgba(54,38,68,.08),
+    inset 0 1px 0 rgba(255,255,255,.72)!important;
+  overflow:hidden;
+}
+
+.royal-date-badge::after{
+  content:"";
+  width:34px;
+  height:1px;
+  margin:7px 0 6px;
+  background:linear-gradient(90deg,transparent,#A38CB8,transparent);
+  order:2;
+}
+
+.royal-date-badge span{
+  order:1;
+  display:block!important;
+  color:#4E3A5D!important;
+  font-family:var(--display)!important;
+  font-size:42px!important;
+  font-weight:500!important;
+  line-height:.88!important;
+  letter-spacing:-.045em!important;
+}
+
+.royal-date-badge small{
+  order:3;
+  color:#8067A0!important;
+  font-family:var(--sans)!important;
+  font-size:8px!important;
+  font-weight:700!important;
+  line-height:1!important;
+  letter-spacing:2.8px!important;
+}
+
+.royal-date-info{
+  padding-left:4px;
+}
+
+.royal-date-info p{
+  margin-bottom:7px!important;
+}
+
+.royal-date-info h3{
+  letter-spacing:-.018em!important;
+}
+
+/* ---------------------------------------------------------
+   VENUE SECTION UPGRADE
+--------------------------------------------------------- */
+.venue-premium-label{
+  width:fit-content;
+  margin:0 0 10px!important;
+  padding:6px 10px;
+  border:1px solid rgba(128,103,160,.20);
+  border-radius:999px;
+  color:#725B86;
+  background:rgba(248,244,251,.64);
+  font-family:var(--sans);
+  font-size:7.5px;
+  font-weight:700;
+  line-height:1;
+  letter-spacing:2.1px;
+  text-transform:uppercase;
+}
+
+.location-label{
+  margin-top:3px!important;
+}
+
+.venue-building-photo{
+  position:relative;
+  margin-top:20px!important;
+  margin-bottom:20px!important;
+  aspect-ratio:3/2;
+  overflow:hidden!important;
+  border-radius:20px!important;
+  border:1px solid rgba(185,166,214,.26)!important;
+  box-shadow:
+    0 18px 44px rgba(54,38,68,.12),
+    0 0 0 6px rgba(255,255,255,.48)!important;
+}
+
+.venue-building-photo::after{
+  content:"";
+  position:absolute;
+  inset:0;
+  pointer-events:none;
+  background:
+    linear-gradient(180deg,transparent 58%,rgba(43,30,53,.11));
+  border-radius:inherit;
+}
+
+.venue-building-photo img{
+  width:100%!important;
+  height:100%!important;
+  object-fit:cover!important;
+  transform:scale(1.001);
+  transition:transform .65s cubic-bezier(.2,.7,.2,1),filter .65s ease;
+}
+
+.location-card-premium:hover .venue-building-photo img{
+  transform:scale(1.035);
+}
+
+.direction-btn{
+  gap:10px!important;
+}
+
+.direction-pin{
+  position:relative;
+  width:20px;
+  height:20px;
+  flex:0 0 20px;
+  display:grid;
+  place-items:center;
+  border-radius:50%;
+  background:rgba(185,166,214,.16);
+}
+
+.direction-pin::before,
+.direction-pin::after{
+  content:"";
+  position:absolute;
+  inset:2px;
+  border:1px solid rgba(217,205,237,.55);
+  border-radius:50%;
+  opacity:0;
+  animation:v40PinPulse 2.2s ease-out infinite;
+}
+
+.direction-pin::after{
+  animation-delay:1.05s;
+}
+
+.direction-pin b{
+  width:6px;
+  height:6px;
+  display:block;
+  border-radius:50% 50% 50% 0;
+  background:#E8DDF2;
+  transform:rotate(-45deg);
+  box-shadow:0 0 10px rgba(217,205,237,.30);
+}
+
+.direction-pin b::after{
+  content:"";
+  position:absolute;
+  width:2px;
+  height:2px;
+  margin:2px;
+  border-radius:50%;
+  background:#5E4673;
+}
+
+@keyframes v40PinPulse{
+  0%{transform:scale(.65);opacity:.72}
+  100%{transform:scale(1.75);opacity:0}
+}
+
+/* ---------------------------------------------------------
+   PERFORMANCE-FRIENDLY VISUALS
+--------------------------------------------------------- */
+.gallery img,
+.couple-card img,
+.venue-building-photo img{
+  content-visibility:auto;
+}
+
+/* ---------------------------------------------------------
+   MOBILE-FIRST FINAL PASS
+--------------------------------------------------------- */
+@media(max-width:768px){
+  /* Opening card: slightly shorter and safer on phone screens */
+  .opening-frame-shell{
+    width:min(91vw,520px)!important;
+    height:min(585px,80dvh)!important;
+    max-height:86dvh!important;
+  }
+
+  .opening-frame-shell > #invitationBox,
+  .opening-frame-copy{
+    padding:32px 20px 24px!important;
+  }
+
+  .welcome-initials span{
+    font-size:clamp(58px,19vw,82px)!important;
+  }
+
+  #openInvitation{
+    width:88px!important;
+    height:88px!important;
+    min-width:88px!important;
+    min-height:88px!important;
+  }
+
+  .pk-monogram-opening{
+    width:74px!important;
+    height:74px!important;
+  }
+
+  /* Save the Date card */
+  .royal-date-reveal{
+    width:92%!important;
+    border-radius:24px!important;
+  }
+
+  .royal-date-timeline{
+    gap:12px!important;
+    padding:28px 16px!important;
+  }
+
+  .royal-date-item{
+    min-height:126px!important;
+    padding:16px 13px!important;
+    gap:15px!important;
+  }
+
+  .royal-date-badge{
+    min-width:78px!important;
+    width:78px!important;
+    height:100px!important;
+    border-radius:17px!important;
+  }
+
+  .royal-date-badge span{
+    font-size:36px!important;
+  }
+
+  .royal-date-badge small{
+    font-size:7px!important;
+    letter-spacing:2.2px!important;
+  }
+
+  .royal-date-info h3{
+    font-size:clamp(24px,7vw,30px)!important;
+  }
+
+  .split-reveal-trigger{
+    min-width:148px!important;
+    min-height:50px!important;
+  }
+
+  /* Gallery */
+  .gallery{
+    width:91%!important;
+    gap:14px!important;
+  }
+
+  .gallery figure{
+    border-radius:15px!important;
+  }
+
+  /* Venues */
+  .location-card-premium{
+    width:92%!important;
+    border-radius:22px!important;
+  }
+
+  .location-details{
+    padding:24px 20px!important;
+  }
+
+  .venue-building-photo{
+    aspect-ratio:16/10;
+    border-radius:16px!important;
+    margin-top:16px!important;
+    margin-bottom:18px!important;
+  }
+
+  .map-frame-premium{
+    min-height:290px!important;
+  }
+
+  .direction-btn{
+    width:100%;
+    min-height:52px;
+    justify-content:center!important;
+    padding:14px 18px!important;
+  }
+
+  /* Footer/closing breathing room */
+  .closing{
+    padding-bottom:max(54px,calc(44px + env(safe-area-inset-bottom)))!important;
+  }
+
+  footer{
+    padding-bottom:max(26px,calc(18px + env(safe-area-inset-bottom)))!important;
+  }
+}
+
+@media(max-width:480px){
+  .hero-names{
+    gap:9px!important;
+    font-size:clamp(43px,13.5vw,59px)!important;
+  }
+
+  .hero-names i{
+    font-size:.42em!important;
+  }
+
+  .opening-frame-shell{
+    width:92vw!important;
+    height:min(555px,79dvh)!important;
+  }
+
+  .royal-date-item{
+    grid-template-columns:auto 1fr!important;
+  }
+
+  .royal-date-badge{
+    min-width:72px!important;
+    width:72px!important;
+    height:94px!important;
+  }
+
+  .royal-date-badge span{
+    font-size:33px!important;
+  }
+
+  .royal-date-info p{
+    font-size:7px!important;
+    letter-spacing:1.5px!important;
+  }
+
+  .royal-date-info strong{
+    font-size:12px!important;
+  }
+
+  .gallery{
+    gap:12px!important;
+  }
+
+  .location-details{
+    padding:22px 17px!important;
+  }
+
+  .venue-premium-label{
+    font-size:7px;
+    letter-spacing:1.8px;
+  }
+
+  .map-frame-premium{
+    min-height:260px!important;
+  }
+}
+
+@media(max-height:680px) and (max-width:768px){
+  .opening-frame-shell{
+    height:88dvh!important;
+  }
+
+  .opening-frame-shell > #invitationBox,
+  .opening-frame-copy{
+    padding-top:22px!important;
+    padding-bottom:18px!important;
+  }
+
+  #openInvitation{
+    width:82px!important;
+    height:82px!important;
+    min-width:82px!important;
+    min-height:82px!important;
+  }
+}
+
+@media(prefers-reduced-motion:reduce){
+  .hero-names{
+    opacity:1!important;
+    transform:none!important;
+  }
+
+  body.opening-complete .hero-names{
+    animation:none!important;
+  }
+
+  .direction-pin::before,
+  .direction-pin::after{
+    animation:none!important;
+  }
+
+  .venue-building-photo img{
+    transition:none!important;
+  }
+}
+
+
+/* =========================================================
+   V41 — GANESHA CEREMONIAL PREMIUM OPENING
+   Keeps V40 / V39.2 true 50/50 frame split.
+========================================================= */
+
+/* Slightly taller premium frame to accommodate ceremonial content */
+.opening-frame-shell{
+  width:min(680px,92vw)!important;
+  height:min(690px,86dvh)!important;
+  max-height:90dvh!important;
+}
+
+.opening-frame-shell > #invitationBox,
+.opening-frame-copy{
+  padding:38px 42px 30px!important;
+}
+
+/* Remove legacy initials if old CSS tries to surface them */
+.welcome-initials{
+  display:none!important;
+}
+
+/* Ceremonial opening content */
+.ganesha-opening-block{
+  position:relative;
+  z-index:8;
+  width:min(520px,88%);
+  margin:0 auto 22px;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  text-align:center;
+}
+
+.ganesha-emblem{
+  width:84px;
+  height:84px;
+  margin:0 auto 11px;
+  color:#D9CDED;
+  filter:drop-shadow(0 6px 18px rgba(185,166,214,.16));
+}
+
+.ganesha-emblem svg{
+  width:100%;
+  height:100%;
+  overflow:visible;
+}
+
+.ganesha-emblem path,
+.ganesha-emblem circle{
+  fill:none;
+  stroke:currentColor;
+  stroke-width:1.55;
+  stroke-linecap:round;
+  stroke-linejoin:round;
+}
+
+.ganesha-emblem .ganesha-eye{
+  fill:currentColor;
+  stroke:none;
+}
+
+.ganesha-emblem .ganesha-halo{
+  opacity:.48;
+  stroke-width:1;
+}
+
+.ganesha-emblem .ganesha-base{
+  opacity:.72;
+  stroke-width:1.15;
+}
+
+/* Respectful Kannada blessing line */
+.ganesha-blessing{
+  margin:0 0 12px!important;
+  color:#DCCFEA!important;
+  font-family:"Noto Serif Kannada","Noto Sans Kannada",var(--serif)!important;
+  font-size:clamp(14px,2.3vw,18px)!important;
+  font-weight:500!important;
+  line-height:1.55!important;
+  letter-spacing:.15px!important;
+  text-shadow:0 4px 18px rgba(20,12,25,.22);
+}
+
+/* Names are now the visual focus instead of another P&K monogram */
+.opening-couple-names{
+  margin:0!important;
+  display:flex;
+  align-items:baseline;
+  justify-content:center;
+  gap:14px;
+  color:#F7F2FA!important;
+  font-family:var(--display)!important;
+  font-size:clamp(38px,6vw,58px)!important;
+  font-weight:500!important;
+  line-height:1!important;
+  letter-spacing:-.035em!important;
+  text-shadow:
+    0 8px 28px rgba(20,12,25,.34),
+    0 0 28px rgba(185,166,214,.10);
+}
+
+.opening-couple-names i{
+  color:#CBBADD!important;
+  font-family:var(--serif)!important;
+  font-size:.52em!important;
+  font-weight:400!important;
+  font-style:italic!important;
+}
+
+.opening-name-divider{
+  width:min(260px,72%);
+  margin:16px auto 13px;
+  display:grid;
+  grid-template-columns:1fr auto 1fr;
+  gap:10px;
+  align-items:center;
+  color:#C9B9DE;
+}
+
+.opening-name-divider span{
+  height:1px;
+  background:linear-gradient(90deg,transparent,rgba(217,205,237,.46));
+}
+
+.opening-name-divider span:last-child{
+  background:linear-gradient(90deg,rgba(217,205,237,.46),transparent);
+}
+
+.opening-name-divider i{
+  font-style:normal;
+  font-size:8px;
+}
+
+.opening-kannada-line{
+  margin:0 0 13px!important;
+  color:#C8B6DA!important;
+  font-family:"Noto Serif Kannada","Noto Sans Kannada",var(--serif)!important;
+  font-size:clamp(15px,2.4vw,19px)!important;
+  font-weight:500!important;
+  line-height:1.5!important;
+}
+
+.ganesha-opening-block .welcome-message-premium{
+  max-width:430px!important;
+  margin:0 auto!important;
+  color:rgba(248,244,251,.70)!important;
+  font-family:var(--serif)!important;
+  font-size:12.5px!important;
+  line-height:1.8!important;
+  letter-spacing:.08px!important;
+}
+
+/* Bring seal closer to ceremonial block */
+#openInvitation,
+.opening-frame-copy .wax-seal{
+  margin-top:2px!important;
+}
+
+.cover-hint,
+#coverEnterHint{
+  margin-top:14px!important;
+}
+
+/* Very subtle one-time shimmer around the seal */
+#openInvitation::after{
+  content:"";
+  position:absolute;
+  inset:-7px;
+  border-radius:50%;
+  border:1px solid rgba(217,205,237,0);
+  pointer-events:none;
+  animation:v41SealShimmer 3.8s 1.5s ease-in-out infinite;
+}
+
+@keyframes v41SealShimmer{
+  0%,68%,100%{
+    border-color:rgba(217,205,237,0);
+    transform:scale(.96);
+    opacity:0;
+  }
+  78%{
+    border-color:rgba(217,205,237,.26);
+    transform:scale(1.03);
+    opacity:.75;
+  }
+  90%{
+    border-color:rgba(217,205,237,0);
+    transform:scale(1.12);
+    opacity:0;
+  }
+}
+
+/* Match split copies perfectly */
+.opening-frame-copy .ganesha-opening-block{
+  width:min(520px,88%)!important;
+}
+
+.opening-frame-copy .ganesha-emblem{
+  width:84px!important;
+  height:84px!important;
+}
+
+.opening-frame-copy .opening-couple-names{
+  display:flex!important;
+}
+
+/* Phone-first sizing */
+@media(max-width:768px){
+  .opening-frame-shell{
+    width:min(92vw,540px)!important;
+    height:min(650px,86dvh)!important;
+    max-height:90dvh!important;
+  }
+
+  .opening-frame-shell > #invitationBox,
+  .opening-frame-copy{
+    padding:30px 22px 24px!important;
+  }
+
+  .ganesha-opening-block{
+    width:92%;
+    margin-bottom:18px;
+  }
+
+  .ganesha-emblem,
+  .opening-frame-copy .ganesha-emblem{
+    width:70px!important;
+    height:70px!important;
+    margin-bottom:8px!important;
+  }
+
+  .ganesha-blessing{
+    margin-bottom:10px!important;
+    font-size:14px!important;
+  }
+
+  .opening-couple-names{
+    gap:10px;
+    font-size:clamp(34px,10vw,46px)!important;
+  }
+
+  .opening-name-divider{
+    margin:13px auto 10px;
+  }
+
+  .opening-kannada-line{
+    margin-bottom:10px!important;
+    font-size:14px!important;
+  }
+
+  .ganesha-opening-block .welcome-message-premium{
+    max-width:330px!important;
+    font-size:11.5px!important;
+    line-height:1.65!important;
+  }
+
+  #openInvitation,
+  .opening-frame-copy .wax-seal{
+    width:86px!important;
+    height:86px!important;
+    min-width:86px!important;
+    min-height:86px!important;
+  }
+
+  .pk-monogram-opening{
+    width:72px!important;
+    height:72px!important;
+  }
+
+  .cover-hint,
+  #coverEnterHint{
+    margin-top:11px!important;
+    font-size:7.5px!important;
+  }
+}
+
+@media(max-width:430px){
+  .opening-frame-shell{
+    width:92vw!important;
+    height:min(620px,87dvh)!important;
+  }
+
+  .opening-frame-shell > #invitationBox,
+  .opening-frame-copy{
+    padding:25px 18px 20px!important;
+  }
+
+  .ganesha-emblem,
+  .opening-frame-copy .ganesha-emblem{
+    width:62px!important;
+    height:62px!important;
+  }
+
+  .ganesha-blessing{
+    font-size:13px!important;
+  }
+
+  .opening-couple-names{
+    font-size:clamp(31px,9.3vw,40px)!important;
+  }
+
+  .opening-kannada-line{
+    font-size:13px!important;
+  }
+
+  .ganesha-opening-block .welcome-message-premium{
+    font-size:10.8px!important;
+  }
+
+  #openInvitation,
+  .opening-frame-copy .wax-seal{
+    width:80px!important;
+    height:80px!important;
+    min-width:80px!important;
+    min-height:80px!important;
+  }
+
+  .pk-monogram-opening{
+    width:67px!important;
+    height:67px!important;
+  }
+}
+
+/* Very short phones */
+@media(max-height:690px) and (max-width:768px){
+  .opening-frame-shell{
+    height:91dvh!important;
+  }
+
+  .opening-frame-shell > #invitationBox,
+  .opening-frame-copy{
+    padding-top:18px!important;
+    padding-bottom:15px!important;
+  }
+
+  .ganesha-emblem,
+  .opening-frame-copy .ganesha-emblem{
+    width:54px!important;
+    height:54px!important;
+    margin-bottom:5px!important;
+  }
+
+  .ganesha-blessing{
+    margin-bottom:7px!important;
+    font-size:12.5px!important;
+  }
+
+  .opening-name-divider{
+    margin:9px auto 7px!important;
+  }
+
+  .opening-kannada-line{
+    margin-bottom:7px!important;
+    font-size:12.5px!important;
+  }
+
+  .ganesha-opening-block .welcome-message-premium{
+    font-size:10px!important;
+    line-height:1.5!important;
+  }
+
+  .ganesha-opening-block{
+    margin-bottom:10px!important;
+  }
+
+  #openInvitation,
+  .opening-frame-copy .wax-seal{
+    width:74px!important;
+    height:74px!important;
+    min-width:74px!important;
+    min-height:74px!important;
+  }
+
+  .pk-monogram-opening{
+    width:62px!important;
+    height:62px!important;
+  }
+}
+
+@media(prefers-reduced-motion:reduce){
+  #openInvitation::after{
+    animation:none!important;
   }
 }

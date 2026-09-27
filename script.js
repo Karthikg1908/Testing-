@@ -39,6 +39,7 @@ function enterWedding() {
     cover.classList.add("is-hidden");
     cover.setAttribute("aria-hidden", "true");
     document.body.classList.remove("no-scroll");
+    document.body.classList.add("opening-complete");
     window.scrollTo({ top: 0, behavior: "auto" });
 
     launchOpeningPetals();
