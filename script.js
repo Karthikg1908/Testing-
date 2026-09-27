@@ -20,35 +20,18 @@ function enterWedding() {
   if (isOpening) return;
   isOpening = true;
 
-  const invitationBox = document.getElementById("invitationBox");
+  const frameShell = document.getElementById("openingFrameShell");
 
-  if (invitationBox) {
-    const leftHalf = invitationBox.cloneNode(true);
-    const rightHalf = invitationBox.cloneNode(true);
+  if (frameShell) {
+    // First swap the live frame for the two perfectly matched halves.
+    frameShell.classList.add("split-ready");
 
-    [leftHalf, rightHalf].forEach(clone => {
-      clone.removeAttribute("id");
-      clone.removeAttribute("role");
-      clone.removeAttribute("aria-label");
-      clone.setAttribute("aria-hidden", "true");
-      clone.querySelectorAll("[id]").forEach(el => el.removeAttribute("id"));
-      clone.querySelectorAll("button, a").forEach(el => {
-        el.setAttribute("tabindex", "-1");
-        el.style.pointerEvents = "none";
-      });
-    });
-
-    leftHalf.classList.add("opening-card-half", "opening-card-half-left");
-    rightHalf.classList.add("opening-card-half", "opening-card-half-right");
-
-    cover.appendChild(leftHalf);
-    cover.appendChild(rightHalf);
-
-    invitationBox.classList.add("opening-original-hidden");
-    leftHalf.getBoundingClientRect();
-
+    // Then animate the halves on the next painted frame.
     requestAnimationFrame(() => {
-      cover.classList.add("opening-card-split");
+      requestAnimationFrame(() => {
+        frameShell.classList.add("is-splitting");
+        cover.classList.add("opening-frame-splitting");
+      });
     });
   }
 
@@ -57,12 +40,13 @@ function enterWedding() {
     cover.setAttribute("aria-hidden", "true");
     document.body.classList.remove("no-scroll");
     window.scrollTo({ top: 0, behavior: "auto" });
+
     launchOpeningPetals();
 
     setTimeout(() => {
       cover.style.display = "none";
-    }, 500);
-  }, 1180);
+    }, 520);
+  }, 1320);
 }
 
 if (openInvitation && cover) {

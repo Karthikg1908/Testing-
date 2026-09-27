@@ -10479,3 +10479,345 @@ main{
     transition:none!important;
   }
 }
+
+
+/* =========================================================
+   V39.1 — PRECISE INVITATION-CARD SPLIT FIX
+========================================================= */
+
+/* Both copies are now geometry-locked by JavaScript to the exact original card. */
+.opening-card-half{
+  z-index:24!important;
+  pointer-events:none!important;
+  opacity:1!important;
+  visibility:visible!important;
+  filter:none!important;
+  animation:none!important;
+  transform-origin:center center!important;
+  transition:
+    transform 1.05s cubic-bezier(.72,.02,.18,1),
+    opacity .88s ease,
+    filter .92s ease!important;
+  will-change:transform,opacity,filter;
+}
+
+/* One-pixel overlap prevents a hairline gap down the middle. */
+.opening-card-half-left{
+  clip-path:inset(0 calc(50% - 1px) 0 0)!important;
+  -webkit-clip-path:inset(0 calc(50% - 1px) 0 0)!important;
+}
+
+.opening-card-half-right{
+  clip-path:inset(0 0 0 calc(50% - 1px))!important;
+  -webkit-clip-path:inset(0 0 0 calc(50% - 1px))!important;
+}
+
+/* Each visible half moves outward by exactly half a card width. */
+.luxury-cover.opening-card-split .opening-card-half-left{
+  transform:translate3d(-50%,0,0)!important;
+  opacity:.08!important;
+  filter:blur(1.5px)!important;
+}
+
+.luxury-cover.opening-card-split .opening-card-half-right{
+  transform:translate3d(50%,0,0)!important;
+  opacity:.08!important;
+  filter:blur(1.5px)!important;
+}
+
+/* Keep the original fully stable until its exact copies are painted. */
+#invitationBox{
+  transform:translate3d(0,0,0)!important;
+  will-change:opacity;
+}
+
+#invitationBox.opening-original-hidden{
+  opacity:0!important;
+  visibility:hidden!important;
+  pointer-events:none!important;
+}
+
+/* Background clarity follows the card opening instead of jumping early. */
+.opening-home-veil{
+  transition:
+    opacity 1.08s cubic-bezier(.2,.7,.2,1),
+    backdrop-filter 1.08s ease,
+    -webkit-backdrop-filter 1.08s ease!important;
+}
+
+.luxury-cover.opening-card-split .opening-home-veil{
+  opacity:0!important;
+}
+
+/* Mobile keeps the same mathematically aligned split. */
+@media(max-width:620px){
+  .luxury-cover.opening-card-split .opening-card-half-left{
+    transform:translate3d(-50%,0,0)!important;
+  }
+
+  .luxury-cover.opening-card-split .opening-card-half-right{
+    transform:translate3d(50%,0,0)!important;
+  }
+}
+
+@media(prefers-reduced-motion:reduce){
+  .opening-card-half{
+    transition:none!important;
+  }
+
+  .luxury-cover.opening-card-split .opening-card-half-left{
+    transform:translate3d(-50%,0,0)!important;
+    opacity:0!important;
+  }
+
+  .luxury-cover.opening-card-split .opening-card-half-right{
+    transform:translate3d(50%,0,0)!important;
+    opacity:0!important;
+  }
+}
+
+
+/* =========================================================
+   V39.2 — TRUE FRAME 50 / 50 SPLIT
+   One fixed invitation frame, split into exact halves.
+========================================================= */
+
+/* Remove all older runtime-clone split behavior */
+.opening-card-half{
+  display:none!important;
+}
+
+/* Home remains visible behind the frame */
+.luxury-cover{
+  background:transparent!important;
+}
+
+.opening-home-veil{
+  position:absolute!important;
+  inset:0!important;
+  z-index:1!important;
+  pointer-events:none!important;
+  background:
+    linear-gradient(180deg,rgba(43,30,53,.30),rgba(43,30,53,.42))!important;
+  backdrop-filter:blur(9px) saturate(.80) brightness(.72)!important;
+  -webkit-backdrop-filter:blur(9px) saturate(.80) brightness(.72)!important;
+  transition:
+    opacity 1.12s ease,
+    backdrop-filter 1.12s ease,
+    -webkit-backdrop-filter 1.12s ease!important;
+}
+
+/* Dedicated opening frame geometry */
+.opening-frame-shell{
+  position:relative!important;
+  z-index:20!important;
+  width:min(680px,92vw)!important;
+  height:min(650px,84dvh)!important;
+  max-height:90dvh!important;
+  flex:0 0 auto!important;
+  overflow:visible!important;
+}
+
+/* Live invitation fills the shell exactly */
+.opening-frame-shell > #invitationBox{
+  position:absolute!important;
+  inset:0!important;
+  width:100%!important;
+  height:100%!important;
+  min-width:0!important;
+  max-width:none!important;
+  min-height:0!important;
+  max-height:none!important;
+  margin:0!important;
+  z-index:20!important;
+  opacity:1!important;
+  visibility:visible!important;
+  transform:none!important;
+  animation:none!important;
+  transition:opacity .08s linear!important;
+}
+
+/* Split stage is exact same frame size */
+.opening-split-stage{
+  position:absolute!important;
+  inset:0!important;
+  z-index:24!important;
+  opacity:0!important;
+  visibility:hidden!important;
+  pointer-events:none!important;
+}
+
+/* Two exact 50% frame halves */
+.opening-frame-half{
+  position:absolute!important;
+  top:0!important;
+  bottom:0!important;
+  width:50%!important;
+  overflow:hidden!important;
+  opacity:1!important;
+  filter:none!important;
+  transform:translate3d(0,0,0)!important;
+  transition:
+    transform 1.10s cubic-bezier(.72,.02,.18,1),
+    opacity .96s ease,
+    filter .96s ease!important;
+  will-change:transform,opacity,filter;
+}
+
+.opening-frame-left{
+  left:0!important;
+}
+
+.opening-frame-right{
+  right:0!important;
+}
+
+/* Each copy is full frame width.
+   Left half sees its left 50%; right half sees its right 50%. */
+.opening-frame-copy{
+  position:absolute!important;
+  top:0!important;
+  width:200%!important;
+  height:100%!important;
+  min-width:200%!important;
+  max-width:200%!important;
+  min-height:100%!important;
+  max-height:100%!important;
+  margin:0!important;
+  transform:none!important;
+  animation:none!important;
+  pointer-events:none!important;
+}
+
+.opening-frame-left .opening-frame-copy{
+  left:0!important;
+}
+
+.opening-frame-right .opening-frame-copy{
+  right:0!important;
+}
+
+/* Stage becomes visible before movement starts */
+.opening-frame-shell.split-ready > #invitationBox{
+  opacity:0!important;
+  visibility:hidden!important;
+  pointer-events:none!important;
+}
+
+.opening-frame-shell.split-ready .opening-split-stage{
+  opacity:1!important;
+  visibility:visible!important;
+}
+
+/* Exact requested behavior:
+   left frame half moves to left side of viewport,
+   right frame half moves to right side of viewport. */
+.opening-frame-shell.is-splitting .opening-frame-left{
+  transform:translate3d(calc(-50vw + 100%),0,0)!important;
+  opacity:.16!important;
+  filter:blur(1.2px)!important;
+}
+
+.opening-frame-shell.is-splitting .opening-frame-right{
+  transform:translate3d(calc(50vw - 100%),0,0)!important;
+  opacity:.16!important;
+  filter:blur(1.2px)!important;
+}
+
+/* Clear the home screen as the frame opens */
+.luxury-cover.opening-frame-splitting .opening-home-veil{
+  opacity:0!important;
+  backdrop-filter:blur(0) saturate(1) brightness(1)!important;
+  -webkit-backdrop-filter:blur(0) saturate(1) brightness(1)!important;
+}
+
+/* No legacy split doors / seams */
+.cinematic-curtain,
+.cinematic-curtain-left,
+.cinematic-curtain-right{
+  display:none!important;
+}
+
+.luxury-cover::after{
+  display:none!important;
+  content:none!important;
+}
+
+/* Mobile frame proportions */
+@media(max-width:620px){
+  .opening-frame-shell{
+    width:min(92vw,540px)!important;
+    height:min(610px,82dvh)!important;
+    max-height:88dvh!important;
+  }
+
+  .opening-home-veil{
+    backdrop-filter:blur(7px) saturate(.82) brightness(.72)!important;
+    -webkit-backdrop-filter:blur(7px) saturate(.82) brightness(.72)!important;
+  }
+}
+
+/* Short phones */
+@media(max-height:700px){
+  .opening-frame-shell{
+    height:88dvh!important;
+  }
+}
+
+@media(prefers-reduced-motion:reduce){
+  .opening-frame-half,
+  .opening-home-veil{
+    transition:none!important;
+  }
+
+  .opening-frame-shell.is-splitting .opening-frame-left{
+    transform:translate3d(calc(-50vw + 100%),0,0)!important;
+    opacity:0!important;
+  }
+
+  .opening-frame-shell.is-splitting .opening-frame-right{
+    transform:translate3d(calc(50vw - 100%),0,0)!important;
+    opacity:0!important;
+  }
+}
+
+
+/* V39.2 parity fix — split copies must look exactly like the live seal */
+.opening-frame-copy .wax-seal{
+  width:96px!important;
+  height:96px!important;
+  min-width:96px!important;
+  min-height:96px!important;
+  margin-top:26px!important;
+  display:grid!important;
+  place-items:center!important;
+  border:1px solid rgba(217,205,237,.64)!important;
+  border-radius:50%!important;
+  overflow:visible!important;
+  background:
+    radial-gradient(circle at 35% 28%,#A894C3,#71588A 58%,#3A2848)!important;
+  box-shadow:
+    0 18px 42px rgba(20,12,25,.36),
+    0 0 0 8px rgba(185,166,214,.045),
+    inset 0 1px 2px rgba(255,255,255,.16)!important;
+}
+
+.opening-frame-copy .seal-open-label{
+  position:absolute!important;
+  left:50%!important;
+  bottom:7px!important;
+  transform:translateX(-50%)!important;
+  font-size:7px!important;
+  letter-spacing:1.8px!important;
+  color:rgba(248,244,251,.82)!important;
+}
+
+@media(max-width:620px){
+  .opening-frame-copy .wax-seal{
+    width:90px!important;
+    height:90px!important;
+    min-width:90px!important;
+    min-height:90px!important;
+    margin-top:22px!important;
+  }
+}
