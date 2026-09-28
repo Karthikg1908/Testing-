@@ -1,507 +1,468 @@
-// PRAVEEN & KAVYA — LUXURY WEDDING WEBSITE
+(() => {
+  "use strict";
 
-const cover = document.getElementById("luxuryCover");
-const openInvitation = document.getElementById("openInvitation");
-const siteHeader = document.getElementById("siteHeader");
-const siteNav = document.getElementById("siteNav");
-const menuBtn = document.getElementById("menuBtn");
-const backToTop = document.getElementById("backToTop");
-const petalLayer = document.getElementById("petalLayer");
+  const qs = (selector, root = document) => root.querySelector(selector);
+  const qsa = (selector, root = document) => [...root.querySelectorAll(selector)];
 
-// Keep the opening invitation in focus.
-window.addEventListener("load", () => {
-  document.body.classList.add("no-scroll");
-});
+  const cover = qs("#luxuryCover");
+  const openInvitation = qs("#openInvitation");
+  const openingFrameShell = qs("#openingFrameShell");
+  const siteHeader = qs("#siteHeader");
+  const siteNav = qs("#siteNav");
+  const menuBtn = qs("#menuBtn");
+  const backToTop = qs("#backToTop");
+  const petalLayer = qs("#petalLayer");
 
-// Premium open animation.
-let isOpening = false;
+  const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
-function enterWedding() {
-  if (isOpening) return;
-  isOpening = true;
+  // -------------------------------------------------------
+  // OPENING
+  // -------------------------------------------------------
+  let isOpening = false;
 
-  const frameShell = document.getElementById("openingFrameShell");
+  function finishOpening() {
+    if (!cover) return;
 
-  if (frameShell) {
-    // First swap the live frame for the two perfectly matched halves.
-    frameShell.classList.add("split-ready");
-
-    // Then animate the halves on the next painted frame.
-    requestAnimationFrame(() => {
-      requestAnimationFrame(() => {
-        frameShell.classList.add("is-splitting");
-        cover.classList.add("opening-frame-splitting");
-      });
-    });
-  }
-
-  setTimeout(() => {
     cover.classList.add("is-hidden");
     cover.setAttribute("aria-hidden", "true");
     document.body.classList.remove("no-scroll");
     document.body.classList.add("opening-complete");
-    window.scrollTo({ top: 0, behavior: "auto" });
+    window.scrollTo(0, 0);
 
     launchOpeningPetals();
 
-    setTimeout(() => {
+    window.setTimeout(() => {
       cover.style.display = "none";
-    }, 520);
-  }, 1320);
-}
-
-if (openInvitation && cover) {
-  openInvitation.addEventListener("click", enterWedding);
-}
-
-// Header and top button.
-window.addEventListener("scroll", () => {
-  if (siteHeader) siteHeader.classList.toggle("scrolled", window.scrollY > 45);
-  if (backToTop) backToTop.classList.toggle("show", window.scrollY > 520);
-});
-
-if (backToTop) {
-  backToTop.addEventListener("click", () => {
-    window.scrollTo({ top: 0, behavior: "smooth" });
-  });
-}
-
-// Mobile menu.
-if (menuBtn && siteNav) {
-  menuBtn.addEventListener("click", () => {
-    const isOpen = siteNav.classList.toggle("open");
-    menuBtn.setAttribute("aria-expanded", String(isOpen));
-  });
-}
-
-document.querySelectorAll(".site-nav a").forEach(link => {
-  link.addEventListener("click", () => {
-    if (siteNav) siteNav.classList.remove("open");
-    if (menuBtn) menuBtn.setAttribute("aria-expanded", "false");
-  });
-});
-
-// Countdown to Muhurtham — 02 December 2026 at 9:30 AM.
-const muhurthamDate = new Date("2026-12-02T09:30:00+05:30").getTime();
-
-function updateCountdown() {
-  const now = Date.now();
-  const distance = muhurthamDate - now;
-
-  if (distance <= 0) {
-    document.querySelector(".countdown").innerHTML = `
-      <div class="count-card" style="grid-column:1/-1">
-        <span>♥</span>
-        <small>The celebration has begun</small>
-      </div>
-    `;
-    return;
+    }, prefersReducedMotion ? 0 : 520);
   }
 
-  const days = Math.floor(distance / (1000 * 60 * 60 * 24));
-  const hours = Math.floor((distance / (1000 * 60 * 60)) % 24);
-  const minutes = Math.floor((distance / (1000 * 60)) % 60);
-  const seconds = Math.floor((distance / 1000) % 60);
-
-  document.getElementById("days").textContent = String(days).padStart(2, "0");
-  document.getElementById("hours").textContent = String(hours).padStart(2, "0");
-  document.getElementById("minutes").textContent = String(minutes).padStart(2, "0");
-  document.getElementById("seconds").textContent = String(seconds).padStart(2, "0");
-}
-
-updateCountdown();
-setInterval(updateCountdown, 1000);
-
-// Reveal-on-scroll.
-const revealItems = document.querySelectorAll(".reveal, .reveal-left, .reveal-right");
-
-const revealObserver = new IntersectionObserver(
-  entries => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add("visible");
-        revealObserver.unobserve(entry.target);
-      }
-    });
-  },
-  { threshold: 0.14 }
-);
-
-revealItems.forEach(item => revealObserver.observe(item));
-
-
-
-// Save the Date premium reveal with celebration burst
-const saveDateBtn = document.getElementById("saveDateBtn");
-const saveDateCover = document.getElementById("saveDateCover");
-const revealCelebration = document.getElementById("revealCelebration");
-const royalDateFrame = document.querySelector(".royal-date-reveal");
-
-function launchRevealCelebration() {
-  if (!revealCelebration) return;
-
-  revealCelebration.innerHTML = "";
-  revealCelebration.classList.add("is-active");
-  if (royalDateFrame) royalDateFrame.classList.add("celebrate-flash");
-
-  // Expanding gold burst rings from the center.
-  for (let r = 0; r < 3; r++) {
-    const ring = document.createElement("span");
-    ring.className = "celebration-ring";
-    ring.style.setProperty("--ring-delay", `${r * 0.12}s`);
-    revealCelebration.appendChild(ring);
-  }
-
-  const colors = ["#c9a25e", "#efd9b0", "#8b2634", "#ffffff", "#f7e6c1", "#b8893f"];
-  const particleCount = window.innerWidth < 640 ? 44 : 68;
-
-  for (let i = 0; i < particleCount; i++) {
-    const piece = document.createElement("span");
-    piece.className = i % 6 === 0 ? "celebration-spark" : "celebration-piece";
-
-    const angle = (Math.PI * 2 * i) / particleCount + (Math.random() * 0.26);
-    const distance = 145 + Math.random() * (window.innerWidth < 640 ? 120 : 245);
-    const dx = Math.cos(angle) * distance;
-    const dy = Math.sin(angle) * distance - (35 + Math.random() * 100);
-    const rot = `${(Math.random() * 760 - 380).toFixed(0)}deg`;
-    const size = 7 + Math.random() * 11;
-
-    piece.style.setProperty("--tx", `${dx.toFixed(0)}px`);
-    piece.style.setProperty("--ty", `${dy.toFixed(0)}px`);
-    piece.style.setProperty("--rot", rot);
-    piece.style.setProperty("--delay", `${(Math.random() * 0.10).toFixed(2)}s`);
-    piece.style.setProperty("--dur", `${(1.15 + Math.random() * 0.65).toFixed(2)}s`);
-    piece.style.setProperty("--bg", colors[Math.floor(Math.random() * colors.length)]);
-    piece.style.setProperty("--w", `${size}px`);
-    piece.style.setProperty("--h", `${Math.max(9, size * 1.9)}px`);
-
-    revealCelebration.appendChild(piece);
-  }
-
-  setTimeout(() => {
-    revealCelebration.classList.remove("is-active");
-    revealCelebration.innerHTML = "";
-    if (royalDateFrame) royalDateFrame.classList.remove("celebrate-flash");
-  }, 2100);
-}
-
-if (saveDateBtn && saveDateCover) {
-  saveDateBtn.addEventListener("click", () => {
-    launchRevealCelebration();
-    saveDateCover.classList.add("open");
-  });
-}
-
-
-
-// V21 premium interaction polish
-function updatePremiumHeader() {
-  if (!siteHeader) return;
-  siteHeader.classList.toggle("scrolled", window.scrollY > 32);
-}
-
-updatePremiumHeader();
-window.addEventListener("scroll", updatePremiumHeader, { passive: true });
-
-// Gentle hero parallax on capable devices
-const heroSection = document.querySelector(".hero");
-const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-
-if (heroSection && !reduceMotion && window.innerWidth > 768) {
-  window.addEventListener("scroll", () => {
-    const y = Math.min(window.scrollY, window.innerHeight);
-    heroSection.style.backgroundPosition = `center calc(50% + ${y * 0.08}px)`;
-  }, { passive: true });
-}
-
-// Add slight reveal stagger to visible card groups
-document.querySelectorAll(".countdown, .gallery-grid, .couple-grid").forEach(group => {
-  [...group.children].forEach((child, index) => {
-    if (child.classList.contains("reveal")) {
-      child.style.transitionDelay = `${Math.min(index * 0.07, 0.28)}s`;
-    }
-  });
-});
-
-
-
-// ---------------------------------------------------------
-// Flower petals — brief only, not a continuous effect
-// ---------------------------------------------------------
-function launchOpeningPetals() {
-  if (!petalLayer) return;
-
-  petalLayer.innerHTML = "";
-  petalLayer.classList.add("active");
-
-  const petalCount = window.innerWidth < 640 ? 16 : 24;
-  const petalTypes = ["rose", "jasmine", "champagne"];
-
-  for (let i = 0; i < petalCount; i++) {
-    const petal = document.createElement("span");
-    const type = petalTypes[i % petalTypes.length];
-    petal.className = `flower-petal ${type}`;
-
-    petal.style.setProperty("--left", `${Math.random() * 100}%`);
-    petal.style.setProperty("--delay", `${(Math.random() * 1.4).toFixed(2)}s`);
-    petal.style.setProperty("--duration", `${(3.1 + Math.random() * 1.8).toFixed(2)}s`);
-    petal.style.setProperty("--drift", `${(-75 + Math.random() * 150).toFixed(0)}px`);
-    petal.style.setProperty("--spin", `${(180 + Math.random() * 520).toFixed(0)}deg`);
-    petal.style.setProperty("--scale", `${(0.65 + Math.random() * 0.65).toFixed(2)}`);
-
-    petalLayer.appendChild(petal);
-  }
-
-  setTimeout(() => {
-    petalLayer.classList.remove("active");
-    petalLayer.innerHTML = "";
-  }, 5300);
-}
-
-
-// ---------------------------------------------------------
-// Premium photo lightbox with keyboard + mobile swipe
-// ---------------------------------------------------------
-const galleryItems = [...document.querySelectorAll(".gallery .lightbox-item")];
-const photoLightbox = document.getElementById("photoLightbox");
-const lightboxImage = document.getElementById("lightboxImage");
-const lightboxCounter = document.getElementById("lightboxCounter");
-const lightboxClose = document.getElementById("lightboxClose");
-const lightboxPrev = document.getElementById("lightboxPrev");
-const lightboxNext = document.getElementById("lightboxNext");
-
-let currentPhotoIndex = 0;
-let lightboxTouchStartX = 0;
-let lightboxTouchEndX = 0;
-
-function renderLightboxPhoto(direction = 0) {
-  if (!lightboxImage || !galleryItems.length) return;
-
-  const source = galleryItems[currentPhotoIndex].querySelector("img");
-  if (!source) return;
-
-  lightboxImage.classList.remove("slide-next", "slide-prev");
-  void lightboxImage.offsetWidth;
-
-  if (direction > 0) lightboxImage.classList.add("slide-next");
-  if (direction < 0) lightboxImage.classList.add("slide-prev");
-
-  lightboxImage.src = source.currentSrc || source.src;
-  lightboxImage.alt = source.alt || "Wedding memory";
-
-  if (lightboxCounter) {
-    lightboxCounter.textContent = `${currentPhotoIndex + 1} / ${galleryItems.length}`;
-  }
-}
-
-function openLightbox(index) {
-  if (!photoLightbox) return;
-
-  currentPhotoIndex = index;
-  renderLightboxPhoto();
-  photoLightbox.classList.add("open");
-  photoLightbox.setAttribute("aria-hidden", "false");
-  document.body.classList.add("lightbox-open");
-  lightboxClose?.focus();
-}
-
-function closeLightbox() {
-  if (!photoLightbox) return;
-
-  photoLightbox.classList.remove("open");
-  photoLightbox.setAttribute("aria-hidden", "true");
-  document.body.classList.remove("lightbox-open");
-}
-
-function moveLightbox(step) {
-  if (!galleryItems.length) return;
-
-  currentPhotoIndex = (currentPhotoIndex + step + galleryItems.length) % galleryItems.length;
-  renderLightboxPhoto(step);
-}
-
-galleryItems.forEach((item, index) => {
-  item.addEventListener("click", () => openLightbox(index));
-
-  item.addEventListener("keydown", event => {
-    if (event.key === "Enter" || event.key === " ") {
-      event.preventDefault();
-      openLightbox(index);
-    }
-  });
-});
-
-lightboxClose?.addEventListener("click", closeLightbox);
-lightboxPrev?.addEventListener("click", () => moveLightbox(-1));
-lightboxNext?.addEventListener("click", () => moveLightbox(1));
-
-photoLightbox?.querySelectorAll("[data-lightbox-close]").forEach(el => {
-  el.addEventListener("click", closeLightbox);
-});
-
-document.addEventListener("keydown", event => {
-  if (!photoLightbox?.classList.contains("open")) return;
-
-  if (event.key === "Escape") closeLightbox();
-  if (event.key === "ArrowLeft") moveLightbox(-1);
-  if (event.key === "ArrowRight") moveLightbox(1);
-});
-
-photoLightbox?.addEventListener("touchstart", event => {
-  lightboxTouchStartX = event.changedTouches[0].screenX;
-}, { passive: true });
-
-photoLightbox?.addEventListener("touchend", event => {
-  lightboxTouchEndX = event.changedTouches[0].screenX;
-  const distance = lightboxTouchEndX - lightboxTouchStartX;
-
-  if (Math.abs(distance) < 45) return;
-  if (distance < 0) moveLightbox(1);
-  if (distance > 0) moveLightbox(-1);
-}, { passive: true });
-
-
-// ---------------------------------------------------------
-// Scroll progress ornament
-// ---------------------------------------------------------
-const scrollProgress = document.getElementById("scrollProgress");
-const scrollProgressFill = document.getElementById("scrollProgressFill");
-const scrollProgressFlower = document.getElementById("scrollProgressFlower");
-
-function updateScrollProgress() {
-  if (!scrollProgress || !scrollProgressFill || !scrollProgressFlower) return;
-
-  const scrollable = document.documentElement.scrollHeight - window.innerHeight;
-  const progress = scrollable > 0 ? Math.min(1, Math.max(0, window.scrollY / scrollable)) : 0;
-
-  scrollProgressFill.style.transform = `scaleY(${progress})`;
-  scrollProgressFlower.style.top = `${progress * 100}%`;
-  scrollProgress.classList.toggle("visible", window.scrollY > 120);
-}
-
-updateScrollProgress();
-window.addEventListener("scroll", updateScrollProgress, { passive: true });
-window.addEventListener("resize", updateScrollProgress);
-
-// ---------------------------------------------------------
-// Final thank-you animation
-// ---------------------------------------------------------
-const finalThankYou = document.getElementById("finalThankYou");
-
-if (finalThankYou) {
-  const thankYouObserver = new IntersectionObserver(
-    entries => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          finalThankYou.classList.add("thankyou-visible");
-          thankYouObserver.unobserve(entry.target);
-        }
-      });
-    },
-    { threshold: 0.15 }
-  );
-
-  thankYouObserver.observe(finalThankYou);
-}
-
-
-// ---------------------------------------------------------
-// V32 premium lavender parallax
-// ---------------------------------------------------------
-const premiumParallaxFlorals = [...document.querySelectorAll("[data-parallax]")];
-
-function updatePremiumParallax() {
-  if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
-
-  premiumParallaxFlorals.forEach(layer => {
-    const parent = layer.parentElement;
-    if (!parent) return;
-
-    const rect = parent.getBoundingClientRect();
-    const speed = Number(layer.dataset.parallax || 0.08);
-    const viewportCenter = window.innerHeight / 2;
-    const sectionCenter = rect.top + rect.height / 2;
-    const offset = (sectionCenter - viewportCenter) * speed;
-
-    layer.style.transform = `translate3d(0, ${offset.toFixed(1)}px, 0)`;
-  });
-}
-
-updatePremiumParallax();
-window.addEventListener("scroll", updatePremiumParallax, { passive: true });
-window.addEventListener("resize", updatePremiumParallax);
-
-// Save the Date soft reveal glow
-const signatureRevealShell = document.getElementById("eventsRevealShell");
-const signatureRevealButton = document.getElementById("saveDateBtn");
-
-signatureRevealButton?.addEventListener("click", () => {
-  if (!signatureRevealShell) return;
-
-  signatureRevealShell.classList.remove("reveal-complete");
-  void signatureRevealShell.offsetWidth;
-  signatureRevealShell.classList.add("reveal-complete");
-
-  setTimeout(() => signatureRevealShell.classList.remove("reveal-complete"), 1800);
-});
-
-
-// ---------------------------------------------------------
-// V33 — event depth interaction for touch devices
-// ---------------------------------------------------------
-const premiumEventTimeline = document.querySelector(".royal-date-timeline");
-const premiumEventCards = [...document.querySelectorAll(".royal-date-item")];
-
-premiumEventCards.forEach(card => {
-  card.addEventListener("click", event => {
-    const isTouchLike = window.matchMedia("(hover: none)").matches;
-    if (!isTouchLike || !premiumEventTimeline) return;
-
-    const wasFocused = card.classList.contains("is-focused");
-    premiumEventCards.forEach(item => item.classList.remove("is-focused"));
-
-    if (wasFocused) {
-      premiumEventTimeline.classList.remove("has-mobile-focus");
+  function enterWedding() {
+    if (isOpening) return;
+    isOpening = true;
+
+    if (!cover || !openingFrameShell) {
+      finishOpening();
       return;
     }
 
-    card.classList.add("is-focused");
-    premiumEventTimeline.classList.add("has-mobile-focus");
+    openingFrameShell.classList.add("split-ready");
+
+    requestAnimationFrame(() => {
+      requestAnimationFrame(() => {
+        openingFrameShell.classList.add("is-splitting");
+        cover.classList.add("opening-frame-splitting");
+      });
+    });
+
+    window.setTimeout(
+      finishOpening,
+      prefersReducedMotion ? 120 : 1320
+    );
+  }
+
+  if (openInvitation) {
+    openInvitation.addEventListener("click", enterWedding);
+  } else {
+    document.body.classList.remove("no-scroll");
+    document.body.classList.add("opening-complete");
+  }
+
+  // -------------------------------------------------------
+  // HEADER / MENU / BACK TO TOP / PROGRESS
+  // -------------------------------------------------------
+  const scrollProgress = qs("#scrollProgress");
+  const scrollProgressFill = qs("#scrollProgressFill");
+  const scrollProgressFlower = qs("#scrollProgressFlower");
+  let scrollTicking = false;
+
+  function updateScrollUI() {
+    const y = window.scrollY || document.documentElement.scrollTop || 0;
+
+    siteHeader?.classList.toggle("scrolled", y > 40);
+    backToTop?.classList.toggle("show", y > 520);
+
+    if (scrollProgress && scrollProgressFill && scrollProgressFlower) {
+      const max = document.documentElement.scrollHeight - window.innerHeight;
+      const progress = max > 0 ? Math.min(1, Math.max(0, y / max)) : 0;
+
+      scrollProgressFill.style.transform = `scaleY(${progress})`;
+      scrollProgressFlower.style.top = `${progress * 100}%`;
+      scrollProgress.classList.toggle("visible", y > 120);
+    }
+
+    scrollTicking = false;
+  }
+
+  function requestScrollUIUpdate() {
+    if (scrollTicking) return;
+    scrollTicking = true;
+    requestAnimationFrame(updateScrollUI);
+  }
+
+  updateScrollUI();
+  window.addEventListener("scroll", requestScrollUIUpdate, { passive: true });
+  window.addEventListener("resize", requestScrollUIUpdate, { passive: true });
+
+  backToTop?.addEventListener("click", () => {
+    window.scrollTo({ top: 0, behavior: prefersReducedMotion ? "auto" : "smooth" });
   });
-});
 
-document.addEventListener("click", event => {
-  if (!premiumEventTimeline) return;
-  if (event.target.closest(".royal-date-item")) return;
+  if (menuBtn && siteNav) {
+    menuBtn.addEventListener("click", () => {
+      const open = siteNav.classList.toggle("open");
+      menuBtn.setAttribute("aria-expanded", String(open));
+    });
 
-  premiumEventCards.forEach(item => item.classList.remove("is-focused"));
-  premiumEventTimeline.classList.remove("has-mobile-focus");
-});
+    qsa("a", siteNav).forEach(link => {
+      link.addEventListener("click", () => {
+        siteNav.classList.remove("open");
+        menuBtn.setAttribute("aria-expanded", "false");
+      });
+    });
+  }
 
+  // -------------------------------------------------------
+  // COUNTDOWN
+  // -------------------------------------------------------
+  const countdownRoot = qs(".countdown");
+  const countdownNodes = {
+    days: qs("#days"),
+    hours: qs("#hours"),
+    minutes: qs("#minutes"),
+    seconds: qs("#seconds")
+  };
 
-// ---------------------------------------------------------
-// V36 editorial event focus
-// ---------------------------------------------------------
-const v36EventTimeline = document.querySelector(".royal-date-timeline");
-const v36EventCards = [...document.querySelectorAll(".royal-date-item")];
+  const muhurthamTime = new Date("2026-12-02T09:30:00+05:30").getTime();
+  let countdownTimer = null;
 
-function clearV36EventFocus() {
-  v36EventCards.forEach(card => card.classList.remove("is-focused"));
-  v36EventTimeline?.classList.remove("has-mobile-focus");
-}
+  function updateCountdown() {
+    if (!countdownRoot) return;
 
-v36EventCards.forEach(card => {
-  card.addEventListener("focus", () => {
-    clearV36EventFocus();
-    card.classList.add("is-focused");
-    v36EventTimeline?.classList.add("has-mobile-focus");
-  });
+    const distance = muhurthamTime - Date.now();
 
-  card.addEventListener("blur", () => {
-    setTimeout(() => {
-      if (!v36EventTimeline?.contains(document.activeElement)) {
-        clearV36EventFocus();
+    if (distance <= 0) {
+      countdownRoot.innerHTML = `
+        <div class="count-card countdown-complete" style="grid-column:1/-1">
+          <span>♥</span>
+          <small>The celebration has begun</small>
+        </div>`;
+      if (countdownTimer) window.clearInterval(countdownTimer);
+      return;
+    }
+
+    const values = {
+      days: Math.floor(distance / 86400000),
+      hours: Math.floor(distance / 3600000) % 24,
+      minutes: Math.floor(distance / 60000) % 60,
+      seconds: Math.floor(distance / 1000) % 60
+    };
+
+    Object.entries(values).forEach(([key, value]) => {
+      if (countdownNodes[key]) {
+        countdownNodes[key].textContent = String(value).padStart(2, "0");
       }
-    }, 0);
+    });
+  }
+
+  updateCountdown();
+  if (countdownRoot) {
+    countdownTimer = window.setInterval(updateCountdown, 1000);
+  }
+
+  // -------------------------------------------------------
+  // REVEAL ON SCROLL
+  // -------------------------------------------------------
+  const revealItems = qsa(".reveal, .reveal-left, .reveal-right");
+
+  if ("IntersectionObserver" in window && !prefersReducedMotion) {
+    const revealObserver = new IntersectionObserver(
+      entries => {
+        entries.forEach(entry => {
+          if (!entry.isIntersecting) return;
+          entry.target.classList.add("visible");
+          revealObserver.unobserve(entry.target);
+        });
+      },
+      { threshold: 0.12, rootMargin: "0px 0px -4% 0px" }
+    );
+
+    revealItems.forEach(item => revealObserver.observe(item));
+  } else {
+    revealItems.forEach(item => item.classList.add("visible"));
+  }
+
+  // -------------------------------------------------------
+  // SAVE THE DATE
+  // -------------------------------------------------------
+  const saveDateBtn = qs("#saveDateBtn");
+  const saveDateCover = qs("#saveDateCover");
+  const revealCelebration = qs("#revealCelebration");
+  const eventsRevealShell = qs("#eventsRevealShell");
+
+  function launchRevealCelebration() {
+    if (!revealCelebration || prefersReducedMotion) return;
+
+    revealCelebration.replaceChildren();
+    revealCelebration.classList.add("is-active");
+    eventsRevealShell?.classList.add("celebrate-flash");
+
+    for (let index = 0; index < 3; index += 1) {
+      const ring = document.createElement("span");
+      ring.className = "celebration-ring";
+      ring.style.setProperty("--ring-delay", `${index * 0.12}s`);
+      revealCelebration.appendChild(ring);
+    }
+
+    const colors = ["#D9CDED", "#B9A6D6", "#8067A0", "#F8F4FB", "#F1ECF7"];
+    const particleCount = window.innerWidth < 640 ? 28 : 46;
+
+    for (let index = 0; index < particleCount; index += 1) {
+      const piece = document.createElement("span");
+      piece.className = index % 6 === 0 ? "celebration-spark" : "celebration-piece";
+
+      const angle = (Math.PI * 2 * index) / particleCount + Math.random() * 0.18;
+      const distance = 120 + Math.random() * (window.innerWidth < 640 ? 105 : 190);
+      const size = 6 + Math.random() * 8;
+
+      piece.style.setProperty("--tx", `${(Math.cos(angle) * distance).toFixed(0)}px`);
+      piece.style.setProperty("--ty", `${(Math.sin(angle) * distance - 45).toFixed(0)}px`);
+      piece.style.setProperty("--rot", `${(Math.random() * 620 - 310).toFixed(0)}deg`);
+      piece.style.setProperty("--delay", `${(Math.random() * 0.08).toFixed(2)}s`);
+      piece.style.setProperty("--dur", `${(1.05 + Math.random() * 0.55).toFixed(2)}s`);
+      piece.style.setProperty("--bg", colors[Math.floor(Math.random() * colors.length)]);
+      piece.style.setProperty("--w", `${size}px`);
+      piece.style.setProperty("--h", `${Math.max(8, size * 1.7)}px`);
+
+      revealCelebration.appendChild(piece);
+    }
+
+    window.setTimeout(() => {
+      revealCelebration.classList.remove("is-active");
+      revealCelebration.replaceChildren();
+      eventsRevealShell?.classList.remove("celebrate-flash");
+    }, 1900);
+  }
+
+  if (saveDateBtn && saveDateCover) {
+    saveDateBtn.addEventListener("click", () => {
+      if (saveDateCover.classList.contains("open")) return;
+
+      saveDateCover.classList.add("open");
+      saveDateBtn.setAttribute("aria-expanded", "true");
+      eventsRevealShell?.classList.add("reveal-complete");
+      launchRevealCelebration();
+
+      window.setTimeout(() => {
+        eventsRevealShell?.classList.remove("reveal-complete");
+      }, 1800);
+    });
+  }
+
+  // -------------------------------------------------------
+  // BRIEF OPENING PETALS
+  // -------------------------------------------------------
+  function launchOpeningPetals() {
+    if (!petalLayer || prefersReducedMotion) return;
+
+    petalLayer.replaceChildren();
+    petalLayer.classList.add("active");
+
+    const count = window.innerWidth < 640 ? 12 : 20;
+    const types = ["rose", "jasmine", "champagne"];
+
+    for (let index = 0; index < count; index += 1) {
+      const petal = document.createElement("span");
+      petal.className = `flower-petal ${types[index % types.length]}`;
+      petal.style.setProperty("--left", `${Math.random() * 100}%`);
+      petal.style.setProperty("--delay", `${(Math.random() * 1.1).toFixed(2)}s`);
+      petal.style.setProperty("--duration", `${(3 + Math.random() * 1.5).toFixed(2)}s`);
+      petal.style.setProperty("--drift", `${(-65 + Math.random() * 130).toFixed(0)}px`);
+      petal.style.setProperty("--spin", `${(180 + Math.random() * 460).toFixed(0)}deg`);
+      petal.style.setProperty("--scale", `${(0.7 + Math.random() * 0.5).toFixed(2)}`);
+      petalLayer.appendChild(petal);
+    }
+
+    window.setTimeout(() => {
+      petalLayer.classList.remove("active");
+      petalLayer.replaceChildren();
+    }, 5000);
+  }
+
+  // -------------------------------------------------------
+  // GALLERY LIGHTBOX
+  // -------------------------------------------------------
+  const galleryItems = qsa(".gallery .lightbox-item");
+  const photoLightbox = qs("#photoLightbox");
+  const lightboxImage = qs("#lightboxImage");
+  const lightboxCounter = qs("#lightboxCounter");
+  const lightboxClose = qs("#lightboxClose");
+  const lightboxPrev = qs("#lightboxPrev");
+  const lightboxNext = qs("#lightboxNext");
+
+  let currentPhotoIndex = 0;
+  let touchStartX = 0;
+  let previouslyFocusedElement = null;
+
+  function renderLightboxPhoto(direction = 0) {
+    if (!lightboxImage || galleryItems.length === 0) return;
+
+    const source = qs("img", galleryItems[currentPhotoIndex]);
+    if (!source) return;
+
+    lightboxImage.classList.remove("slide-next", "slide-prev");
+    void lightboxImage.offsetWidth;
+
+    if (direction > 0) lightboxImage.classList.add("slide-next");
+    if (direction < 0) lightboxImage.classList.add("slide-prev");
+
+    lightboxImage.src = source.currentSrc || source.src;
+    lightboxImage.alt = source.alt || "Wedding memory";
+
+    if (lightboxCounter) {
+      lightboxCounter.textContent = `${currentPhotoIndex + 1} / ${galleryItems.length}`;
+    }
+  }
+
+  function openLightbox(index) {
+    if (!photoLightbox || galleryItems.length === 0) return;
+
+    previouslyFocusedElement = document.activeElement;
+    currentPhotoIndex = index;
+    renderLightboxPhoto();
+
+    photoLightbox.classList.add("open");
+    photoLightbox.setAttribute("aria-hidden", "false");
+    document.body.classList.add("lightbox-open");
+    lightboxClose?.focus({ preventScroll: true });
+  }
+
+  function closeLightbox() {
+    if (!photoLightbox) return;
+
+    photoLightbox.classList.remove("open");
+    photoLightbox.setAttribute("aria-hidden", "true");
+    document.body.classList.remove("lightbox-open");
+
+    if (lightboxImage) {
+      lightboxImage.classList.remove("slide-next", "slide-prev");
+    }
+
+    if (previouslyFocusedElement instanceof HTMLElement) {
+      previouslyFocusedElement.focus({ preventScroll: true });
+    }
+  }
+
+  function moveLightbox(step) {
+    if (galleryItems.length === 0) return;
+    currentPhotoIndex = (currentPhotoIndex + step + galleryItems.length) % galleryItems.length;
+    renderLightboxPhoto(step);
+  }
+
+  galleryItems.forEach((item, index) => {
+    item.addEventListener("click", () => openLightbox(index));
+    item.addEventListener("keydown", event => {
+      if (event.key !== "Enter" && event.key !== " ") return;
+      event.preventDefault();
+      openLightbox(index);
+    });
   });
-});
+
+  lightboxClose?.addEventListener("click", closeLightbox);
+  lightboxPrev?.addEventListener("click", () => moveLightbox(-1));
+  lightboxNext?.addEventListener("click", () => moveLightbox(1));
+
+  photoLightbox?.addEventListener("click", event => {
+    if (event.target instanceof Element && event.target.hasAttribute("data-lightbox-close")) {
+      closeLightbox();
+    }
+  });
+
+  document.addEventListener("keydown", event => {
+    if (!photoLightbox?.classList.contains("open")) return;
+
+    if (event.key === "Escape") closeLightbox();
+    else if (event.key === "ArrowLeft") moveLightbox(-1);
+    else if (event.key === "ArrowRight") moveLightbox(1);
+  });
+
+  photoLightbox?.addEventListener(
+    "touchstart",
+    event => {
+      touchStartX = event.changedTouches[0]?.clientX ?? 0;
+    },
+    { passive: true }
+  );
+
+  photoLightbox?.addEventListener(
+    "touchend",
+    event => {
+      const endX = event.changedTouches[0]?.clientX ?? touchStartX;
+      const distance = endX - touchStartX;
+
+      if (Math.abs(distance) < 45) return;
+      moveLightbox(distance < 0 ? 1 : -1);
+    },
+    { passive: true }
+  );
+
+  // -------------------------------------------------------
+  // TOUCH EVENT CARD FOCUS — one implementation only
+  // -------------------------------------------------------
+  const eventTimeline = qs(".royal-date-timeline");
+  const eventCards = qsa(".royal-date-item");
+
+  function clearEventFocus() {
+    eventCards.forEach(card => card.classList.remove("is-focused"));
+    eventTimeline?.classList.remove("has-mobile-focus");
+  }
+
+  if (window.matchMedia("(hover: none)").matches) {
+    eventCards.forEach(card => {
+      card.addEventListener("click", () => {
+        const alreadyFocused = card.classList.contains("is-focused");
+        clearEventFocus();
+
+        if (!alreadyFocused) {
+          card.classList.add("is-focused");
+          eventTimeline?.classList.add("has-mobile-focus");
+        }
+      });
+    });
+
+    document.addEventListener("click", event => {
+      if (!(event.target instanceof Element)) return;
+      if (event.target.closest(".royal-date-item")) return;
+      clearEventFocus();
+    });
+  }
+  // -------------------------------------------------------
+  // HOSTED-PAGE RELIABILITY
+  // -------------------------------------------------------
+  qsa('img[data-remote-image="true"]').forEach(img => {
+    img.addEventListener("error", () => {
+      img.classList.add("image-load-error");
+      const parent = img.parentElement;
+      if (parent) parent.classList.add("has-image-error");
+    });
+  });
+
+  // Close the mobile navigation with Escape.
+  document.addEventListener("keydown", event => {
+    if (event.key !== "Escape") return;
+
+    if (siteNav?.classList.contains("open")) {
+      siteNav.classList.remove("open");
+      menuBtn?.setAttribute("aria-expanded", "false");
+      menuBtn?.focus({ preventScroll: true });
+    }
+  });
+
+  // Restore UI correctly after browser back/forward cache navigation.
+  window.addEventListener("pageshow", requestScrollUIUpdate);
+
+  // Once dates are revealed, keep the control state unambiguous.
+  if (saveDateBtn && saveDateCover?.classList.contains("open")) {
+    saveDateBtn.setAttribute("aria-expanded", "true");
+  }
+
+})();

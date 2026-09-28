@@ -11942,3 +11942,506 @@ body.opening-complete .hero-together-line{
     filter:none!important;
   }
 }
+
+
+/* =========================================================
+   V42.1 — GITHUB PAGES STABILITY FIX
+   Keeps the approved V42 visual design.
+========================================================= */
+
+html{
+  overflow-x:hidden;
+}
+
+body{
+  overflow-x:hidden;
+}
+
+body.no-scroll{
+  overflow:hidden!important;
+  height:100dvh;
+  overscroll-behavior:none;
+}
+
+body.lightbox-open{
+  overflow:hidden!important;
+  overscroll-behavior:none;
+}
+
+/* V42 hero is intentionally controlled by opening-complete,
+   not by the older generic reveal animation. */
+.hero-content{
+  opacity:1!important;
+  transform:none!important;
+}
+
+/* Keep split halves locked to the correct side on hosted builds. */
+.opening-frame-left .opening-frame-copy{
+  left:0!important;
+  right:auto!important;
+}
+
+.opening-frame-right .opening-frame-copy{
+  left:auto!important;
+  right:0!important;
+}
+
+/* Avoid an empty/broken image placeholder before the lightbox opens. */
+#lightboxImage:not([src]){
+  visibility:hidden;
+}
+
+.photo-lightbox.open #lightboxImage[src]{
+  visibility:visible;
+}
+
+/* Safer viewport sizing on mobile browsers with dynamic address bars. */
+.luxury-cover,
+.hero{
+  min-height:100vh;
+  min-height:100svh;
+}
+
+@supports(height:100dvh){
+  .luxury-cover,
+  .hero{
+    min-height:100dvh;
+  }
+}
+
+/* Kannada font explicitly loaded in index.html; retain reliable fallbacks. */
+.ganesha-blessing,
+.opening-kannada-line,
+.hero-script,
+.split-kannada,
+.couple-kannada-blessing,
+.closing-kannada,
+.closing-message-kannada{
+  font-family:"Noto Serif Kannada","Noto Sans Kannada","Nirmala UI","Tunga",serif!important;
+}
+
+/* Prevent accidental horizontal overflow from animated hero names. */
+.hero-content,
+.hero-names{
+  max-width:100%;
+}
+
+.hero-name-praveen,
+.hero-name-kavya{
+  will-change:transform,opacity;
+}
+
+/* Touch targets remain usable without changing the V42 look. */
+@media(max-width:768px){
+  .menu-btn,
+  .back-to-top,
+  .lightbox-close,
+  .lightbox-nav{
+    touch-action:manipulation;
+  }
+
+  .direction-btn,
+  .split-reveal-trigger,
+  .hero-scroll-cue{
+    -webkit-tap-highlight-color:transparent;
+  }
+}
+
+/* Do not leave animated content hidden when reduced motion is enabled. */
+@media(prefers-reduced-motion:reduce){
+  .reveal,
+  .reveal-left,
+  .reveal-right{
+    opacity:1!important;
+    transform:none!important;
+    transition:none!important;
+  }
+}
+
+/* Final cover cleanup: older V34 CSS used display:flex!important.
+   Once the approved split animation completes, remove the cover layer entirely. */
+.luxury-cover.is-hidden{
+  display:none!important;
+}
+
+
+/* =========================================================
+   V42.2 — COMPACT VENUE SECTIONS
+   Reduced overall size for both Wedding Venue and Beegara Oota
+========================================================= */
+
+/* Reduce vertical footprint of both location sections */
+#venue.location-section,
+#beegara-oota.location-section{
+  padding-top:46px!important;
+  padding-bottom:46px!important;
+}
+
+/* Tighter section heading spacing and slightly smaller headings */
+#venue .section-head,
+#beegara-oota .section-head{
+  margin-bottom:22px!important;
+}
+
+#venue .section-head h2,
+#beegara-oota .section-head h2{
+  font-size:clamp(34px,4.2vw,48px)!important;
+  line-height:1.02!important;
+}
+
+/* Compact cards */
+#venue .location-card-premium.v38-premium-card,
+#beegara-oota .location-card-premium.v38-premium-card{
+  width:min(960px,90%)!important;
+  max-width:960px!important;
+  border-radius:22px!important;
+}
+
+/* Less internal padding */
+#venue .location-card-premium .location-details,
+#beegara-oota .location-card-premium .location-details{
+  padding:28px 28px!important;
+}
+
+/* Venue name slightly smaller */
+#venue .location-card-premium .location-details h3,
+#beegara-oota .location-card-premium .location-details h3{
+  margin-top:8px!important;
+  font-size:clamp(26px,2.6vw,36px)!important;
+  line-height:1.08!important;
+}
+
+/* Compact label spacing */
+#venue .venue-premium-label,
+#beegara-oota .venue-premium-label{
+  margin-bottom:7px!important;
+  padding:5px 9px!important;
+}
+
+#venue .location-label,
+#beegara-oota .location-label{
+  margin-bottom:6px!important;
+}
+
+/* Reduce photo footprint */
+#venue .venue-building-photo,
+#beegara-oota .venue-building-photo{
+  margin:13px 0 12px!important;
+  border-radius:12px!important;
+}
+
+#venue .venue-building-photo img,
+#beegara-oota .venue-building-photo img{
+  aspect-ratio:16 / 6.6!important;
+}
+
+/* Tighter address + action spacing */
+#venue .location-address,
+#beegara-oota .location-address{
+  margin-top:10px!important;
+  font-size:13px!important;
+  line-height:1.55!important;
+}
+
+#venue .venue-actions,
+#beegara-oota .venue-actions{
+  margin-top:16px!important;
+}
+
+#venue .direction-btn,
+#beegara-oota .direction-btn{
+  min-height:40px!important;
+  padding:9px 15px!important;
+  font-size:8px!important;
+}
+
+/* Smaller map area */
+#venue .map-frame-premium,
+#venue .map-frame-premium iframe,
+#beegara-oota .map-frame-premium,
+#beegara-oota .map-frame-premium iframe{
+  min-height:315px!important;
+}
+
+/* Mobile */
+@media(max-width:768px){
+  #venue.location-section,
+  #beegara-oota.location-section{
+    padding-top:38px!important;
+    padding-bottom:38px!important;
+  }
+
+  #venue .section-head,
+  #beegara-oota .section-head{
+    margin-bottom:18px!important;
+  }
+
+  #venue .section-head h2,
+  #beegara-oota .section-head h2{
+    font-size:34px!important;
+  }
+
+  #venue .location-card-premium.v38-premium-card,
+  #beegara-oota .location-card-premium.v38-premium-card{
+    width:92%!important;
+    border-radius:18px!important;
+  }
+
+  #venue .location-card-premium .location-details,
+  #beegara-oota .location-card-premium .location-details{
+    padding:23px 20px!important;
+  }
+
+  #venue .location-card-premium .location-details h3,
+  #beegara-oota .location-card-premium .location-details h3{
+    font-size:25px!important;
+  }
+
+  #venue .venue-building-photo img,
+  #beegara-oota .venue-building-photo img{
+    aspect-ratio:16 / 7.2!important;
+  }
+
+  #venue .map-frame-premium,
+  #venue .map-frame-premium iframe,
+  #beegara-oota .map-frame-premium,
+  #beegara-oota .map-frame-premium iframe{
+    min-height:235px!important;
+  }
+
+  #venue .direction-btn,
+  #beegara-oota .direction-btn{
+    min-height:40px!important;
+    padding:10px 14px!important;
+  }
+}
+
+@media(max-width:430px){
+  #venue.location-section,
+  #beegara-oota.location-section{
+    padding-top:32px!important;
+    padding-bottom:32px!important;
+  }
+
+  #venue .section-head h2,
+  #beegara-oota .section-head h2{
+    font-size:31px!important;
+  }
+
+  #venue .location-card-premium .location-details,
+  #beegara-oota .location-card-premium .location-details{
+    padding:20px 17px!important;
+  }
+
+  #venue .map-frame-premium,
+  #venue .map-frame-premium iframe,
+  #beegara-oota .map-frame-premium,
+  #beegara-oota .map-frame-premium iframe{
+    min-height:215px!important;
+  }
+}
+
+
+/* =========================================================
+   V42.3 — MEET THE COUPLE ALIGNMENT FIX
+   Groom and bride cards/photos now share the same top position
+========================================================= */
+
+/* Remove the old editorial up/down offsets */
+#couple .couple-card.visible.editorial-groom,
+#couple .couple-card.visible.editorial-bride{
+  transform:none!important;
+}
+
+/* Keep both cards aligned evenly within the row */
+#couple .couple-grid{
+  align-items:center!important;
+}
+
+/* Ensure matching portrait placement inside both cards */
+#couple .editorial-groom .portrait-wrap,
+#couple .editorial-bride .portrait-wrap{
+  margin-top:0!important;
+  transform:none!important;
+}
+
+/* Preserve hover without reintroducing mismatched vertical positioning */
+@media(hover:hover){
+  #couple .couple-card.visible.editorial-groom:hover,
+  #couple .couple-card.visible.editorial-bride:hover{
+    transform:translateY(-6px)!important;
+  }
+}
+
+/* Mobile remains naturally stacked and aligned */
+@media(max-width:768px){
+  #couple .couple-card.visible.editorial-groom,
+  #couple .couple-card.visible.editorial-bride{
+    transform:none!important;
+  }
+}
+
+
+/* =========================================================
+   V42.4 — FINAL GITHUB / MOBILE STABILITY LAYER
+   Preserves V42.3 visual design.
+========================================================= */
+
+*,
+*::before,
+*::after{
+  box-sizing:border-box;
+}
+
+html{
+  -webkit-text-size-adjust:100%;
+  text-size-adjust:100%;
+}
+
+body{
+  width:100%;
+  min-width:0;
+}
+
+img,
+video,
+iframe{
+  max-width:100%;
+}
+
+img{
+  display:block;
+}
+
+button,
+a{
+  -webkit-tap-highlight-color:transparent;
+}
+
+button{
+  font:inherit;
+}
+
+/* Strong visible focus without changing normal appearance. */
+a:focus-visible,
+button:focus-visible{
+  outline:2px solid rgba(217,205,237,.92);
+  outline-offset:4px;
+}
+
+/* Pre-rendered split copies are visual only and never interactive. */
+.opening-split-stage,
+.opening-frame-copy,
+.opening-frame-copy *{
+  pointer-events:none!important;
+}
+
+/* Remote image graceful failure instead of a browser broken-image icon. */
+img.image-load-error{
+  opacity:0!important;
+}
+
+.portrait-wrap.has-image-error,
+.gallery .lightbox-item.has-image-error{
+  background:
+    radial-gradient(circle at 50% 35%,rgba(217,205,237,.26),transparent 38%),
+    linear-gradient(145deg,#E9E0F0,#CFC0DF)!important;
+}
+
+.portrait-wrap.has-image-error::after,
+.gallery .lightbox-item.has-image-error::after{
+  content:"Photo";
+  position:absolute;
+  inset:0;
+  display:grid;
+  place-items:center;
+  color:rgba(75,56,88,.60);
+  font-family:var(--serif);
+  font-size:12px;
+  letter-spacing:2px;
+  text-transform:uppercase;
+}
+
+/* Keep lightbox visually safe until a real image source is assigned. */
+#lightboxImage:not([src]){
+  visibility:hidden!important;
+}
+
+/* Consistent map containment on GitHub/mobile browsers. */
+.map-frame-premium{
+  isolation:isolate;
+}
+
+.map-frame-premium iframe{
+  width:100%!important;
+  border:0!important;
+}
+
+/* Preserve final couple alignment from V42.3. */
+#couple .couple-card.visible.editorial-groom,
+#couple .couple-card.visible.editorial-bride{
+  transform:none!important;
+}
+
+#couple .editorial-groom .portrait-wrap,
+#couple .editorial-bride .portrait-wrap{
+  margin-top:0!important;
+  transform:none!important;
+}
+
+/* Backdrop-filter fallback for browsers that do not support it. */
+@supports not ((backdrop-filter:blur(1px)) or (-webkit-backdrop-filter:blur(1px))){
+  .couple-card,
+  .location-card-premium,
+  .video-invite-card{
+    background:rgba(248,244,251,.96)!important;
+  }
+}
+
+/* Dynamic mobile viewport safety. */
+@supports(height:100svh){
+  .hero,
+  .luxury-cover{
+    min-height:100svh;
+  }
+}
+
+@supports(height:100dvh){
+  .hero,
+  .luxury-cover{
+    min-height:100dvh;
+  }
+}
+
+@media(max-width:768px){
+  body{
+    overscroll-behavior-x:none;
+  }
+
+  .hero,
+  .section,
+  .couple-grid,
+  .location-card-premium,
+  .gallery-grid{
+    min-width:0;
+  }
+}
+
+/* Reduced motion users should never receive hidden content. */
+@media(prefers-reduced-motion:reduce){
+  .hero-script,
+  .hero-name-praveen,
+  .hero-name-kavya,
+  .hero-name-amp,
+  .hero-copy,
+  .hero-together-line,
+  .reveal,
+  .reveal-left,
+  .reveal-right{
+    opacity:1!important;
+    transform:none!important;
+    filter:none!important;
+    animation:none!important;
+    transition:none!important;
+  }
+}
