@@ -12445,3 +12445,46 @@ img.image-load-error{
     transition:none!important;
   }
 }
+
+
+/* =========================================================
+   V42.5 — DIRECT SAVE THE DATE
+========================================================= */
+
+#saveDateBtn,
+#saveDateCover,
+#revealCelebration{
+  display:none!important;
+}
+
+#eventsRevealShell,
+#eventsRevealShell.direct-dates-visible{
+  position:relative!important;
+  overflow:visible!important;
+}
+
+#eventsRevealShell .royal-date-content,
+#eventsRevealShell .royal-date-timeline,
+#eventsRevealShell .royal-date-item{
+  opacity:1!important;
+  visibility:visible!important;
+  transform:none!important;
+  filter:none!important;
+  pointer-events:auto!important;
+}
+
+.save-date-section .split-reveal-trigger,
+.save-date-section .save-date-trigger,
+.save-date-section .tap-reveal-copy{
+  display:none!important;
+}
+
+.save-date-section .royal-date-reveal{
+  min-height:auto!important;
+}
+
+@media(max-width:768px){
+  #eventsRevealShell{
+    margin-top:0!important;
+  }
+}

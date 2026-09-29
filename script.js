@@ -192,73 +192,6 @@
   }
 
   // -------------------------------------------------------
-  // SAVE THE DATE
-  // -------------------------------------------------------
-  const saveDateBtn = qs("#saveDateBtn");
-  const saveDateCover = qs("#saveDateCover");
-  const revealCelebration = qs("#revealCelebration");
-  const eventsRevealShell = qs("#eventsRevealShell");
-
-  function launchRevealCelebration() {
-    if (!revealCelebration || prefersReducedMotion) return;
-
-    revealCelebration.replaceChildren();
-    revealCelebration.classList.add("is-active");
-    eventsRevealShell?.classList.add("celebrate-flash");
-
-    for (let index = 0; index < 3; index += 1) {
-      const ring = document.createElement("span");
-      ring.className = "celebration-ring";
-      ring.style.setProperty("--ring-delay", `${index * 0.12}s`);
-      revealCelebration.appendChild(ring);
-    }
-
-    const colors = ["#D9CDED", "#B9A6D6", "#8067A0", "#F8F4FB", "#F1ECF7"];
-    const particleCount = window.innerWidth < 640 ? 28 : 46;
-
-    for (let index = 0; index < particleCount; index += 1) {
-      const piece = document.createElement("span");
-      piece.className = index % 6 === 0 ? "celebration-spark" : "celebration-piece";
-
-      const angle = (Math.PI * 2 * index) / particleCount + Math.random() * 0.18;
-      const distance = 120 + Math.random() * (window.innerWidth < 640 ? 105 : 190);
-      const size = 6 + Math.random() * 8;
-
-      piece.style.setProperty("--tx", `${(Math.cos(angle) * distance).toFixed(0)}px`);
-      piece.style.setProperty("--ty", `${(Math.sin(angle) * distance - 45).toFixed(0)}px`);
-      piece.style.setProperty("--rot", `${(Math.random() * 620 - 310).toFixed(0)}deg`);
-      piece.style.setProperty("--delay", `${(Math.random() * 0.08).toFixed(2)}s`);
-      piece.style.setProperty("--dur", `${(1.05 + Math.random() * 0.55).toFixed(2)}s`);
-      piece.style.setProperty("--bg", colors[Math.floor(Math.random() * colors.length)]);
-      piece.style.setProperty("--w", `${size}px`);
-      piece.style.setProperty("--h", `${Math.max(8, size * 1.7)}px`);
-
-      revealCelebration.appendChild(piece);
-    }
-
-    window.setTimeout(() => {
-      revealCelebration.classList.remove("is-active");
-      revealCelebration.replaceChildren();
-      eventsRevealShell?.classList.remove("celebrate-flash");
-    }, 1900);
-  }
-
-  if (saveDateBtn && saveDateCover) {
-    saveDateBtn.addEventListener("click", () => {
-      if (saveDateCover.classList.contains("open")) return;
-
-      saveDateCover.classList.add("open");
-      saveDateBtn.setAttribute("aria-expanded", "true");
-      eventsRevealShell?.classList.add("reveal-complete");
-      launchRevealCelebration();
-
-      window.setTimeout(() => {
-        eventsRevealShell?.classList.remove("reveal-complete");
-      }, 1800);
-    });
-  }
-
-  // -------------------------------------------------------
   // BRIEF OPENING PETALS
   // -------------------------------------------------------
   function launchOpeningPetals() {
@@ -459,10 +392,5 @@
 
   // Restore UI correctly after browser back/forward cache navigation.
   window.addEventListener("pageshow", requestScrollUIUpdate);
-
-  // Once dates are revealed, keep the control state unambiguous.
-  if (saveDateBtn && saveDateCover?.classList.contains("open")) {
-    saveDateBtn.setAttribute("aria-expanded", "true");
-  }
 
 })();
