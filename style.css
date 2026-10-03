@@ -12488,3 +12488,427 @@ img.image-load-error{
     margin-top:0!important;
   }
 }
+
+
+/* =========================================================
+   V42.6 — REFINED PREMIUM OPENING
+========================================================= */
+
+.opening-frame-shell{
+  width:min(660px,92vw)!important;
+  height:min(670px,85dvh)!important;
+  max-height:88dvh!important;
+}
+
+.opening-frame-shell > #invitationBox,
+.opening-frame-copy{
+  padding:34px 40px 26px!important;
+}
+
+.ganesha-opening-block{
+  width:min(500px,86%)!important;
+  margin:0 auto 18px!important;
+}
+
+.ganesha-emblem,
+.opening-frame-copy .ganesha-emblem{
+  width:72px!important;
+  height:72px!important;
+  margin:0 auto 9px!important;
+  color:#DDD2EC!important;
+  filter:
+    drop-shadow(0 0 10px rgba(205,190,230,.18))
+    drop-shadow(0 6px 16px rgba(185,166,214,.12))!important;
+}
+
+.ganesha-emblem path,
+.ganesha-emblem circle{
+  stroke-width:1.22!important;
+}
+
+.ganesha-emblem .ganesha-halo{
+  opacity:.34!important;
+  stroke-width:.9!important;
+}
+
+.ganesha-emblem .ganesha-base{
+  opacity:.55!important;
+  stroke-width:1!important;
+}
+
+.ganesha-blessing{
+  margin:0 0 12px!important;
+  color:rgba(223,211,237,.82)!important;
+  font-size:clamp(13px,2vw,16px)!important;
+  font-weight:500!important;
+  line-height:1.45!important;
+  letter-spacing:.08px!important;
+  text-shadow:0 3px 12px rgba(20,12,25,.16)!important;
+}
+
+.opening-couple-names{
+  margin:4px 0 0!important;
+  gap:18px!important;
+  font-size:clamp(40px,6vw,60px)!important;
+  line-height:1.04!important;
+  letter-spacing:-.03em!important;
+  text-shadow:
+    0 8px 28px rgba(20,12,25,.26),
+    0 0 18px rgba(185,166,214,.08)!important;
+  opacity:0;
+  transform:translateY(12px);
+  animation:v426OpeningNamesIn 1.05s .12s ease forwards;
+}
+
+.opening-couple-names i{
+  color:#CCBDDF!important;
+  font-size:.48em!important;
+}
+
+.opening-name-divider{
+  width:min(230px,68%)!important;
+  margin:18px auto 14px!important;
+  gap:10px!important;
+  color:#CCBDDF!important;
+}
+
+.opening-name-divider span{
+  height:1px!important;
+  opacity:.72!important;
+}
+
+.opening-name-divider i{
+  font-size:7px!important;
+  opacity:.9!important;
+}
+
+.opening-kannada-line{
+  margin:0 0 12px!important;
+  color:rgba(205,191,223,.90)!important;
+  font-size:clamp(14px,2.2vw,17px)!important;
+  font-weight:500!important;
+  line-height:1.45!important;
+}
+
+.ganesha-opening-block .welcome-message-premium{
+  max-width:410px!important;
+  color:rgba(248,244,251,.66)!important;
+  font-size:11.8px!important;
+  line-height:1.72!important;
+}
+
+#openInvitation,
+.opening-frame-copy .wax-seal{
+  margin-top:4px!important;
+  width:84px!important;
+  height:84px!important;
+  min-width:84px!important;
+  min-height:84px!important;
+  animation:v426SealPulse 1.9s ease-in-out infinite!important;
+  box-shadow:
+    0 12px 28px rgba(69,46,84,.22),
+    inset 0 1px 0 rgba(255,255,255,.18)!important;
+}
+
+.pk-monogram-opening{
+  width:70px!important;
+  height:70px!important;
+}
+
+#openInvitation::after{
+  inset:-6px!important;
+  animation:v426SealShimmer 1.95s ease-in-out infinite!important;
+}
+
+.cover-hint,
+#coverEnterHint{
+  margin-top:12px!important;
+  font-size:7.4px!important;
+  letter-spacing:2px!important;
+  color:rgba(232,224,241,.76)!important;
+}
+
+@keyframes v426OpeningNamesIn{
+  0%{
+    opacity:0;
+    transform:translateY(12px);
+    filter:blur(3px);
+  }
+  100%{
+    opacity:1;
+    transform:translateY(0);
+    filter:blur(0);
+  }
+}
+
+@keyframes v426SealPulse{
+  0%,100%{
+    transform:translateY(0) scale(1);
+  }
+  50%{
+    transform:translateY(-1px) scale(1.018);
+  }
+}
+
+@keyframes v426SealShimmer{
+  0%,100%{
+    border-color:rgba(217,205,237,0);
+    opacity:0;
+    transform:scale(.985);
+  }
+  48%{
+    border-color:rgba(217,205,237,.18);
+    opacity:.55;
+    transform:scale(1.03);
+  }
+  65%{
+    border-color:rgba(217,205,237,0);
+    opacity:0;
+    transform:scale(1.08);
+  }
+}
+
+@media(max-height:760px){
+  .opening-frame-shell{
+    height:86dvh!important;
+  }
+  .opening-frame-shell > #invitationBox,
+  .opening-frame-copy{
+    padding-top:28px!important;
+    padding-bottom:22px!important;
+  }
+  .ganesha-emblem,
+  .opening-frame-copy .ganesha-emblem{
+    width:64px!important;
+    height:64px!important;
+    margin-bottom:7px!important;
+  }
+  .ganesha-blessing{
+    margin-bottom:10px!important;
+  }
+  .opening-name-divider{
+    margin:14px auto 11px!important;
+  }
+  .opening-kannada-line{
+    margin-bottom:10px!important;
+  }
+  #openInvitation,
+  .opening-frame-copy .wax-seal{
+    width:78px!important;
+    height:78px!important;
+    min-width:78px!important;
+    min-height:78px!important;
+  }
+  .pk-monogram-opening{
+    width:64px!important;
+    height:64px!important;
+  }
+}
+
+@media(max-width:768px){
+  .opening-frame-shell{
+    width:min(92vw,520px)!important;
+    height:min(600px,84dvh)!important;
+    max-height:86dvh!important;
+  }
+
+  .opening-frame-shell > #invitationBox,
+  .opening-frame-copy{
+    padding:24px 20px 18px!important;
+  }
+
+  .ganesha-opening-block{
+    width:92%!important;
+    margin-bottom:14px!important;
+  }
+
+  .ganesha-emblem,
+  .opening-frame-copy .ganesha-emblem{
+    width:56px!important;
+    height:56px!important;
+    margin-bottom:6px!important;
+  }
+
+  .ganesha-blessing{
+    font-size:12.6px!important;
+    margin-bottom:8px!important;
+  }
+
+  .opening-couple-names{
+    gap:11px!important;
+    font-size:clamp(32px,8.8vw,44px)!important;
+    line-height:1.02!important;
+    margin-top:2px!important;
+  }
+
+  .opening-name-divider{
+    width:min(190px,70%)!important;
+    margin:12px auto 9px!important;
+  }
+
+  .opening-kannada-line{
+    font-size:12.8px!important;
+    margin-bottom:9px!important;
+  }
+
+  .ganesha-opening-block .welcome-message-premium{
+    max-width:310px!important;
+    font-size:10.4px!important;
+    line-height:1.56!important;
+  }
+
+  #openInvitation,
+  .opening-frame-copy .wax-seal{
+    width:72px!important;
+    height:72px!important;
+    min-width:72px!important;
+    min-height:72px!important;
+    margin-top:2px!important;
+  }
+
+  .pk-monogram-opening{
+    width:58px!important;
+    height:58px!important;
+  }
+
+  .cover-hint,
+  #coverEnterHint{
+    margin-top:9px!important;
+    font-size:6.8px!important;
+    letter-spacing:1.7px!important;
+  }
+}
+
+@media(max-width:430px){
+  .opening-frame-shell{
+    width:92vw!important;
+    height:min(575px,84dvh)!important;
+    max-height:85dvh!important;
+  }
+
+  .opening-frame-shell > #invitationBox,
+  .opening-frame-copy{
+    padding:20px 16px 15px!important;
+  }
+
+  .ganesha-emblem,
+  .opening-frame-copy .ganesha-emblem{
+    width:50px!important;
+    height:50px!important;
+    margin-bottom:5px!important;
+  }
+
+  .ganesha-blessing{
+    font-size:12px!important;
+    margin-bottom:7px!important;
+  }
+
+  .opening-couple-names{
+    font-size:clamp(28px,8.5vw,38px)!important;
+    gap:9px!important;
+  }
+
+  .opening-name-divider{
+    margin:10px auto 8px!important;
+  }
+
+  .opening-kannada-line{
+    font-size:12.2px!important;
+    margin-bottom:8px!important;
+  }
+
+  .ganesha-opening-block .welcome-message-premium{
+    max-width:275px!important;
+    font-size:9.9px!important;
+  }
+
+  #openInvitation,
+  .opening-frame-copy .wax-seal{
+    width:68px!important;
+    height:68px!important;
+    min-width:68px!important;
+    min-height:68px!important;
+  }
+
+  .pk-monogram-opening{
+    width:54px!important;
+    height:54px!important;
+  }
+}
+
+@media(max-height:670px) and (max-width:768px){
+  .opening-frame-shell{
+    height:88dvh!important;
+  }
+
+  .opening-frame-shell > #invitationBox,
+  .opening-frame-copy{
+    padding-top:16px!important;
+    padding-bottom:12px!important;
+  }
+
+  .ganesha-emblem,
+  .opening-frame-copy .ganesha-emblem{
+    width:45px!important;
+    height:45px!important;
+    margin-bottom:4px!important;
+  }
+
+  .ganesha-blessing{
+    font-size:11.5px!important;
+    margin-bottom:6px!important;
+  }
+
+  .opening-couple-names{
+    font-size:clamp(26px,7.8vw,34px)!important;
+    gap:7px!important;
+  }
+
+  .opening-name-divider{
+    margin:8px auto 6px!important;
+  }
+
+  .opening-kannada-line{
+    font-size:11.5px!important;
+    margin-bottom:6px!important;
+  }
+
+  .ganesha-opening-block .welcome-message-premium{
+    font-size:9.5px!important;
+    line-height:1.45!important;
+  }
+
+  #openInvitation,
+  .opening-frame-copy .wax-seal{
+    width:62px!important;
+    height:62px!important;
+    min-width:62px!important;
+    min-height:62px!important;
+  }
+
+  .pk-monogram-opening{
+    width:49px!important;
+    height:49px!important;
+  }
+
+  .cover-hint,
+  #coverEnterHint{
+    font-size:6.2px!important;
+    margin-top:7px!important;
+  }
+}
+
+@media(prefers-reduced-motion:reduce){
+  .opening-couple-names{
+    opacity:1!important;
+    transform:none!important;
+    filter:none!important;
+    animation:none!important;
+  }
+
+  #openInvitation,
+  .opening-frame-copy .wax-seal,
+  #openInvitation::after{
+    animation:none!important;
+  }
+}
