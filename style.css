@@ -12912,3 +12912,268 @@ img.image-load-error{
     animation:none!important;
   }
 }
+
+
+/* =========================================================
+   V42.6.1 — REFINED FOOTER CREDIT
+========================================================= */
+
+.footer-craft-credit{
+  position:relative;
+  z-index:2;
+  width:min(520px,92%);
+  margin:22px auto 8px;
+  padding-top:18px;
+  text-align:center;
+}
+
+.footer-craft-credit::before{
+  content:"";
+  display:block;
+  width:min(170px,44%);
+  height:1px;
+  margin:0 auto 15px;
+  background:linear-gradient(90deg,transparent,rgba(185,166,214,.38),transparent);
+}
+
+.footer-craft-line{
+  margin:0;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:9px;
+  color:rgba(241,236,247,.70);
+  font-family:var(--serif);
+  font-size:11px;
+  line-height:1.4;
+  letter-spacing:.55px;
+}
+
+.footer-craft-text strong{
+  color:#F8F4FB;
+  font-weight:600;
+  letter-spacing:.8px;
+}
+
+.footer-craft-star{
+  color:#B9A6D6;
+  font-size:7px;
+  opacity:.85;
+}
+
+.footer-socials{
+  margin-top:10px;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  gap:10px;
+}
+
+.footer-social-link{
+  width:28px;
+  height:28px;
+  display:grid;
+  place-items:center;
+  border-radius:50%;
+  border:1px solid rgba(185,166,214,.22);
+  color:rgba(217,205,237,.72);
+  background:rgba(255,255,255,.025);
+  text-decoration:none;
+  transition:transform .25s ease,color .25s ease,border-color .25s ease,background .25s ease;
+}
+
+.footer-social-link svg{
+  width:13px;
+  height:13px;
+  fill:currentColor;
+  stroke:currentColor;
+  stroke-width:1.35;
+}
+
+.footer-social-link:first-child svg{
+  stroke:none;
+}
+
+.footer-social-link:hover{
+  transform:translateY(-2px);
+  color:#F8F4FB;
+  border-color:rgba(217,205,237,.42);
+  background:rgba(185,166,214,.08);
+}
+
+@media(max-width:480px){
+  .footer-craft-credit{
+    margin-top:18px;
+    padding-top:15px;
+  }
+  .footer-craft-line{
+    gap:7px;
+    font-size:10px;
+    letter-spacing:.4px;
+  }
+  .footer-social-link{
+    width:27px;
+    height:27px;
+  }
+  .footer-social-link svg{
+    width:12px;
+    height:12px;
+  }
+}
+
+
+/* V42.6.2 — keep a single designer credit */
+.designer-credit,
+.footer-credit:not(.footer-craft-credit),
+.design-credit,
+.credit-line{
+  display:none!important;
+}
+
+
+/* =========================================================
+   V42.6.4 — COMPACT COLOR FOOTER
+========================================================= */
+
+.footer-craft-credit{
+  width:auto!important;
+  margin:14px auto 4px!important;
+  padding:0!important;
+  text-align:center!important;
+}
+
+.footer-craft-credit::before{
+  display:none!important;
+}
+
+.footer-compact-row{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:10px;
+  flex-wrap:wrap;
+}
+
+.footer-compact-credit{
+  margin:0!important;
+  color:rgba(241,236,247,.64)!important;
+  font-family:var(--serif)!important;
+  font-size:9.5px!important;
+  line-height:1.2!important;
+  letter-spacing:.35px!important;
+  white-space:nowrap;
+}
+
+.footer-compact-credit strong{
+  color:#F8F4FB!important;
+  font-weight:600!important;
+  letter-spacing:.5px!important;
+}
+
+.footer-socials-compact{
+  display:flex!important;
+  align-items:center!important;
+  justify-content:center!important;
+  gap:6px!important;
+  margin:0!important;
+}
+
+.footer-socials-compact .footer-social-link{
+  width:22px!important;
+  height:22px!important;
+  display:grid!important;
+  place-items:center!important;
+  border-radius:50%!important;
+  padding:0!important;
+  border:0!important;
+  box-shadow:none!important;
+  transition:transform .2s ease,opacity .2s ease!important;
+}
+
+.footer-socials-compact .footer-social-link svg{
+  width:13px!important;
+  height:13px!important;
+  display:block!important;
+}
+
+.footer-socials-compact .footer-github{
+  background:#FFFFFF!important;
+}
+
+.footer-socials-compact .footer-github svg{
+  fill:#181717!important;
+  stroke:none!important;
+}
+
+.footer-socials-compact .footer-instagram{
+  background:transparent!important;
+}
+
+.footer-socials-compact .footer-instagram svg{
+  fill:none!important;
+}
+
+.footer-socials-compact .footer-social-link:hover{
+  transform:translateY(-1px) scale(1.05)!important;
+  opacity:.95!important;
+  background:inherit!important;
+}
+
+@media(max-width:480px){
+  .footer-craft-credit{
+    margin-top:12px!important;
+  }
+
+  .footer-compact-row{
+    gap:8px!important;
+  }
+
+  .footer-compact-credit{
+    font-size:9px!important;
+  }
+
+  .footer-socials-compact .footer-social-link{
+    width:21px!important;
+    height:21px!important;
+  }
+
+  .footer-socials-compact .footer-social-link svg{
+    width:12px!important;
+    height:12px!important;
+  }
+}
+
+
+/* =========================================================
+   V42.6.5 — LARGER CREDIT + GOLD STARS
+========================================================= */
+
+.footer-compact-credit{
+  font-size:11.5px!important;
+  line-height:1.3!important;
+  letter-spacing:.42px!important;
+  color:rgba(241,236,247,.72)!important;
+}
+
+.footer-credit-copy strong{
+  color:#F8F4FB!important;
+  font-weight:700!important;
+  letter-spacing:.55px!important;
+}
+
+.footer-credit-star-gold{
+  color:#D6B56A!important;
+  font-size:10px!important;
+  line-height:1!important;
+  text-shadow:0 0 8px rgba(214,181,106,.24);
+}
+
+@media(max-width:480px){
+  .footer-compact-credit{
+    font-size:10.5px!important;
+  }
+
+  .footer-credit-star-gold{
+    font-size:9px!important;
+  }
+}
