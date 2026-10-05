@@ -13177,3 +13177,308 @@ img.image-load-error{
     font-size:9px!important;
   }
 }
+
+
+/* =========================================================
+   V42.6.6 — EXPERIENCE POLISH
+   Consistent reveals, compact navigation, cleaner venues
+========================================================= */
+
+/* ---------------------------------------------------------
+   1. ONE CONSISTENT, SUBTLE REVEAL LANGUAGE
+--------------------------------------------------------- */
+.reveal,
+.reveal-left,
+.reveal-right{
+  opacity:0!important;
+  transform:translate3d(0,16px,0)!important;
+  filter:none!important;
+  transition:
+    opacity .62s cubic-bezier(.2,.7,.2,1),
+    transform .62s cubic-bezier(.2,.7,.2,1)!important;
+  transition-delay:0s!important;
+}
+
+.reveal.visible,
+.reveal-left.visible,
+.reveal-right.visible{
+  opacity:1!important;
+  transform:translate3d(0,0,0)!important;
+  filter:none!important;
+}
+
+/* Prevent old editorial transforms from changing the reveal direction */
+#couple .couple-card.visible.editorial-groom,
+#couple .couple-card.visible.editorial-bride{
+  transform:none!important;
+}
+
+/* ---------------------------------------------------------
+   2. SMALL STICKY NAV AFTER THE OPENING
+--------------------------------------------------------- */
+#siteHeader.mini-site-header{
+  position:fixed!important;
+  top:12px!important;
+  left:50%!important;
+  right:auto!important;
+  width:min(620px,calc(100% - 32px))!important;
+  min-height:48px!important;
+  padding:7px 10px 7px 14px!important;
+  transform:translate(-50%,-12px)!important;
+  opacity:0!important;
+  visibility:hidden!important;
+  pointer-events:none!important;
+  border:1px solid rgba(185,166,214,.18)!important;
+  border-radius:999px!important;
+  background:rgba(43,30,53,.72)!important;
+  box-shadow:
+    0 12px 32px rgba(22,14,28,.12),
+    inset 0 1px 0 rgba(255,255,255,.045)!important;
+  backdrop-filter:blur(16px)!important;
+  -webkit-backdrop-filter:blur(16px)!important;
+  transition:
+    opacity .35s ease,
+    transform .35s ease,
+    background .25s ease,
+    border-color .25s ease!important;
+}
+
+body.opening-complete #siteHeader.mini-site-header{
+  opacity:1!important;
+  visibility:visible!important;
+  pointer-events:auto!important;
+  transform:translate(-50%,0)!important;
+}
+
+#siteHeader.mini-site-header.scrolled{
+  background:rgba(43,30,53,.88)!important;
+  border-color:rgba(185,166,214,.24)!important;
+}
+
+#siteHeader.mini-site-header .site-logo{
+  flex:0 0 auto!important;
+  color:#F8F4FB!important;
+  font-size:12px!important;
+  letter-spacing:2.2px!important;
+  text-decoration:none!important;
+}
+
+#siteHeader.mini-site-header .site-logo span{
+  color:#D6B56A!important;
+  font-size:7px!important;
+}
+
+#siteHeader.mini-site-header .site-nav{
+  margin-left:auto!important;
+  display:flex!important;
+  align-items:center!important;
+  gap:4px!important;
+}
+
+#siteHeader.mini-site-header .site-nav a{
+  padding:8px 11px!important;
+  border-radius:999px!important;
+  color:rgba(248,244,251,.72)!important;
+  font-size:8px!important;
+  line-height:1!important;
+  letter-spacing:1.35px!important;
+  text-transform:uppercase!important;
+  text-decoration:none!important;
+  transition:color .22s ease,background .22s ease!important;
+}
+
+#siteHeader.mini-site-header .site-nav a:hover{
+  color:#F8F4FB!important;
+  background:rgba(185,166,214,.09)!important;
+}
+
+#siteHeader.mini-site-header .menu-btn{
+  display:none!important;
+}
+
+/* Avoid anchor targets sitting underneath the fixed nav */
+#couple,
+#events,
+#gallery,
+#venue,
+#beegara-oota{
+  scroll-margin-top:78px;
+}
+
+/* ---------------------------------------------------------
+   3. VENUES — CLEANER, LESS INFORMATION NOISE
+--------------------------------------------------------- */
+#venue .clean-venue-card,
+#beegara-oota .clean-venue-card{
+  width:min(920px,90%)!important;
+  max-width:920px!important;
+}
+
+#venue .clean-venue-card .location-details,
+#beegara-oota .clean-venue-card .location-details{
+  padding:24px 28px 22px!important;
+}
+
+#venue .clean-venue-card .location-details h3,
+#beegara-oota .clean-venue-card .location-details h3{
+  margin:0 0 12px!important;
+  font-size:clamp(25px,2.7vw,34px)!important;
+  line-height:1.08!important;
+}
+
+#venue .clean-venue-card .venue-building-photo,
+#beegara-oota .clean-venue-card .venue-building-photo{
+  margin:0 0 13px!important;
+}
+
+#venue .clean-venue-card .venue-building-photo img,
+#beegara-oota .clean-venue-card .venue-building-photo img{
+  aspect-ratio:16 / 6.7!important;
+}
+
+#venue .clean-venue-card .location-address,
+#beegara-oota .clean-venue-card .location-address{
+  margin-top:0!important;
+  max-width:100%!important;
+  font-size:13px!important;
+  line-height:1.55!important;
+}
+
+#venue .clean-venue-card .venue-actions,
+#beegara-oota .clean-venue-card .venue-actions{
+  margin-top:14px!important;
+}
+
+#venue .clean-venue-card .direction-btn,
+#beegara-oota .clean-venue-card .direction-btn{
+  min-height:40px!important;
+  padding:9px 16px!important;
+}
+
+#venue .clean-venue-card .map-frame-premium,
+#venue .clean-venue-card .map-frame-premium iframe,
+#beegara-oota .clean-venue-card .map-frame-premium,
+#beegara-oota .clean-venue-card .map-frame-premium iframe{
+  min-height:245px!important;
+}
+
+/* ---------------------------------------------------------
+   4. CLOSING FAMILY LINE
+--------------------------------------------------------- */
+.closing-families{
+  margin:7px 0 0!important;
+  color:rgba(107,85,126,.78)!important;
+  font-family:var(--serif)!important;
+  font-size:11px!important;
+  font-style:italic!important;
+  line-height:1.3!important;
+  letter-spacing:.9px!important;
+}
+
+/* ---------------------------------------------------------
+   MOBILE
+--------------------------------------------------------- */
+@media(max-width:768px){
+  #siteHeader.mini-site-header{
+    top:9px!important;
+    width:calc(100% - 22px)!important;
+    min-height:44px!important;
+    padding:6px 8px 6px 12px!important;
+    border-radius:18px!important;
+  }
+
+  #siteHeader.mini-site-header .menu-btn{
+    display:flex!important;
+    width:32px!important;
+    height:32px!important;
+    margin-left:auto!important;
+    flex:0 0 auto!important;
+  }
+
+  #siteHeader.mini-site-header .site-nav{
+    position:absolute!important;
+    top:calc(100% + 7px)!important;
+    left:0!important;
+    right:0!important;
+    margin:0!important;
+    padding:7px!important;
+    display:grid!important;
+    grid-template-columns:repeat(2,1fr)!important;
+    gap:5px!important;
+    border:1px solid rgba(185,166,214,.18)!important;
+    border-radius:16px!important;
+    background:rgba(43,30,53,.94)!important;
+    box-shadow:0 14px 34px rgba(22,14,28,.18)!important;
+    backdrop-filter:blur(16px)!important;
+    -webkit-backdrop-filter:blur(16px)!important;
+    opacity:0!important;
+    visibility:hidden!important;
+    transform:translateY(-6px)!important;
+    pointer-events:none!important;
+    transition:opacity .22s ease,transform .22s ease,visibility .22s ease!important;
+  }
+
+  #siteHeader.mini-site-header .site-nav.open{
+    opacity:1!important;
+    visibility:visible!important;
+    transform:translateY(0)!important;
+    pointer-events:auto!important;
+  }
+
+  #siteHeader.mini-site-header .site-nav a{
+    padding:11px 8px!important;
+    text-align:center!important;
+    font-size:7.5px!important;
+    background:rgba(255,255,255,.025)!important;
+  }
+
+  #venue .clean-venue-card,
+  #beegara-oota .clean-venue-card{
+    width:92%!important;
+  }
+
+  #venue .clean-venue-card .location-details,
+  #beegara-oota .clean-venue-card .location-details{
+    padding:20px 18px 17px!important;
+  }
+
+  #venue .clean-venue-card .venue-building-photo img,
+  #beegara-oota .clean-venue-card .venue-building-photo img{
+    aspect-ratio:16 / 7.5!important;
+  }
+
+  #venue .clean-venue-card .map-frame-premium,
+  #venue .clean-venue-card .map-frame-premium iframe,
+  #beegara-oota .clean-venue-card .map-frame-premium,
+  #beegara-oota .clean-venue-card .map-frame-premium iframe{
+    min-height:185px!important;
+  }
+
+  .closing-families{
+    margin-top:6px!important;
+    font-size:10px!important;
+  }
+}
+
+@media(max-width:430px){
+  #siteHeader.mini-site-header{
+    width:calc(100% - 16px)!important;
+  }
+
+  #venue .clean-venue-card .map-frame-premium,
+  #venue .clean-venue-card .map-frame-premium iframe,
+  #beegara-oota .clean-venue-card .map-frame-premium,
+  #beegara-oota .clean-venue-card .map-frame-premium iframe{
+    min-height:170px!important;
+  }
+}
+
+@media(prefers-reduced-motion:reduce){
+  .reveal,
+  .reveal-left,
+  .reveal-right,
+  #siteHeader.mini-site-header,
+  #siteHeader.mini-site-header .site-nav{
+    transition:none!important;
+  }
+}
