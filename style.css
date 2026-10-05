@@ -13482,3 +13482,414 @@ body.opening-complete #siteHeader.mini-site-header{
     transition:none!important;
   }
 }
+
+
+/* =========================================================
+   V42.6.7 — GROUPED CLOSING NAMES
+========================================================= */
+
+.closing-name-group{
+  margin-top:24px!important;
+  display:flex!important;
+  flex-direction:column!important;
+  align-items:center!important;
+  justify-content:center!important;
+  gap:5px!important;
+}
+
+.closing-name-group .closing-couple-name{
+  margin:0!important;
+}
+
+.closing-families-inline{
+  display:block!important;
+  margin:0!important;
+  color:rgba(107,85,126,.74)!important;
+  font-family:var(--serif)!important;
+  font-size:10.5px!important;
+  font-style:italic!important;
+  line-height:1.2!important;
+  letter-spacing:.8px!important;
+}
+
+@media(max-width:480px){
+  .closing-name-group{
+    margin-top:20px!important;
+    gap:4px!important;
+  }
+
+  .closing-families-inline{
+    font-size:9.8px!important;
+  }
+}
+
+
+/* V42.6.8 — closing family line color */
+.closing-families-inline{
+  color:#FFFFFF!important;
+}
+
+
+/* =========================================================
+   V42.6.10 — MASTER PREMIUM THEME + PERFORMANCE LAYER
+   Final authoritative palette:
+   Deep Plum      #2B1E35
+   Dark Plum      #3A2848
+   Rich Lavender  #5E4673
+   Royal Lavender #8067A0
+   Soft Lavender  #B9A6D6
+   Light Lavender #D9CDED
+   Lavender Mist  #F1ECF7
+   Pale Lavender  #F8F4FB
+   Warm Gold      #D6B56A  (accent only)
+========================================================= */
+
+:root{
+  --v4210-deep:#2B1E35;
+  --v4210-dark:#3A2848;
+  --v4210-rich:#5E4673;
+  --v4210-royal:#8067A0;
+  --v4210-soft:#B9A6D6;
+  --v4210-light:#D9CDED;
+  --v4210-mist:#F1ECF7;
+  --v4210-pale:#F8F4FB;
+  --v4210-white:#FFFFFF;
+  --v4210-gold:#D6B56A;
+  --v4210-text:#51455A;
+  --v4210-muted:#7B6F83;
+  --v4210-border:rgba(128,103,160,.16);
+  --v4210-shadow:0 18px 48px rgba(43,30,53,.09);
+}
+
+html{
+  scroll-behavior:smooth;
+  background:var(--v4210-pale);
+}
+
+body{
+  background:var(--v4210-pale)!important;
+  color:var(--v4210-text)!important;
+  text-rendering:optimizeLegibility;
+  -webkit-font-smoothing:antialiased;
+}
+
+/* ---------- Consistent section palette ---------- */
+#video-invite,
+#events,
+#gallery,
+#beegara-oota{
+  background:
+    radial-gradient(circle at 88% 8%,rgba(185,166,214,.09),transparent 24%),
+    var(--v4210-pale)!important;
+}
+
+#couple,
+#countdown,
+#venue{
+  background:
+    radial-gradient(circle at 10% 12%,rgba(128,103,160,.075),transparent 24%),
+    var(--v4210-mist)!important;
+}
+
+/* ---------- Unified headings ---------- */
+.section-head .eyebrow{
+  color:var(--v4210-royal)!important;
+}
+
+.section-head h2{
+  color:var(--v4210-dark)!important;
+}
+
+.head-ornament,
+.luxury-section-separator i,
+.footer-credit-star-gold{
+  color:var(--v4210-gold)!important;
+}
+
+.luxury-section-separator span{
+  background:linear-gradient(90deg,transparent,rgba(128,103,160,.22),transparent)!important;
+}
+
+/* ---------- One consistent premium card language ---------- */
+.video-invite-card,
+.couple-card,
+.location-card-premium,
+.count-card{
+  border:1px solid var(--v4210-border)!important;
+  background:
+    linear-gradient(145deg,rgba(255,255,255,.90),rgba(241,236,247,.80))!important;
+  box-shadow:var(--v4210-shadow)!important;
+}
+
+.couple-card h3,
+.location-card-premium .location-details h3{
+  color:var(--v4210-dark)!important;
+}
+
+.couple-card .role,
+.location-label,
+.venue-premium-label{
+  color:var(--v4210-royal)!important;
+}
+
+.couple-card p,
+.location-address,
+.video-intro-copy{
+  color:var(--v4210-muted)!important;
+}
+
+/* ---------- Direct event cards ---------- */
+.royal-date-item{
+  border-color:rgba(128,103,160,.15)!important;
+  background:
+    linear-gradient(145deg,rgba(255,255,255,.80),rgba(241,236,247,.65))!important;
+  box-shadow:0 16px 40px rgba(43,30,53,.07)!important;
+}
+
+.royal-date-number{
+  color:var(--v4210-rich)!important;
+}
+
+.royal-date-month,
+.royal-date-title{
+  color:var(--v4210-royal)!important;
+}
+
+/* ---------- Countdown ---------- */
+.countdown-section-refined .count-card{
+  background:rgba(255,255,255,.68)!important;
+  border-color:rgba(128,103,160,.14)!important;
+}
+
+.count-card span{
+  color:var(--v4210-rich)!important;
+}
+
+.count-card small{
+  color:var(--v4210-royal)!important;
+}
+
+/* ---------- Gallery ---------- */
+.gallery-grid > *,
+.lightbox-item{
+  border-color:rgba(128,103,160,.14)!important;
+  box-shadow:0 14px 34px rgba(43,30,53,.08)!important;
+}
+
+/* ---------- Buttons ---------- */
+.direction-btn{
+  color:#FFF!important;
+  background:linear-gradient(145deg,var(--v4210-rich),var(--v4210-deep))!important;
+  border-color:rgba(217,205,237,.22)!important;
+  box-shadow:0 10px 24px rgba(43,30,53,.14)!important;
+}
+
+.direction-btn i,
+.direction-pin{
+  color:var(--v4210-light)!important;
+}
+
+@media(hover:hover){
+  .direction-btn:hover{
+    background:linear-gradient(145deg,#72598A,var(--v4210-dark))!important;
+    box-shadow:0 14px 30px rgba(43,30,53,.17)!important;
+  }
+}
+
+/* ---------- Compact sticky navigation ---------- */
+#siteHeader.mini-site-header{
+  background:rgba(43,30,53,.76)!important;
+  border-color:rgba(217,205,237,.16)!important;
+  box-shadow:0 10px 28px rgba(22,14,28,.12)!important;
+}
+
+#siteHeader.mini-site-header.scrolled{
+  background:rgba(43,30,53,.92)!important;
+}
+
+#siteHeader .site-logo span{
+  color:var(--v4210-gold)!important;
+}
+
+#siteHeader .mini-nav-link{
+  color:rgba(248,244,251,.72)!important;
+}
+
+#siteHeader .mini-nav-link:hover,
+#siteHeader .mini-nav-link.is-active{
+  color:#FFF!important;
+  background:rgba(185,166,214,.10)!important;
+}
+
+#siteHeader .mini-nav-link.is-active::after{
+  content:"";
+  display:block;
+  width:3px;
+  height:3px;
+  margin:4px auto -2px;
+  border-radius:50%;
+  background:var(--v4210-gold);
+  box-shadow:0 0 8px rgba(214,181,106,.32);
+}
+
+/* ---------- Venue polish ---------- */
+#venue .clean-venue-card,
+#beegara-oota .clean-venue-card{
+  border-radius:20px!important;
+  overflow:hidden!important;
+}
+
+#venue .venue-building-photo,
+#beegara-oota .venue-building-photo{
+  border-color:rgba(128,103,160,.13)!important;
+  box-shadow:0 12px 28px rgba(43,30,53,.07)!important;
+}
+
+.map-frame-premium{
+  background:#E7DFEE!important;
+}
+
+/* ---------- Closing ---------- */
+.closing{
+  background:
+    radial-gradient(circle at 50% 30%,rgba(128,103,160,.20),transparent 38%),
+    linear-gradient(180deg,#3A2848 0%,#2B1E35 58%,#221829 100%)!important;
+}
+
+.closing-kicker{
+  color:var(--v4210-gold)!important;
+}
+
+.closing h2,
+.closing-couple-name{
+  color:#FFF!important;
+}
+
+.closing-message-block > p{
+  color:rgba(248,244,251,.78)!important;
+}
+
+.closing-message-block strong{
+  color:#FFF!important;
+}
+
+.closing-message-kannada{
+  color:rgba(241,236,247,.82)!important;
+}
+
+.closing-kannada,
+.closing-kannada-emphasis{
+  color:#FFF!important;
+}
+
+.closing-divider i{
+  color:var(--v4210-gold)!important;
+}
+
+/* ---------- Footer credit ---------- */
+.footer-compact-credit{
+  color:rgba(241,236,247,.72)!important;
+}
+.footer-compact-credit strong{
+  color:#FFF!important;
+}
+
+/* =========================================================
+   PERFORMANCE / STABILITY
+========================================================= */
+
+/* Skip layout/paint work for below-fold sections until needed. */
+#video-invite,
+#couple,
+#events,
+#countdown,
+#gallery,
+#venue,
+#beegara-oota,
+.closing{
+  content-visibility:auto;
+  contain-intrinsic-size:800px;
+}
+
+/* Reduce expensive rendering work inside cards. */
+.couple-card,
+.location-card-premium,
+.video-invite-card,
+.gallery-grid > *{
+  contain:paint;
+}
+
+/* Stable media blocks reduce layout shift. */
+.portrait-wrap{
+  aspect-ratio:4 / 5;
+  overflow:hidden;
+}
+
+.portrait-wrap img,
+.gallery-grid img,
+.venue-building-photo img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+}
+
+.wedding-video{
+  background:var(--v4210-deep);
+}
+
+/* Keep transforms lightweight and predictable. */
+.reveal,
+.reveal-left,
+.reveal-right{
+  will-change:auto!important;
+}
+
+/* Avoid high-cost decorative layers on phones. */
+@media(max-width:768px){
+  .parallax-floral,
+  .floating-florals{
+    display:none!important;
+  }
+
+  .couple-card,
+  .location-card-premium,
+  .video-invite-card,
+  .count-card{
+    backdrop-filter:none!important;
+    -webkit-backdrop-filter:none!important;
+  }
+
+  .couple-card,
+  .location-card-premium,
+  .video-invite-card{
+    box-shadow:0 12px 30px rgba(43,30,53,.08)!important;
+  }
+
+  .gallery-grid > *{
+    box-shadow:0 8px 20px rgba(43,30,53,.07)!important;
+  }
+
+  /* Shorter maps for faster-feeling mobile scroll. */
+  #venue .map-frame-premium,
+  #venue .map-frame-premium iframe,
+  #beegara-oota .map-frame-premium,
+  #beegara-oota .map-frame-premium iframe{
+    min-height:165px!important;
+  }
+}
+
+/* Low-motion preference: no decorative movement at all. */
+@media(prefers-reduced-motion:reduce){
+  html{
+    scroll-behavior:auto;
+  }
+
+  *,
+  *::before,
+  *::after{
+    animation-duration:.001ms!important;
+    animation-iteration-count:1!important;
+    transition-duration:.001ms!important;
+    scroll-behavior:auto!important;
+  }
+}

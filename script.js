@@ -393,4 +393,42 @@
   // Restore UI correctly after browser back/forward cache navigation.
   window.addEventListener("pageshow", requestScrollUIUpdate);
 
+  // -------------------------------------------------------
+  // MINI NAV ACTIVE SECTION
+  // -------------------------------------------------------
+  const miniNavLinks = qsa("#siteNav .mini-nav-link");
+  const miniNavTargets = miniNavLinks
+    .map(link => {
+      const selector = link.getAttribute("href");
+      return selector && selector.startsWith("#")
+        ? document.querySelector(selector)
+        : null;
+    })
+    .filter(Boolean);
+
+  if ("IntersectionObserver" in window && miniNavTargets.length) {
+    const navObserver = new IntersectionObserver(
+      entries => {
+        const visible = entries
+          .filter(entry => entry.isIntersecting)
+          .sort((a, b) => b.intersectionRatio - a.intersectionRatio)[0];
+
+        if (!visible) return;
+
+        miniNavLinks.forEach(link => {
+          const active = link.getAttribute("href") === `#${visible.target.id}`;
+          link.classList.toggle("is-active", active);
+          if (active) link.setAttribute("aria-current", "location");
+          else link.removeAttribute("aria-current");
+        });
+      },
+      {
+        rootMargin: "-28% 0px -58% 0px",
+        threshold: [0.02, 0.15, 0.35]
+      }
+    );
+
+    miniNavTargets.forEach(section => navObserver.observe(section));
+  }
+
 })();
