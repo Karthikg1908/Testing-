@@ -1,0 +1,18 @@
+Praveen & Kavya Wedding Invitation — V42.6.16
+
+[PASS] index uses style.css
+[PASS] index uses script.js
+[PASS] loading screen
+[PASS] OG preview metadata
+[PASS] Twitter preview metadata
+[PASS] favicon svg
+[PASS] favicon png
+[PASS] apple touch icon
+[PASS] og preview exists
+[PASS] favicon file exists
+[PASS] fade function
+[PASS] video fade sync
+[PASS] OG size 1200x630
+[PASS] no duplicate IDs
+[PASS] local assets
+[PASS] JavaScript syntax

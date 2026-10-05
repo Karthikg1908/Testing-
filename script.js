@@ -12,6 +12,7 @@
   const menuBtn = qs("#menuBtn");
   const backToTop = qs("#backToTop");
   const petalLayer = qs("#petalLayer");
+  const pageLoader = qs("#pageLoader");
   const backgroundMusic = qs("#backgroundMusic");
   const musicToggle = qs("#musicToggle");
   const videoInviteSection = qs("#video-invite");
@@ -20,14 +21,39 @@
   const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
   // -------------------------------------------------------
-  // BACKGROUND MUSIC
-  // Starts only from the invitation-seal user gesture.
-  // Pauses for the Video Invitation and resumes afterwards.
+  // LIGHTWEIGHT PAGE LOADER
   // -------------------------------------------------------
+  function dismissPageLoader() {
+    if (!pageLoader || pageLoader.classList.contains("is-ready")) return;
+    pageLoader.classList.add("is-ready");
+    window.setTimeout(() => pageLoader.remove(), prefersReducedMotion ? 0 : 520);
+  }
+
+  const loaderSafetyTimer = window.setTimeout(dismissPageLoader, 1800);
+
+  Promise.race([
+    document.fonts?.ready || Promise.resolve(),
+    new Promise(resolve => window.setTimeout(resolve, 1000))
+  ]).then(() => {
+    window.clearTimeout(loaderSafetyTimer);
+    window.setTimeout(dismissPageLoader, 180);
+  });
+
+
+  // -------------------------------------------------------
+  // BACKGROUND MUSIC
+  // Starts from the seal click, fades around Video Invitation,
+  // and resumes after the video ends or the guest scrolls away.
+  // -------------------------------------------------------
+  const MUSIC_VOLUME = 0.28;
+  const MUSIC_FADE_MS = prefersReducedMotion ? 0 : 720;
+
   let musicEnabled = true;
   let musicUnlocked = false;
   let videoSectionActive = false;
   let videoPlaybackCompleted = false;
+  let musicFadeFrame = 0;
+  let musicFadeToken = 0;
 
   function refreshMusicButton() {
     if (!musicToggle || !backgroundMusic) return;
@@ -43,6 +69,49 @@
     musicToggle.title = musicEnabled ? "Mute background music" : "Play background music";
   }
 
+  function cancelMusicFade() {
+    musicFadeToken += 1;
+    if (musicFadeFrame) cancelAnimationFrame(musicFadeFrame);
+    musicFadeFrame = 0;
+  }
+
+  function fadeMusicTo(targetVolume, duration = MUSIC_FADE_MS, onComplete) {
+    if (!backgroundMusic) return;
+
+    cancelMusicFade();
+    const token = musicFadeToken;
+    const startVolume = backgroundMusic.volume;
+    const target = Math.max(0, Math.min(1, targetVolume));
+
+    if (duration <= 0 || Math.abs(startVolume - target) < 0.005) {
+      backgroundMusic.volume = target;
+      onComplete?.();
+      refreshMusicButton();
+      return;
+    }
+
+    const startedAt = performance.now();
+
+    const step = now => {
+      if (token !== musicFadeToken) return;
+
+      const progress = Math.min(1, (now - startedAt) / duration);
+      const eased = 1 - Math.pow(1 - progress, 3);
+      backgroundMusic.volume = startVolume + (target - startVolume) * eased;
+
+      if (progress < 1) {
+        musicFadeFrame = requestAnimationFrame(step);
+      } else {
+        musicFadeFrame = 0;
+        backgroundMusic.volume = target;
+        onComplete?.();
+        refreshMusicButton();
+      }
+    };
+
+    musicFadeFrame = requestAnimationFrame(step);
+  }
+
   function shouldBackgroundMusicPlay() {
     if (!backgroundMusic || !musicUnlocked || !musicEnabled || document.hidden) {
       return false;
@@ -53,34 +122,53 @@
       !weddingVideo.paused &&
       !weddingVideo.ended;
 
-    // When the video section first comes into view, music pauses.
-    // Once the video has ended, music may resume even before the guest
-    // has completely scrolled out of the section.
     if (videoCurrentlyPlaying) return false;
     if (videoSectionActive && !videoPlaybackCompleted) return false;
 
     return true;
   }
 
-  function syncBackgroundMusic() {
-    if (!backgroundMusic) return;
-
-    if (!shouldBackgroundMusicPlay()) {
-      if (!backgroundMusic.paused) backgroundMusic.pause();
+  function fadeOutAndPauseMusic() {
+    if (!backgroundMusic || backgroundMusic.paused) {
       refreshMusicButton();
       return;
     }
 
-    const playPromise = backgroundMusic.play();
-    if (playPromise && typeof playPromise.catch === "function") {
-      playPromise
-        .then(refreshMusicButton)
-        .catch(() => {
-          // Some browsers may still require a second direct user gesture.
-          refreshMusicButton();
-        });
-    } else {
+    fadeMusicTo(0, MUSIC_FADE_MS, () => {
+      backgroundMusic.pause();
+      backgroundMusic.volume = 0;
       refreshMusicButton();
+    });
+  }
+
+  function fadeInBackgroundMusic() {
+    if (!backgroundMusic || !shouldBackgroundMusicPlay()) return;
+
+    cancelMusicFade();
+    backgroundMusic.volume = 0;
+
+    const playPromise = backgroundMusic.play();
+    if (playPromise && typeof playPromise.then === "function") {
+      playPromise
+        .then(() => fadeMusicTo(MUSIC_VOLUME))
+        .catch(refreshMusicButton);
+    } else {
+      fadeMusicTo(MUSIC_VOLUME);
+    }
+  }
+
+  function syncBackgroundMusic() {
+    if (!backgroundMusic) return;
+
+    if (!shouldBackgroundMusicPlay()) {
+      fadeOutAndPauseMusic();
+      return;
+    }
+
+    if (backgroundMusic.paused) {
+      fadeInBackgroundMusic();
+    } else {
+      fadeMusicTo(MUSIC_VOLUME);
     }
   }
 
@@ -88,17 +176,15 @@
     if (!backgroundMusic) return;
 
     musicUnlocked = true;
-    backgroundMusic.volume = 0.28;
+    backgroundMusic.volume = 0;
 
-    // Called directly from the seal click so mobile browsers treat
-    // playback as user-initiated.
     const playPromise = backgroundMusic.play();
-    if (playPromise && typeof playPromise.catch === "function") {
+    if (playPromise && typeof playPromise.then === "function") {
       playPromise
-        .then(refreshMusicButton)
+        .then(() => fadeMusicTo(MUSIC_VOLUME, prefersReducedMotion ? 0 : 900))
         .catch(refreshMusicButton);
     } else {
-      refreshMusicButton();
+      fadeMusicTo(MUSIC_VOLUME, prefersReducedMotion ? 0 : 900);
     }
   }
 
@@ -110,9 +196,11 @@
         musicUnlocked = true;
         syncBackgroundMusic();
       } else {
-        backgroundMusic.pause();
-        refreshMusicButton();
+        cancelMusicFade();
+        fadeOutAndPauseMusic();
       }
+
+      refreshMusicButton();
     });
 
     backgroundMusic.addEventListener("play", refreshMusicButton);
@@ -152,8 +240,6 @@
     });
 
     weddingVideo.addEventListener("pause", () => {
-      // If the guest pauses the invite while still in the video section,
-      // keep background music quiet so the two audio sources never compete.
       syncBackgroundMusic();
     });
   }
