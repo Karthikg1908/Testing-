@@ -12,8 +12,153 @@
   const menuBtn = qs("#menuBtn");
   const backToTop = qs("#backToTop");
   const petalLayer = qs("#petalLayer");
+  const backgroundMusic = qs("#backgroundMusic");
+  const musicToggle = qs("#musicToggle");
+  const videoInviteSection = qs("#video-invite");
+  const weddingVideo = qs(".wedding-video");
 
   const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+  // -------------------------------------------------------
+  // BACKGROUND MUSIC
+  // Starts only from the invitation-seal user gesture.
+  // Pauses for the Video Invitation and resumes afterwards.
+  // -------------------------------------------------------
+  let musicEnabled = true;
+  let musicUnlocked = false;
+  let videoSectionActive = false;
+  let videoPlaybackCompleted = false;
+
+  function refreshMusicButton() {
+    if (!musicToggle || !backgroundMusic) return;
+
+    const playing = !backgroundMusic.paused && !backgroundMusic.ended;
+    musicToggle.classList.toggle("is-playing", playing);
+    musicToggle.classList.toggle("is-muted", !musicEnabled);
+    musicToggle.setAttribute("aria-pressed", String(!musicEnabled));
+    musicToggle.setAttribute(
+      "aria-label",
+      musicEnabled ? "Mute background music" : "Play background music"
+    );
+    musicToggle.title = musicEnabled ? "Mute background music" : "Play background music";
+  }
+
+  function shouldBackgroundMusicPlay() {
+    if (!backgroundMusic || !musicUnlocked || !musicEnabled || document.hidden) {
+      return false;
+    }
+
+    const videoCurrentlyPlaying =
+      weddingVideo &&
+      !weddingVideo.paused &&
+      !weddingVideo.ended;
+
+    // When the video section first comes into view, music pauses.
+    // Once the video has ended, music may resume even before the guest
+    // has completely scrolled out of the section.
+    if (videoCurrentlyPlaying) return false;
+    if (videoSectionActive && !videoPlaybackCompleted) return false;
+
+    return true;
+  }
+
+  function syncBackgroundMusic() {
+    if (!backgroundMusic) return;
+
+    if (!shouldBackgroundMusicPlay()) {
+      if (!backgroundMusic.paused) backgroundMusic.pause();
+      refreshMusicButton();
+      return;
+    }
+
+    const playPromise = backgroundMusic.play();
+    if (playPromise && typeof playPromise.catch === "function") {
+      playPromise
+        .then(refreshMusicButton)
+        .catch(() => {
+          // Some browsers may still require a second direct user gesture.
+          refreshMusicButton();
+        });
+    } else {
+      refreshMusicButton();
+    }
+  }
+
+  function unlockAndStartBackgroundMusic() {
+    if (!backgroundMusic) return;
+
+    musicUnlocked = true;
+    backgroundMusic.volume = 0.28;
+
+    // Called directly from the seal click so mobile browsers treat
+    // playback as user-initiated.
+    const playPromise = backgroundMusic.play();
+    if (playPromise && typeof playPromise.catch === "function") {
+      playPromise
+        .then(refreshMusicButton)
+        .catch(refreshMusicButton);
+    } else {
+      refreshMusicButton();
+    }
+  }
+
+  if (musicToggle && backgroundMusic) {
+    musicToggle.addEventListener("click", () => {
+      musicEnabled = !musicEnabled;
+
+      if (musicEnabled) {
+        musicUnlocked = true;
+        syncBackgroundMusic();
+      } else {
+        backgroundMusic.pause();
+        refreshMusicButton();
+      }
+    });
+
+    backgroundMusic.addEventListener("play", refreshMusicButton);
+    backgroundMusic.addEventListener("pause", refreshMusicButton);
+  }
+
+  if (videoInviteSection && "IntersectionObserver" in window) {
+    const videoMusicObserver = new IntersectionObserver(
+      entries => {
+        const entry = entries[0];
+        videoSectionActive =
+          entry.isIntersecting && entry.intersectionRatio >= 0.28;
+
+        if (!videoSectionActive && weddingVideo?.ended) {
+          videoPlaybackCompleted = true;
+        }
+
+        syncBackgroundMusic();
+      },
+      {
+        threshold: [0, 0.28, 0.55]
+      }
+    );
+
+    videoMusicObserver.observe(videoInviteSection);
+  }
+
+  if (weddingVideo) {
+    weddingVideo.addEventListener("play", () => {
+      videoPlaybackCompleted = false;
+      syncBackgroundMusic();
+    });
+
+    weddingVideo.addEventListener("ended", () => {
+      videoPlaybackCompleted = true;
+      syncBackgroundMusic();
+    });
+
+    weddingVideo.addEventListener("pause", () => {
+      // If the guest pauses the invite while still in the video section,
+      // keep background music quiet so the two audio sources never compete.
+      syncBackgroundMusic();
+    });
+  }
+
+  document.addEventListener("visibilitychange", syncBackgroundMusic);
 
   // -------------------------------------------------------
   // OPENING
@@ -39,6 +184,8 @@
   function enterWedding() {
     if (isOpening) return;
     isOpening = true;
+
+    unlockAndStartBackgroundMusic();
 
     if (!cover || !openingFrameShell) {
       finishOpening();
