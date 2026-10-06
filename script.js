@@ -176,15 +176,21 @@
     if (!backgroundMusic) return;
 
     musicUnlocked = true;
-    backgroundMusic.volume = 0;
+    musicEnabled = true;
+    cancelMusicFade();
+    backgroundMusic.volume = prefersReducedMotion ? MUSIC_VOLUME : 0.06;
 
     const playPromise = backgroundMusic.play();
     if (playPromise && typeof playPromise.then === "function") {
       playPromise
-        .then(() => fadeMusicTo(MUSIC_VOLUME, prefersReducedMotion ? 0 : 900))
+        .then(() => {
+          refreshMusicButton();
+          fadeMusicTo(MUSIC_VOLUME, prefersReducedMotion ? 0 : 700);
+        })
         .catch(refreshMusicButton);
     } else {
-      fadeMusicTo(MUSIC_VOLUME, prefersReducedMotion ? 0 : 900);
+      refreshMusicButton();
+      fadeMusicTo(MUSIC_VOLUME, prefersReducedMotion ? 0 : 700);
     }
   }
 
@@ -271,8 +277,6 @@
     if (isOpening) return;
     isOpening = true;
 
-    unlockAndStartBackgroundMusic();
-
     if (!cover || !openingFrameShell) {
       finishOpening();
       return;
@@ -294,7 +298,10 @@
   }
 
   if (openInvitation) {
-    openInvitation.addEventListener("click", enterWedding);
+    openInvitation.addEventListener("click", () => {
+      unlockAndStartBackgroundMusic();
+      enterWedding();
+    });
   } else {
     document.body.classList.remove("no-scroll");
     document.body.classList.add("opening-complete");

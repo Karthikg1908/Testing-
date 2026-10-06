@@ -825,3 +825,9 @@ replace the relative `og:image` value in index.html with the full published HTTP
 after you know the exact GitHub Pages address.
 Example:
 https://YOUR-USERNAME.github.io/YOUR-REPOSITORY/og-preview.jpg
+
+V42.6.17 SEAL-START MUSIC
+- Background music starts directly from the seal click.
+- Audio playback is triggered before the opening split animation.
+- Music fades up smoothly to normal volume.
+- Video-section fade-out/fade-in behavior is unchanged.
