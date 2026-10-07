@@ -21,24 +21,62 @@
   const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
   // -------------------------------------------------------
-  // LIGHTWEIGHT PAGE LOADER
+  // FAST ESSENTIAL-ASSET LOADER
+  // Shows only until the opening/hero has a usable image and fonts are ready.
+  // A short timeout prevents slow external networks from holding the guest.
   // -------------------------------------------------------
   function dismissPageLoader() {
     if (!pageLoader || pageLoader.classList.contains("is-ready")) return;
     pageLoader.classList.add("is-ready");
-    window.setTimeout(() => pageLoader.remove(), prefersReducedMotion ? 0 : 520);
+    window.setTimeout(() => pageLoader.remove(), prefersReducedMotion ? 0 : 420);
   }
 
-  const loaderSafetyTimer = window.setTimeout(dismissPageLoader, 1800);
+  function waitForImage(src) {
+    if (!src) return Promise.resolve();
+    return new Promise(resolve => {
+      const probe = new Image();
+      let settled = false;
+
+      const finish = () => {
+        if (settled) return;
+        settled = true;
+        resolve();
+      };
+
+      probe.onload = finish;
+      probe.onerror = finish;
+      probe.decoding = "async";
+      probe.src = src;
+
+      if (probe.complete) finish();
+    });
+  }
+
+  function delay(ms) {
+    return new Promise(resolve => window.setTimeout(resolve, ms));
+  }
+
+  const heroPreload = qs('link[data-v40-hero-preload="true"]');
+  const remoteHeroReady = waitForImage(heroPreload?.href);
+  const localFallbackReady = waitForImage("assets/image-fallback.webp");
+  const fastFontsReady = document.fonts?.ready
+    ? Promise.race([document.fonts.ready, delay(480)])
+    : Promise.resolve();
+
+  const essentialVisualsReady = Promise.all([
+    localFallbackReady,
+    Promise.race([remoteHeroReady, delay(720)]),
+    fastFontsReady
+  ]);
 
   Promise.race([
-    document.fonts?.ready || Promise.resolve(),
-    new Promise(resolve => window.setTimeout(resolve, 1000))
+    essentialVisualsReady,
+    delay(1250)
   ]).then(() => {
-    window.clearTimeout(loaderSafetyTimer);
-    window.setTimeout(dismissPageLoader, 180);
+    requestAnimationFrame(() => {
+      requestAnimationFrame(dismissPageLoader);
+    });
   });
-
 
   // -------------------------------------------------------
   // BACKGROUND MUSIC
@@ -234,18 +272,25 @@
     videoMusicObserver.observe(videoInviteSection);
   }
 
+  function setVideoFocus(active) {
+    videoInviteSection?.classList.toggle("is-video-playing", Boolean(active));
+  }
+
   if (weddingVideo) {
     weddingVideo.addEventListener("play", () => {
       videoPlaybackCompleted = false;
+      setVideoFocus(true);
       syncBackgroundMusic();
     });
 
     weddingVideo.addEventListener("ended", () => {
       videoPlaybackCompleted = true;
+      setVideoFocus(false);
       syncBackgroundMusic();
     });
 
     weddingVideo.addEventListener("pause", () => {
+      setVideoFocus(false);
       syncBackgroundMusic();
     });
   }
@@ -612,19 +657,23 @@
   // HOSTED-PAGE RELIABILITY
   // -------------------------------------------------------
   qsa('img[data-remote-image="true"]').forEach(img => {
+    const markLoaded = () => img.classList.add("image-loaded");
+
+    img.addEventListener("load", markLoaded, { once: true });
+
     img.addEventListener("error", () => {
       img.classList.add("image-load-error");
       const parent = img.parentElement;
       if (parent) parent.classList.add("has-image-error");
 
-      // Hosted/offline fallback: replace a failed remote stock image once
-      // with a local asset so guests never see a broken-image icon.
       const fallback = img.dataset.fallbackSrc;
       if (fallback && img.src !== new URL(fallback, document.baseURI).href) {
         img.removeAttribute("data-remote-image");
         img.src = fallback;
       }
     }, { once: true });
+
+    if (img.complete && img.naturalWidth > 0) markLoaded();
   });
 
   // Close the mobile navigation with Escape.

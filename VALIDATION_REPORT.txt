@@ -1,29 +1,29 @@
-Website asset/hosting validation
+Praveen & Kavya Wedding Invitation — Premium Optimized GitHub Ready
 
+VALIDATION
 [PASS] JavaScript syntax
-[PASS] CSS parse
-[PASS] Duplicate IDs
-[PASS] Internal anchors
-[PASS] HTML local assets
-[PASS] CSS local assets
-[PASS] No root-level images
-[PASS] Assets folder populated — ['purvaja-samudhaya-bhavana.webp', 'image-fallback.webp', 'apple-touch-icon.png', 'hb-function-hall.webp', 'favicon-32.png', 'video-poster.webp', 'og-preview.jpg', 'favicon.svg']
-[PASS] No nested .git
-[PASS] Required index.html
-[PASS] Required style.css
-[PASS] Required script.js
-[PASS] Required background-music.mp3
-[PASS] Required wedding-invite.mp4
+[PASS] CSS parses without stylesheet errors
+[PASS] No duplicate IDs
+[PASS] Internal anchors valid
+[PASS] All local assets present
+[PASS] Absolute canonical URL
+[PASS] Absolute og:url
+[PASS] Absolute og:image
+[PASS] Music equalizer markup
+[PASS] Fast loader logic
+[PASS] Video focus logic
+[PASS] Remote image fallback
+[PASS] Fallback image exists
+[PASS] Background music exists
+[PASS] Wedding video exists
 
-ASSET STRUCTURE
-assets/apple-touch-icon.png
-assets/favicon-32.png
-assets/favicon.svg
-assets/hb-function-hall.webp
-assets/image-fallback.webp
-assets/og-preview.jpg
-assets/purvaja-samudhaya-bhavana.webp
-assets/video-poster.webp
+OPTIMIZATION
+- CSS before cleanup: 297.2 KB
+- CSS after safe cleanup + new polish: 200.8 KB
+- Net CSS reduction: 32.4%
+- Remote image elements protected by local fallback: 7
 
-NOTE
-Unsplash stock photos are still remote by design, but every remote <img> and major stock background has a local wedding fallback so the layout does not break when a remote image is unavailable.
+SOCIAL PREVIEW
+- Canonical: https://karthikg1908.github.io/Testing-/
+- og:url: https://karthikg1908.github.io/Testing-/
+- og:image: https://karthikg1908.github.io/Testing-/assets/og-preview.jpg

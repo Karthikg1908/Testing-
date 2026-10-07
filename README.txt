@@ -844,3 +844,17 @@ ASSET / HOSTING CLEANUP
 
 GITHUB PAGES
 Upload the CONTENTS of this ZIP to the repository root. Do not upload an extra parent folder around them.
+
+
+PREMIUM EXPERIENCE OPTIMIZATION
+- Final mobile pass for 360–430px screens.
+- Countdown becomes a clean 2×2 layout on narrow phones.
+- Venue cards/maps, sticky navigation and floating controls tightened for mobile.
+- Music button shows a three-bar equalizer only while background music is actually playing.
+- Video section visually focuses the invitation video during playback.
+- Loader now waits only for essential hero/fallback assets and fast font readiness, with a short safety timeout.
+- All remote stock <img> elements fall back to assets/image-fallback.webp.
+- Local fallback redesigned as a clean lavender P ✦ K placeholder.
+- Safe CSS dead-selector cleanup performed: 297.2 KB → 200.8 KB (32.4% reduction).
+- Social preview metadata now uses the repository's GitHub Pages URL:
+  https://karthikg1908.github.io/Testing-/
