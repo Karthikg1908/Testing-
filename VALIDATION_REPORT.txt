@@ -1,18 +1,29 @@
-Praveen & Kavya Wedding Invitation — V42.6.16
+Website asset/hosting validation
 
-[PASS] index uses style.css
-[PASS] index uses script.js
-[PASS] loading screen
-[PASS] OG preview metadata
-[PASS] Twitter preview metadata
-[PASS] favicon svg
-[PASS] favicon png
-[PASS] apple touch icon
-[PASS] og preview exists
-[PASS] favicon file exists
-[PASS] fade function
-[PASS] video fade sync
-[PASS] OG size 1200x630
-[PASS] no duplicate IDs
-[PASS] local assets
 [PASS] JavaScript syntax
+[PASS] CSS parse
+[PASS] Duplicate IDs
+[PASS] Internal anchors
+[PASS] HTML local assets
+[PASS] CSS local assets
+[PASS] No root-level images
+[PASS] Assets folder populated — ['purvaja-samudhaya-bhavana.webp', 'image-fallback.webp', 'apple-touch-icon.png', 'hb-function-hall.webp', 'favicon-32.png', 'video-poster.webp', 'og-preview.jpg', 'favicon.svg']
+[PASS] No nested .git
+[PASS] Required index.html
+[PASS] Required style.css
+[PASS] Required script.js
+[PASS] Required background-music.mp3
+[PASS] Required wedding-invite.mp4
+
+ASSET STRUCTURE
+assets/apple-touch-icon.png
+assets/favicon-32.png
+assets/favicon.svg
+assets/hb-function-hall.webp
+assets/image-fallback.webp
+assets/og-preview.jpg
+assets/purvaja-samudhaya-bhavana.webp
+assets/video-poster.webp
+
+NOTE
+Unsplash stock photos are still remote by design, but every remote <img> and major stock background has a local wedding fallback so the layout does not break when a remote image is unavailable.

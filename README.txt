@@ -831,3 +831,16 @@ V42.6.17 SEAL-START MUSIC
 - Audio playback is triggered before the opening split animation.
 - Music fades up smoothly to normal volume.
 - Video-section fade-out/fade-in behavior is unchanged.
+
+
+ASSET / HOSTING CLEANUP
+- All local images and icons are now stored in ./assets/.
+- index.html, style.css, and script.js use relative paths safe for local preview and GitHub Pages project hosting.
+- The nested .git folder from the uploaded ZIP was intentionally removed from this deployable package.
+- The real HB Function Hall PNG was converted to assets/hb-function-hall.webp.
+- The unused older HB placeholder illustration was removed.
+- Remote Unsplash stock images now fall back to assets/image-fallback.webp if a network image fails.
+- Audio and video remain at repository root: background-music.mp3 and wedding-invite.mp4.
+
+GITHUB PAGES
+Upload the CONTENTS of this ZIP to the repository root. Do not upload an extra parent folder around them.

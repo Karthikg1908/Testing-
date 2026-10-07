@@ -616,7 +616,15 @@
       img.classList.add("image-load-error");
       const parent = img.parentElement;
       if (parent) parent.classList.add("has-image-error");
-    });
+
+      // Hosted/offline fallback: replace a failed remote stock image once
+      // with a local asset so guests never see a broken-image icon.
+      const fallback = img.dataset.fallbackSrc;
+      if (fallback && img.src !== new URL(fallback, document.baseURI).href) {
+        img.removeAttribute("data-remote-image");
+        img.src = fallback;
+      }
+    }, { once: true });
   });
 
   // Close the mobile navigation with Escape.

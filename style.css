@@ -1,5 +1,5 @@
 /* =========================================================
-   PRAVEEN & KAVYA — LUXURY INDIAN WEDDING WEBSITE
+   PRAVEEN & KAVYA — LUXURY INDIAN WEDDING WEBSITE 
 ========================================================= */
 
 :root {
@@ -14318,4 +14318,54 @@ html body #backToTop{
     width:100%;
     background:rgba(217,205,237,.42);
   }
+}
+
+
+/* =========================================================
+   ASSET PATH / HOSTING RELIABILITY FIX
+   Local project images live under ./assets/.
+   Remote stock backgrounds retain a local wedding fallback.
+========================================================= */
+.cover-photo{
+  background:
+    url("https://images.unsplash.com/photo-1511285560929-80b456fea0bc?auto=format&fit=crop&w=1800&q=84&fm=webp") center 44% / cover no-repeat,
+    url("assets/image-fallback.webp") center / cover no-repeat,
+    #2B1E35!important;
+}
+
+.hero-photo{
+  background:
+    url("https://images.unsplash.com/photo-1511285560929-80b456fea0bc?auto=format&fit=crop&w=1800&q=84&fm=webp") center 45% / cover no-repeat,
+    url("assets/image-fallback.webp") center / cover no-repeat,
+    #2B1E35!important;
+}
+
+.quote-bg{
+  background:
+    url("https://images.unsplash.com/photo-1606800052052-a08af7148866?auto=format&fit=crop&w=1900&q=90") center / cover no-repeat,
+    url("assets/image-fallback.webp") center / cover no-repeat,
+    #2B1E35!important;
+}
+
+.rsvp-section{
+  background:
+    linear-gradient(rgba(24,7,8,.94),rgba(24,7,8,.94)),
+    url("https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=1900&q=88") center / cover,
+    url("assets/image-fallback.webp") center / cover,
+    #2B1E35!important;
+}
+
+.closing-bg{
+  background:
+    url("https://images.unsplash.com/photo-1519225421980-715cb0215aed?auto=format&fit=crop&w=2000&q=90") center / cover no-repeat,
+    url("assets/image-fallback.webp") center / cover no-repeat,
+    #2B1E35!important;
+}
+
+/* Broken image fallback remains visually intentional. */
+.has-image-error{
+  background:linear-gradient(145deg,#F1ECF7,#D9CDED)!important;
+}
+.image-load-error{
+  object-fit:cover!important;
 }
