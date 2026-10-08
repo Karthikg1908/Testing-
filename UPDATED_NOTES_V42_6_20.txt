@@ -1,0 +1,11 @@
+V42.6.20 — Visible True 50/50 Premium Split
+
+Fixes:
+- Each opening panel is exactly 50% of the invitation frame.
+- Left panel moves -100% of its own width = 50% of the complete frame.
+- Right panel moves +100% of its own width = 50% of the complete frame.
+- Panels remain fully visible throughout the split movement.
+- Homepage reveal begins only after the split is clearly underway.
+- Final positions are held briefly before the panels fade.
+- Existing premium center-seam champagne glow and subtle 3D depth retained.
+- Mobile uses the same exact 50/50 geometry with lighter perspective.

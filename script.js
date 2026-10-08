@@ -327,19 +327,30 @@
       return;
     }
 
+    // Phase 1: swap the single invitation card for two perfectly aligned
+    // 50% halves. Because the copies are identical, this switch is invisible.
     openingFrameShell.classList.add("split-ready");
 
-    requestAnimationFrame(() => {
-      requestAnimationFrame(() => {
-        openingFrameShell.classList.add("is-splitting");
-        cover.classList.add("opening-frame-splitting");
-      });
-    });
+    // Phase 2: let the browser paint the intact split card, then move each
+    // 50% half by exactly one of its own widths. One panel-width = 50% of
+    // the complete invitation frame, so the geometry is exact and visible.
+    window.setTimeout(() => {
+      openingFrameShell.classList.add("is-splitting");
+    }, 140);
 
-    window.setTimeout(
-      finishOpening,
-      prefersReducedMotion ? 120 : 1780
-    );
+    // Phase 3: reveal the homepage only after the doors have clearly started
+    // travelling. This prevents the click from feeling like a direct jump.
+    window.setTimeout(() => {
+      cover.classList.add("opening-frame-splitting");
+    }, 520);
+
+    // Phase 4: hold the two halves at their final 50/50 positions briefly,
+    // then fade only the panels. The cover itself remains until that finishes.
+    window.setTimeout(() => {
+      openingFrameShell.classList.add("split-fade");
+    }, 2620);
+
+    window.setTimeout(finishOpening, 3220);
   }
 
   if (openInvitation) {

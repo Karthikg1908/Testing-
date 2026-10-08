@@ -8448,3 +8448,306 @@ body.opening-complete #musicToggle.music-toggle{
   color:#FFF!important;
 }
 
+
+/* =========================================================
+   V42.6.19 — PREMIUM CINEMATIC 50 / 50 DOOR REVEAL
+   Keeps the approved exact half-frame split, but adds depth,
+   a champagne center glow, restrained 3D tilt and delayed fade.
+========================================================= */
+.opening-split-stage{
+  perspective:1800px!important;
+  perspective-origin:50% 50%!important;
+  transform-style:preserve-3d!important;
+}
+
+/* Soft light that appears only at the centre seam while opening. */
+.opening-split-stage::before{
+  content:""!important;
+  position:absolute!important;
+  z-index:40!important;
+  top:7%!important;
+  bottom:7%!important;
+  left:50%!important;
+  width:1px!important;
+  pointer-events:none!important;
+  opacity:0!important;
+  transform:translateX(-50%) scaleY(.38)!important;
+  transform-origin:center!important;
+  background:linear-gradient(
+    180deg,
+    transparent 0%,
+    rgba(239,220,174,.26) 18%,
+    rgba(255,239,199,.94) 50%,
+    rgba(239,220,174,.26) 82%,
+    transparent 100%
+  )!important;
+  box-shadow:
+    0 0 10px rgba(242,218,164,.42),
+    0 0 28px rgba(215,193,236,.22)!important;
+}
+
+.opening-split-stage::after{
+  content:""!important;
+  position:absolute!important;
+  z-index:39!important;
+  top:50%!important;
+  left:50%!important;
+  width:20%!important;
+  height:72%!important;
+  pointer-events:none!important;
+  opacity:0!important;
+  transform:translate(-50%,-50%) scaleX(.18)!important;
+  background:radial-gradient(
+    ellipse at center,
+    rgba(255,241,207,.22) 0%,
+    rgba(217,203,236,.10) 44%,
+    transparent 74%
+  )!important;
+  filter:blur(10px)!important;
+}
+
+.opening-frame-half{
+  backface-visibility:hidden!important;
+  -webkit-backface-visibility:hidden!important;
+  transform-style:preserve-3d!important;
+  transition:
+    transform 1.44s cubic-bezier(.18,.78,.16,1),
+    opacity .34s ease .96s,
+    filter .80s ease .60s!important;
+  will-change:transform,opacity,filter!important;
+}
+
+.opening-frame-left{
+  transform-origin:100% 50%!important;
+}
+
+.opening-frame-right{
+  transform-origin:0 50%!important;
+}
+
+/* A very fine inner edge gives the two doors physical definition. */
+.opening-frame-left::after,
+.opening-frame-right::after{
+  content:""!important;
+  position:absolute!important;
+  z-index:35!important;
+  top:4%!important;
+  bottom:4%!important;
+  width:1px!important;
+  pointer-events:none!important;
+  opacity:.64!important;
+  background:linear-gradient(
+    180deg,
+    transparent,
+    rgba(240,220,174,.62) 28%,
+    rgba(255,245,218,.86) 50%,
+    rgba(240,220,174,.62) 72%,
+    transparent
+  )!important;
+  box-shadow:0 0 12px rgba(231,210,167,.22)!important;
+  transition:opacity .42s ease .72s!important;
+}
+
+.opening-frame-left::after{right:0!important;}
+.opening-frame-right::after{left:0!important;}
+
+/* Premium door motion: each 50% panel travels exactly one panel-width
+   outward (100% of itself = 50% of the complete invitation frame). */
+.opening-frame-shell.is-splitting .opening-frame-left{
+  transform:translate3d(-100%,0,0) rotateY(5.5deg) scale(.992)!important;
+  opacity:.04!important;
+  filter:blur(.65px) brightness(.98)!important;
+}
+
+.opening-frame-shell.is-splitting .opening-frame-right{
+  transform:translate3d(100%,0,0) rotateY(-5.5deg) scale(.992)!important;
+  opacity:.04!important;
+  filter:blur(.65px) brightness(.98)!important;
+}
+
+.opening-frame-shell.is-splitting .opening-frame-left::after,
+.opening-frame-shell.is-splitting .opening-frame-right::after{
+  opacity:0!important;
+}
+
+.opening-frame-shell.is-splitting .opening-split-stage::before{
+  animation:premiumOpeningSeam 1.15s cubic-bezier(.2,.72,.2,1) forwards!important;
+}
+
+.opening-frame-shell.is-splitting .opening-split-stage::after{
+  animation:premiumOpeningGlow 1.20s cubic-bezier(.2,.72,.2,1) forwards!important;
+}
+
+@keyframes premiumOpeningSeam{
+  0%{opacity:.22;transform:translateX(-50%) scaleY(.38);}
+  24%{opacity:1;transform:translateX(-50%) scaleY(1);}
+  62%{opacity:.48;transform:translateX(-50%) scaleY(.92);}
+  100%{opacity:0;transform:translateX(-50%) scaleY(.72);}
+}
+
+@keyframes premiumOpeningGlow{
+  0%{opacity:0;transform:translate(-50%,-50%) scaleX(.14);}
+  28%{opacity:.92;transform:translate(-50%,-50%) scaleX(.72);}
+  64%{opacity:.34;transform:translate(-50%,-50%) scaleX(1.28);}
+  100%{opacity:0;transform:translate(-50%,-50%) scaleX(1.55);}
+}
+
+/* Let the homepage behind the doors sharpen in a controlled way. */
+.opening-home-veil{
+  transition:
+    opacity 1.36s cubic-bezier(.2,.72,.2,1),
+    backdrop-filter 1.36s cubic-bezier(.2,.72,.2,1),
+    -webkit-backdrop-filter 1.36s cubic-bezier(.2,.72,.2,1)!important;
+}
+
+@media (max-width:620px){
+  .opening-split-stage{perspective:1350px!important;}
+  .opening-frame-shell.is-splitting .opening-frame-left{
+    transform:translate3d(-100%,0,0) rotateY(4deg) scale(.994)!important;
+  }
+  .opening-frame-shell.is-splitting .opening-frame-right{
+    transform:translate3d(100%,0,0) rotateY(-4deg) scale(.994)!important;
+  }
+}
+
+@media (prefers-reduced-motion:reduce){
+  .opening-split-stage::before,
+  .opening-split-stage::after,
+  .opening-frame-left::after,
+  .opening-frame-right::after{
+    animation:none!important;
+    transition:none!important;
+  }
+  .opening-frame-half{
+    transition:none!important;
+  }
+  .opening-frame-shell.is-splitting .opening-frame-left{
+    transform:translate3d(-100%,0,0)!important;
+    opacity:0!important;
+    filter:none!important;
+  }
+  .opening-frame-shell.is-splitting .opening-frame-right{
+    transform:translate3d(100%,0,0)!important;
+    opacity:0!important;
+    filter:none!important;
+  }
+}
+
+/* =========================================================
+   V42.6.20 — VISIBLE TRUE 50 / 50 PREMIUM SPLIT
+   Final authoritative opening rules. These intentionally sit
+   at the end of the stylesheet so legacy opening patches cannot
+   make the invitation disappear before the split is perceived.
+========================================================= */
+
+/* Keep the two 50% panels fully visible for the whole travel. */
+.opening-frame-half{
+  opacity:1!important;
+  filter:none!important;
+  transition:
+    transform 1.86s cubic-bezier(.18,.76,.14,1),
+    opacity .46s cubic-bezier(.22,.72,.2,1),
+    filter .46s ease!important;
+}
+
+/* Each panel is exactly 50% of the complete invitation frame.
+   100% translation of a panel = 50% of the full frame width. */
+.opening-frame-shell.is-splitting .opening-frame-left{
+  transform:translate3d(-100%,0,0) rotateY(3.25deg) scale(.996)!important;
+  opacity:1!important;
+  filter:none!important;
+}
+.opening-frame-shell.is-splitting .opening-frame-right{
+  transform:translate3d(100%,0,0) rotateY(-3.25deg) scale(.996)!important;
+  opacity:1!important;
+  filter:none!important;
+}
+
+/* Do not fade the doors until JavaScript explicitly starts the final phase. */
+.opening-frame-shell.split-fade .opening-frame-half{
+  opacity:0!important;
+  filter:blur(1.2px) brightness(1.03)!important;
+}
+
+/* Homepage reveal starts after the panels are already moving. */
+.opening-home-veil{
+  opacity:1!important;
+  transition:
+    opacity 1.55s cubic-bezier(.2,.72,.2,1),
+    backdrop-filter 1.55s cubic-bezier(.2,.72,.2,1),
+    -webkit-backdrop-filter 1.55s cubic-bezier(.2,.72,.2,1)!important;
+}
+.luxury-cover.opening-frame-splitting .opening-home-veil{
+  opacity:0!important;
+  backdrop-filter:blur(0) saturate(1) brightness(1)!important;
+  -webkit-backdrop-filter:blur(0) saturate(1) brightness(1)!important;
+}
+
+/* Keep the premium seam light, but stretch it across most of the door travel. */
+.opening-frame-shell.is-splitting .opening-split-stage::before{
+  animation:premiumOpeningSeamV20 1.72s cubic-bezier(.2,.72,.2,1) forwards!important;
+}
+.opening-frame-shell.is-splitting .opening-split-stage::after{
+  animation:premiumOpeningGlowV20 1.74s cubic-bezier(.2,.72,.2,1) forwards!important;
+}
+@keyframes premiumOpeningSeamV20{
+  0%{opacity:.18;transform:translateX(-50%) scaleY(.30)}
+  18%{opacity:1;transform:translateX(-50%) scaleY(1)}
+  58%{opacity:.58;transform:translateX(-50%) scaleY(.96)}
+  100%{opacity:0;transform:translateX(-50%) scaleY(.82)}
+}
+@keyframes premiumOpeningGlowV20{
+  0%{opacity:0;transform:translate(-50%,-50%) scaleX(.12)}
+  22%{opacity:.82;transform:translate(-50%,-50%) scaleX(.55)}
+  65%{opacity:.30;transform:translate(-50%,-50%) scaleX(1.14)}
+  100%{opacity:0;transform:translate(-50%,-50%) scaleX(1.48)}
+}
+
+/* Mobile keeps the exact same geometry; only perspective is softened. */
+@media(max-width:620px){
+  .opening-frame-shell.is-splitting .opening-frame-left{
+    transform:translate3d(-100%,0,0) rotateY(2deg) scale(.997)!important;
+  }
+  .opening-frame-shell.is-splitting .opening-frame-right{
+    transform:translate3d(100%,0,0) rotateY(-2deg) scale(.997)!important;
+  }
+}
+
+@media(prefers-reduced-motion:reduce){
+  .opening-frame-half{transition:none!important}
+  .opening-home-veil{transition:none!important}
+  .opening-frame-shell.is-splitting .opening-frame-left{
+    transform:translate3d(-100%,0,0)!important;
+  }
+  .opening-frame-shell.is-splitting .opening-frame-right{
+    transform:translate3d(100%,0,0)!important;
+  }
+}
+
+/* V42.6.20 accessibility-safe entrance:
+   Do not bypass the requested opening when the OS reports reduced motion.
+   Use a shorter, flat split instead of an instant jump. */
+@media(prefers-reduced-motion:reduce){
+  .opening-frame-half{
+    transition:
+      transform .92s cubic-bezier(.25,.7,.25,1),
+      opacity .30s ease,
+      filter .30s ease!important;
+  }
+  .opening-home-veil{
+    transition:opacity .82s ease!important;
+  }
+  .opening-frame-shell.is-splitting .opening-frame-left{
+    transform:translate3d(-100%,0,0)!important;
+    opacity:1!important;
+    filter:none!important;
+  }
+  .opening-frame-shell.is-splitting .opening-frame-right{
+    transform:translate3d(100%,0,0)!important;
+    opacity:1!important;
+    filter:none!important;
+  }
+  .opening-frame-shell.split-fade .opening-frame-half{
+    opacity:0!important;
+  }
+}

@@ -1,12 +1,13 @@
-Praveen & Kavya Wedding Invitation — Updated Opening
-Version: V42.6.18 True 50/50 Split
+Praveen & Kavya Wedding Invitation — V42.6.19 Premium Cinematic Split
 
-Updates:
-- Opening frame now splits exactly 50% left and 50% right.
-- Removed viewport-based split movement that caused a jump/over-travel effect.
-- Slowed and delayed the split fade so both halves remain visible while opening.
-- Opening reveal timing synchronized with the split animation.
-- Opening card palette harmonized to deep plum, lavender, ivory and restrained warm gold.
-- Closing section palette matched to the same visual system.
-- Existing responsive/mobile behavior retained.
-- HTML structure, duplicate IDs, local assets, internal anchors and JavaScript syntax checked.
+Updated opening animation:
+- Preserves the exact 50/50 invitation-frame split.
+- Each panel moves outward by exactly one panel width (50% of the full frame).
+- Adds subtle 3D door depth instead of a flat slide.
+- Adds a champagne center-seam light and soft lavender/gold reveal glow.
+- Delays panel fade so guests can clearly see the opening motion.
+- Smooths the underlying homepage reveal.
+- Uses a restrained mobile 3D angle for better performance and appearance.
+- Includes reduced-motion fallback.
+
+Core wedding content and existing site design remain unchanged.
