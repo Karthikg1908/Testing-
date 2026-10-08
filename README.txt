@@ -858,3 +858,20 @@ PREMIUM EXPERIENCE OPTIMIZATION
 - Safe CSS dead-selector cleanup performed: 297.2 KB → 200.8 KB (32.4% reduction).
 - Social preview metadata now uses the repository's GitHub Pages URL:
   https://karthikg1908.github.io/Testing-/
+
+
+V42.6.17 APPROVED OPENING TRANSPLANT
+- Base remains Website_PREMIUM_OPTIMIZED_GITHUB_READY.zip.
+- Opening cover HTML copied exactly from V42.6.17.
+- Opening JavaScript block copied exactly from V42.6.17.
+- Approved V39.2 true-frame 50/50 split CSS copied exactly.
+- V42.6 refined opening CSS copied exactly.
+- Left 50% travels left; right 50% travels right; home background remains fixed.
+
+REFINED OPENING + CLOSING
+- Opening 50/50 split slowed to 1.85 seconds so both halves remain clearly visible.
+- Opening completion delayed to ~2.05 seconds.
+- Left half remains exactly 50% and moves left.
+- Right half remains exactly 50% and moves right.
+- Closing palette retuned to deep plum / lavender mist / ivory with restrained warm-gold accents.
+- No closing text or layout changed.

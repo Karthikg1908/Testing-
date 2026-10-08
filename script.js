@@ -338,7 +338,7 @@
 
     window.setTimeout(
       finishOpening,
-      prefersReducedMotion ? 120 : 1320
+      prefersReducedMotion ? 120 : 1780
     );
   }
 

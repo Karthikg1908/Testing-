@@ -27,3 +27,29 @@ SOCIAL PREVIEW
 - Canonical: https://karthikg1908.github.io/Testing-/
 - og:url: https://karthikg1908.github.io/Testing-/
 - og:image: https://karthikg1908.github.io/Testing-/assets/og-preview.jpg
+
+V42.6.17 OPENING TRANSPLANT VALIDATION
+[PASS] Opening HTML transplanted
+[PASS] Opening JS transplanted
+[PASS] Exact V39.2 50/50 split rules present
+[PASS] Exact V42.6 refined opening rules present
+[PASS] Left and right split halves present
+[PASS] Initial no-scroll lock present
+[PASS] No duplicate IDs
+[PASS] All local asset paths valid
+
+
+REFINED OPENING + CLOSING VALIDATION
+[PASS] JavaScript syntax
+[PASS] Opening shell present
+[PASS] Left 50% half present
+[PASS] Right 50% half present
+[PASS] Seal present
+[PASS] Slow left split timing
+[PASS] Slow right split timing
+[PASS] Opening completion delayed
+[PASS] Closing Kannada lavender
+[PASS] Closing kicker gold
+[PASS] Closing heading ivory
+[PASS] No duplicate IDs
+[PASS] Local asset paths
