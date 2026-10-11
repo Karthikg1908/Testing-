@@ -327,30 +327,33 @@
       return;
     }
 
-    // Phase 1: swap the single invitation card for two perfectly aligned
-    // 50% halves. Because the copies are identical, this switch is invisible.
+    // Phase 1: freeze non-essential decorative motion and swap the single
+    // invitation card for two perfectly aligned 50% halves.
+    cover.classList.add("opening-active");
     openingFrameShell.classList.add("split-ready");
 
-    // Phase 2: let the browser paint the intact split card, then move each
-    // 50% half by exactly one of its own widths. One panel-width = 50% of
-    // the complete invitation frame, so the geometry is exact and visible.
-    window.setTimeout(() => {
-      openingFrameShell.classList.add("is-splitting");
-    }, 140);
+    // Phase 2: give the browser two paint frames to promote both halves to
+    // compositor layers before movement starts. This avoids the first-frame
+    // hitch that was visible on mobile devices.
+    requestAnimationFrame(() => {
+      requestAnimationFrame(() => {
+        openingFrameShell.classList.add("is-splitting");
+      });
+    });
 
-    // Phase 3: reveal the homepage only after the doors have clearly started
-    // travelling. This prevents the click from feeling like a direct jump.
+    // Phase 3: begin revealing the homepage while the doors are already in
+    // motion. The reveal now uses opacity only (no animated backdrop blur).
     window.setTimeout(() => {
       cover.classList.add("opening-frame-splitting");
-    }, 520);
+    }, 360);
 
-    // Phase 4: hold the two halves at their final 50/50 positions briefly,
-    // then fade only the panels. The cover itself remains until that finishes.
+    // Phase 4: after the full 50/50 travel completes, hold very briefly and
+    // fade the panels using opacity only.
     window.setTimeout(() => {
       openingFrameShell.classList.add("split-fade");
-    }, 2620);
+    }, 1880);
 
-    window.setTimeout(finishOpening, 3220);
+    window.setTimeout(finishOpening, 2340);
   }
 
   if (openInvitation) {

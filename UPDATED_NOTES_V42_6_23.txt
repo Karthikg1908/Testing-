@@ -1,0 +1,6 @@
+V42.6.23 — Save the Date Revert
+
+- Restored the Save the Date / Our Celebration section to the V42.6.21 presentation.
+- Removed the V42.6.22 three-card editorial event redesign and its responsive overrides.
+- Kept the smooth 50/50 opening animation unchanged.
+- Kept the other V42.6.22 premium improvements (overall palette, venue labels, gallery/closing refinements, etc.).
