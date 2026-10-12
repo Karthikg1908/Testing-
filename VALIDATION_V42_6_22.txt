@@ -1,0 +1,8 @@
+V42.6.22 validation summary
+- HTML parsed successfully.
+- No duplicate HTML IDs detected.
+- All local HTML asset references exist.
+- JavaScript syntax check passed with node --check.
+- CSS opening/closing brace counts match.
+- V42.6.21 opening performance block is still present.
+- V42.6.22 premium styling is scoped under body.signature-premium and does not override opening-frame selectors.

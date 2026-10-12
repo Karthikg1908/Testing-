@@ -1,0 +1,13 @@
+V42.6.27 — Share + Smart Wedding Day Update
+
+Changes added without altering existing website sections:
+1. Premium “Share Our Invitation” button near the closing section. Uses the native Web Share sheet where supported and clipboard fallback elsewhere.
+2. Smart countdown states (India time):
+   - Before 02 Dec 2026: normal live countdown to the 09:30 AM Muhurtham.
+   - On 02 Dec 2026: “Today Is The Day ♥”.
+   - From 03 Dec 2026 onward: “Thank You for Celebrating With Us”.
+3. Wedding-day hero banner shown only on 02 Dec 2026: “✦ Today, Two Hearts Become One ✦”.
+4. Refined lavender/gold P-K monogram favicon assets.
+5. Updated social preview to the newly generated Praveen & Kavya wedding artwork: assets/praveen-kavya-wedding-preview-v2.jpg.
+
+Existing 50/50 opening animation, hero, sections, gallery, venue cards, music, footer and other interactions were not redesigned.

@@ -10080,3 +10080,532 @@ body.signature-premium{
     transition:none!important;
   }
 }
+
+
+/* =========================================================
+   V42.6.27 — SHARE + SMART WEDDING DAY ENHANCEMENTS
+   Isolated additions only; existing layout/opening styles are untouched.
+   ========================================================= */
+.wedding-day-banner{
+  width:max-content;
+  max-width:min(92vw,560px);
+  margin:0 auto 18px;
+  padding:9px 18px 8px;
+  border:1px solid rgba(214,181,106,.58);
+  border-radius:999px;
+  background:linear-gradient(135deg,rgba(49,31,60,.78),rgba(87,58,103,.62));
+  box-shadow:0 10px 28px rgba(24,12,32,.16),inset 0 1px rgba(255,255,255,.13);
+  color:#F3DFA7;
+  font-family:"DM Sans",sans-serif;
+  font-size:11px;
+  font-weight:500;
+  letter-spacing:.17em;
+  line-height:1.35;
+  text-align:center;
+  text-transform:uppercase;
+}
+.wedding-day-banner[hidden]{display:none!important;}
+
+.countdown-special-state{
+  min-height:148px;
+  display:flex!important;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  gap:7px;
+  border:0!important;
+  background:linear-gradient(135deg,rgba(255,255,255,.74),rgba(247,240,251,.9))!important;
+  box-shadow:0 18px 48px rgba(67,44,76,.09)!important;
+}
+.countdown-special-state > span{
+  font-size:28px!important;
+  line-height:1!important;
+  color:#C59B4B!important;
+  text-shadow:0 4px 18px rgba(197,155,75,.18);
+}
+.countdown-special-state > small{
+  max-width:720px;
+  font-family:"Cormorant Garamond",serif!important;
+  font-size:clamp(25px,4vw,42px)!important;
+  font-weight:600!important;
+  line-height:1.08!important;
+  letter-spacing:.015em!important;
+  text-transform:none!important;
+  color:#4A2E50!important;
+}
+
+.share-invitation-wrap{
+  position:relative;
+  z-index:2;
+  margin:26px auto 2px;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  gap:8px;
+}
+.share-invitation-btn{
+  min-height:48px;
+  padding:0 23px;
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  gap:10px;
+  border:1px solid rgba(218,190,126,.56);
+  border-radius:999px;
+  background:linear-gradient(135deg,rgba(255,255,255,.09),rgba(218,190,126,.08));
+  box-shadow:0 12px 30px rgba(0,0,0,.13),inset 0 1px rgba(255,255,255,.08);
+  color:#F3E4BA;
+  font-family:"DM Sans",sans-serif;
+  font-size:11px;
+  font-weight:500;
+  letter-spacing:.145em;
+  text-transform:uppercase;
+  cursor:pointer;
+  transition:transform .3s ease,border-color .3s ease,background .3s ease,box-shadow .3s ease;
+  -webkit-tap-highlight-color:transparent;
+}
+.share-invitation-btn:hover,
+.share-invitation-btn:focus-visible{
+  transform:translateY(-2px);
+  border-color:rgba(238,211,147,.88);
+  background:linear-gradient(135deg,rgba(255,255,255,.13),rgba(218,190,126,.12));
+  box-shadow:0 15px 34px rgba(0,0,0,.17),0 0 0 3px rgba(216,184,115,.08);
+  outline:none;
+}
+.share-invitation-btn:active{transform:translateY(0) scale(.985);}
+.share-invitation-icon{
+  display:inline-block;
+  color:#D9B96E;
+  font-size:16px;
+  line-height:1;
+  transition:transform .3s ease;
+}
+.share-invitation-btn:hover .share-invitation-icon{transform:translate(2px,-2px);}
+.share-invitation-status{
+  min-height:16px;
+  margin:0;
+  color:rgba(245,235,219,.68);
+  font-family:"DM Sans",sans-serif;
+  font-size:10px;
+  letter-spacing:.04em;
+}
+
+@media (max-width:600px){
+  .wedding-day-banner{
+    max-width:88vw;
+    margin-bottom:14px;
+    padding:8px 13px 7px;
+    font-size:9.5px;
+    letter-spacing:.115em;
+  }
+  .countdown-special-state{min-height:124px;padding:20px 15px!important;}
+  .countdown-special-state > small{font-size:clamp(23px,7vw,32px)!important;}
+  .share-invitation-wrap{margin-top:22px;}
+  .share-invitation-btn{width:min(88vw,310px);min-height:50px;padding:0 18px;}
+}
+
+@media (prefers-reduced-motion:reduce){
+  .share-invitation-btn,
+  .share-invitation-icon{transition:none!important;}
+  .share-invitation-btn:hover{transform:none!important;}
+}
+
+
+/* =========================================================
+   V42.6.28 — Footer visibility fix
+   ========================================================= */
+.signature-premium .footer-socials-compact .footer-github{
+  background:rgba(248,244,251,.96)!important;
+  opacity:1!important;
+  border:1px solid rgba(217,205,237,.32)!important;
+  box-shadow:0 3px 10px rgba(0,0,0,.16)!important;
+}
+.signature-premium .footer-socials-compact .footer-github svg{
+  fill:#211728!important;
+  stroke:none!important;
+}
+@media(hover:hover){
+  .signature-premium .footer-socials-compact .footer-github:hover{
+    background:#fff!important;
+    opacity:1!important;
+  }
+}
+
+
+/* =========================================================
+   V42.6.29 — LAVENDER HARMONY · GALLERY SPEED · ACCESSIBILITY
+   Visual polish only. Existing structure and approved 50/50 opening
+   geometry remain unchanged.
+   ========================================================= */
+body.signature-premium{
+  --signature-plum:#34243F;
+  --signature-plum-deep:#23172C;
+  --signature-plum-2:#604775;
+  --signature-lavender:#A98FC6;
+  --signature-lavender-light:#DCCFEC;
+  --signature-mist:#F3EEF8;
+  --signature-ivory:#FCFAFD;
+  --signature-white:#FFFFFF;
+  --signature-gold:#C8A75F;
+  --signature-gold-soft:#E7D3A4;
+  --signature-ink:#3E3446;
+  --signature-muted:#665A70;
+  --signature-line:rgba(96,71,117,.16);
+  --signature-shadow:0 24px 68px rgba(52,36,63,.095);
+  --signature-shadow-soft:0 12px 34px rgba(52,36,63,.07);
+  background:linear-gradient(180deg,#FCFAFD 0%,#F6F1FA 48%,#FCFAFD 100%)!important;
+  color:var(--signature-ink)!important;
+  font-family:var(--sans)!important;
+  line-height:1.58;
+  -webkit-text-size-adjust:100%;
+  text-size-adjust:100%;
+}
+
+/* ---------- Balanced lavender / ivory section rhythm ---------- */
+.signature-premium #video-invite{
+  background:linear-gradient(180deg,#FCFAFD 0%,#F2ECF7 100%)!important;
+}
+.signature-premium #couple{
+  background:
+    radial-gradient(circle at 8% 16%,rgba(169,143,198,.15),transparent 26%),
+    linear-gradient(180deg,#F2ECF7 0%,#FCFAFD 100%)!important;
+}
+.signature-premium #events{
+  background:linear-gradient(180deg,#FCFAFD 0%,#F7F3FA 100%)!important;
+}
+.signature-premium #countdown{
+  background:
+    radial-gradient(circle at 86% 20%,rgba(169,143,198,.14),transparent 28%),
+    linear-gradient(180deg,#F1EBF6 0%,#FCFAFD 100%)!important;
+}
+.signature-premium #gallery{
+  background:
+    radial-gradient(circle at 8% 16%,rgba(169,143,198,.20),transparent 26%),
+    radial-gradient(circle at 92% 82%,rgba(200,167,95,.055),transparent 22%),
+    linear-gradient(180deg,#F8F5FB 0%,#F1EBF6 52%,#FCFAFD 100%)!important;
+}
+.signature-premium #venue{
+  background:linear-gradient(180deg,#FCFAFD 0%,#F0EAF6 100%)!important;
+}
+.signature-premium #beegara-oota{
+  background:linear-gradient(180deg,#F0EAF6 0%,#FCFAFD 100%)!important;
+}
+.signature-premium .luxury-section-separator{
+  background:linear-gradient(180deg,#FCFAFD,rgba(236,227,245,.78),#FCFAFD)!important;
+}
+
+/* ---------- Typography hierarchy ---------- */
+.signature-premium .section-head.premium-title-lockup h2,
+.signature-premium .section-head h2{
+  color:var(--signature-plum)!important;
+  font-family:var(--display)!important;
+  font-size:clamp(40px,5vw,64px)!important;
+  font-weight:500!important;
+  line-height:1.02!important;
+  letter-spacing:-.032em!important;
+  text-wrap:balance;
+}
+.signature-premium .section-head.premium-title-lockup .eyebrow,
+.signature-premium .section-head .eyebrow{
+  color:#5B436F!important;
+  font-family:var(--sans)!important;
+  font-size:9px!important;
+  font-weight:500!important;
+  letter-spacing:2.7px!important;
+}
+.signature-premium .celebration-subtitle,
+.signature-premium .video-intro-copy,
+.signature-premium .couple-card .family,
+.signature-premium .location-address{
+  color:var(--signature-muted)!important;
+  font-family:var(--serif)!important;
+}
+.signature-premium .celebration-subtitle,
+.signature-premium .video-intro-copy{
+  font-size:clamp(17px,1.7vw,20px)!important;
+  line-height:1.68!important;
+}
+.signature-premium .couple-card h3,
+.signature-premium .clean-venue-card .location-details h3{
+  color:var(--signature-plum)!important;
+  font-family:var(--display)!important;
+  letter-spacing:-.03em!important;
+}
+
+/* ---------- Hero / dark lavender anchor ---------- */
+.signature-premium .hero-overlay{
+  background:
+    linear-gradient(180deg,rgba(35,23,44,.42) 0%,rgba(52,36,63,.30) 34%,rgba(35,23,44,.62) 100%),
+    radial-gradient(circle at 50% 44%,transparent 22%,rgba(35,23,44,.22) 78%)!important;
+}
+.signature-premium .hero-script{color:#E3D8EF!important;}
+.signature-premium .hero-name-amp{color:var(--signature-gold-soft)!important;}
+.signature-premium .hero-copy{color:rgba(252,250,253,.82)!important;}
+.signature-premium .hero-together-line{color:rgba(239,231,247,.76)!important;}
+
+/* ---------- Cards: unified lavender edge / softer shadows ---------- */
+.signature-premium .video-invite-card,
+.signature-premium .couple-card,
+.signature-premium .count-card,
+.signature-premium .gallery figure,
+.signature-premium .clean-venue-card{
+  border-color:rgba(96,71,117,.16)!important;
+  box-shadow:var(--signature-shadow-soft)!important;
+}
+.signature-premium .couple-card,
+.signature-premium .count-card,
+.signature-premium .clean-venue-card .location-details{
+  background:
+    radial-gradient(circle at 50% 0%,rgba(220,207,236,.32),transparent 34%),
+    linear-gradient(180deg,rgba(255,255,255,.98),rgba(248,245,251,.96))!important;
+}
+.signature-premium .venue-label,
+.signature-premium .couple-card .role{
+  color:#5B436F!important;
+}
+.signature-premium .direction-btn{
+  background:linear-gradient(135deg,#604775,#34243F)!important;
+  border-color:rgba(231,211,164,.34)!important;
+  color:#FFF!important;
+}
+
+/* ---------- Refined decorative scroll progress ---------- */
+.scroll-progress-ornament{
+  right:12px!important;
+  width:12px!important;
+  height:168px!important;
+  opacity:0!important;
+  filter:drop-shadow(0 4px 10px rgba(52,36,63,.10));
+  transition:opacity .28s ease!important;
+}
+.scroll-progress-ornament.visible{opacity:.82!important;}
+.scroll-progress-ornament::before,
+.scroll-progress-ornament::after{
+  content:"";
+  position:absolute;
+  left:50%;
+  width:4px;
+  height:4px;
+  border:1px solid rgba(200,167,95,.62);
+  background:#F8F4FB;
+  transform:translateX(-50%) rotate(45deg);
+}
+.scroll-progress-ornament::before{top:0;}
+.scroll-progress-ornament::after{bottom:0;}
+.scroll-progress-track{
+  top:8px!important;
+  bottom:8px!important;
+  width:1px!important;
+  background:rgba(96,71,117,.18)!important;
+  overflow:visible!important;
+}
+.scroll-progress-fill{
+  width:1px!important;
+  background:linear-gradient(180deg,#DCCFEC 0%,#A98FC6 48%,#C8A75F 100%)!important;
+  box-shadow:0 0 7px rgba(169,143,198,.18);
+}
+.scroll-progress-flower{
+  width:12px!important;
+  height:12px!important;
+  display:grid!important;
+  place-items:center!important;
+  color:#8D72AA!important;
+  font-size:7px!important;
+  line-height:1!important;
+  text-shadow:0 0 8px rgba(169,143,198,.26)!important;
+  transition:none!important;
+}
+
+/* ---------- Accessibility: contrast, focus, and comfortable touch targets ---------- */
+.signature-premium :where(a,button,[role="button"],input,select,textarea):focus-visible{
+  outline:2px solid #8F73AC!important;
+  outline-offset:4px!important;
+  box-shadow:0 0 0 4px rgba(220,207,236,.38)!important;
+}
+.signature-premium .gallery .lightbox-item:focus-visible{
+  outline:2px solid #8F73AC!important;
+  outline-offset:5px!important;
+  box-shadow:0 0 0 5px rgba(220,207,236,.34),0 18px 42px rgba(52,36,63,.12)!important;
+}
+.signature-premium .mini-nav-link,
+.signature-premium .share-invitation-btn,
+.signature-premium .direction-btn{
+  font-weight:500!important;
+}
+.signature-premium .menu-btn,
+.signature-premium .music-toggle,
+.signature-premium .back-to-top,
+.signature-premium .lightbox-close,
+.signature-premium .lightbox-nav,
+.signature-premium .footer-social-link{
+  min-width:44px!important;
+  min-height:44px!important;
+}
+.signature-premium .footer-social-link{
+  width:36px!important;
+  height:36px!important;
+  border-radius:50%!important;
+}
+.signature-premium .footer-social-link svg{
+  width:14px!important;
+  height:14px!important;
+}
+.signature-premium .location-address{
+  color:#62566A!important;
+  font-size:clamp(15px,1.35vw,17px)!important;
+  line-height:1.65!important;
+}
+.signature-premium .count-card small{
+  color:#615568!important;
+  font-weight:500!important;
+}
+
+/* ---------- Lightbox: lavender-plum treatment + smoother swipe surface ---------- */
+.photo-lightbox .lightbox-backdrop{
+  background:
+    radial-gradient(circle at center,rgba(96,71,117,.30),rgba(27,18,34,.96) 72%)!important;
+  backdrop-filter:blur(12px)!important;
+}
+.photo-lightbox .lightbox-stage{
+  border-color:rgba(220,207,236,.28)!important;
+  background:rgba(35,23,44,.76)!important;
+  box-shadow:0 30px 88px rgba(14,8,18,.40)!important;
+}
+.photo-lightbox .lightbox-close,
+.photo-lightbox .lightbox-nav{
+  border-color:rgba(220,207,236,.34)!important;
+  background:rgba(52,36,63,.78)!important;
+  color:#FBF8FD!important;
+}
+.photo-lightbox .lightbox-close:hover,
+.photo-lightbox .lightbox-nav:hover{
+  background:rgba(96,71,117,.94)!important;
+  border-color:rgba(231,211,164,.62)!important;
+}
+.photo-lightbox .lightbox-stage figcaption{
+  color:rgba(252,250,253,.82)!important;
+  background:rgba(35,23,44,.64)!important;
+  border-color:rgba(220,207,236,.24)!important;
+}
+
+/* ---------- Closing stays the dark anchor ---------- */
+.signature-premium .closing{
+  background:
+    radial-gradient(circle at 50% 18%,rgba(169,143,198,.24),transparent 34%),
+    radial-gradient(circle at 15% 82%,rgba(220,207,236,.08),transparent 27%),
+    linear-gradient(180deg,#3A2947 0%,#2C1E36 58%,#211629 100%)!important;
+}
+.signature-premium footer{
+  background:#1E1425!important;
+  border-top:1px solid rgba(220,207,236,.08)!important;
+}
+
+/* ---------- Responsive type / spacing ---------- */
+@media(max-width:620px){
+  .signature-premium main .section{
+    padding-top:64px!important;
+    padding-bottom:64px!important;
+  }
+  .signature-premium .section-head{
+    width:min(92%,620px)!important;
+    margin-bottom:28px!important;
+  }
+  .signature-premium .section-head.premium-title-lockup h2,
+  .signature-premium .section-head h2{
+    font-size:clamp(33px,9.4vw,42px)!important;
+    line-height:1.03!important;
+  }
+  .signature-premium .section-head.premium-title-lockup .eyebrow,
+  .signature-premium .section-head .eyebrow{
+    font-size:7.5px!important;
+    letter-spacing:2px!important;
+  }
+  .signature-premium .celebration-subtitle,
+  .signature-premium .video-intro-copy{
+    font-size:16px!important;
+    line-height:1.62!important;
+  }
+  .scroll-progress-ornament{
+    right:5px!important;
+    height:132px!important;
+    opacity:0!important;
+  }
+  .scroll-progress-ornament.visible{opacity:.66!important;}
+  .signature-premium .footer-social-link{
+    width:40px!important;
+    height:40px!important;
+    min-width:40px!important;
+    min-height:40px!important;
+  }
+  .signature-premium .lightbox-close,
+  .signature-premium .lightbox-nav{
+    min-width:44px!important;
+    min-height:44px!important;
+  }
+}
+
+@media(max-width:390px){
+  .signature-premium main .section{
+    padding-top:58px!important;
+    padding-bottom:58px!important;
+  }
+  .signature-premium .section-head.premium-title-lockup h2,
+  .signature-premium .section-head h2{
+    font-size:clamp(31px,9.3vw,38px)!important;
+  }
+}
+
+@media(prefers-reduced-motion:reduce){
+  .scroll-progress-flower{transition:none!important;}
+  .signature-premium :where(a,button,[role="button"]){scroll-behavior:auto!important;}
+}
+
+/* =========================================================
+   V42.6.30 — COMPACT FOOTER SOCIAL ICONS
+   Keep the footer visually quiet while preserving a generous
+   invisible pointer/touch target around each social link.
+   ========================================================= */
+.signature-premium .footer-socials-compact{
+  gap:7px!important;
+}
+.signature-premium .footer-socials-compact .footer-social-link{
+  position:relative!important;
+  width:26px!important;
+  height:26px!important;
+  min-width:26px!important;
+  min-height:26px!important;
+  flex:0 0 26px!important;
+  border-radius:50%!important;
+}
+.signature-premium .footer-socials-compact .footer-social-link::before{
+  content:"";
+  position:absolute;
+  inset:-7px;
+  border-radius:50%;
+}
+.signature-premium .footer-socials-compact .footer-social-link svg{
+  width:11px!important;
+  height:11px!important;
+}
+.signature-premium .footer-socials-compact .footer-github{
+  box-shadow:0 2px 7px rgba(0,0,0,.13)!important;
+}
+@media(max-width:620px){
+  .signature-premium .footer-socials-compact{
+    gap:7px!important;
+  }
+  .signature-premium .footer-socials-compact .footer-social-link{
+    width:27px!important;
+    height:27px!important;
+    min-width:27px!important;
+    min-height:27px!important;
+    flex-basis:27px!important;
+  }
+  .signature-premium .footer-socials-compact .footer-social-link::before{
+    inset:-8px;
+  }
+  .signature-premium .footer-socials-compact .footer-social-link svg{
+    width:11px!important;
+    height:11px!important;
+  }
+}

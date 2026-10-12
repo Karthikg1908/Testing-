@@ -1,0 +1,7 @@
+V42.6.28 — Closing & Footer Refinement
+
+Changes:
+1. Renamed the share button to “Invite Your Loved Ones Along”.
+2. Removed the P ♥ K monogram from the WITH LOVE & GRATITUDE closing section because the full Praveen & Kavya name is already displayed.
+3. Fixed the GitHub footer icon visibility by restoring a light circular background and dark GitHub mark on the dark footer.
+4. All other website sections, opening animation, smart countdown, wedding-day banner, social preview image, and existing styling remain unchanged.

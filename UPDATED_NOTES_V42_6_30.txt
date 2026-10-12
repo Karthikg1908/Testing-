@@ -1,0 +1,8 @@
+V42.6.30 — Compact Footer Social Icons
+
+- Reduced the visible GitHub and Instagram footer controls.
+- Desktop visible size: 26px circle with 11px icon.
+- Mobile visible size: 27px circle with 11px icon.
+- Preserved a larger invisible touch/click target around each link.
+- Kept the GitHub visibility fix and existing footer styling.
+- No other website sections, animations, content, or functionality changed.

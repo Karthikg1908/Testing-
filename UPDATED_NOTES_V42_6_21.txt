@@ -1,0 +1,10 @@
+V42.6.21 - Smooth GPU 50/50 Split
+
+- Preserves the exact visible 50% left + 50% right opening.
+- Removed animated backdrop-filter/blur from the homepage reveal.
+- Removed blur from the final panel fade.
+- Uses transform + opacity for the split animation.
+- Pre-promotes the split panels with two requestAnimationFrame cycles.
+- Temporarily pauses decorative cover motion while the doors move.
+- Simplified the centre glow on mobile for better frame rate.
+- Keeps the premium seam-light effect with compositor-friendly animation.

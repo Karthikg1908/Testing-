@@ -1,13 +1,20 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
   <defs>
-    <linearGradient id="g" x1="0" y1="0" x2="1" y2="1">
-      <stop offset="0" stop-color="#3A2848"/>
-      <stop offset="1" stop-color="#2B1E35"/>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#4A335B"/>
+      <stop offset="1" stop-color="#24172E"/>
+    </linearGradient>
+    <linearGradient id="gold" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#F1D995"/>
+      <stop offset=".55" stop-color="#D5B468"/>
+      <stop offset="1" stop-color="#A77C32"/>
     </linearGradient>
   </defs>
-  <rect width="64" height="64" rx="18" fill="url(#g)"/>
-  <circle cx="32" cy="32" r="25" fill="none" stroke="#D9CDED" stroke-opacity=".28"/>
-  <text x="15" y="39" font-family="Georgia,serif" font-size="23" fill="#F8F4FB">P</text>
-  <text x="32" y="35" text-anchor="middle" font-family="Georgia,serif" font-size="11" fill="#D6B56A">✦</text>
-  <text x="49" y="39" text-anchor="end" font-family="Georgia,serif" font-size="23" fill="#F8F4FB">K</text>
+  <rect width="64" height="64" rx="18" fill="url(#bg)"/>
+  <circle cx="32" cy="32" r="25.2" fill="none" stroke="#DCCFED" stroke-width="1.5" stroke-opacity=".48"/>
+  <circle cx="32" cy="32" r="21.3" fill="none" stroke="url(#gold)" stroke-width=".9" stroke-opacity=".58"/>
+  <text x="16" y="40" font-family="Georgia,serif" font-size="24" font-weight="600" fill="#F8F3FC">P</text>
+  <path d="M32 38.6c-6.6-4.5-9-7-9-10.3 0-2.7 2-4.8 4.7-4.8 1.8 0 3.4.9 4.3 2.4.9-1.5 2.5-2.4 4.3-2.4 2.7 0 4.7 2.1 4.7 4.8 0 3.3-2.4 5.8-9 10.3Z" fill="url(#gold)" transform="scale(.56) translate(25 28)"/>
+  <text x="50" y="40" text-anchor="end" font-family="Georgia,serif" font-size="24" font-weight="600" fill="#F8F3FC">K</text>
+  <path d="M19 49c8 3.2 18 3.2 26 0" fill="none" stroke="url(#gold)" stroke-width="1" stroke-linecap="round" opacity=".65"/>
 </svg>

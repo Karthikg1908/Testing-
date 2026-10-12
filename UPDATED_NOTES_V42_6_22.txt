@@ -1,0 +1,24 @@
+Praveen & Kavya Wedding Invitation — V42.6.22 Signature Premium Polish
+
+Base preserved:
+- V42.6.21 smooth, visible exact 50/50 opening split remains unchanged.
+- Existing content, video, gallery lightbox, maps, music and navigation remain in place.
+
+Premium updates:
+- Unified lavender / plum / ivory / champagne-gold visual system.
+- Refined section spacing, typography hierarchy and lightweight texture.
+- Thinner P ♥ K section separators for a cleaner editorial appearance.
+- Hero typography and copy spacing polished.
+- Video invitation placed in a softer luxury frame.
+- Couple cards refined with subtle inner gold linework and softer portrait treatment.
+- Save the Date redesigned into three editorial event cards on desktop; compact stacked cards on mobile.
+- Countdown cards simplified and refined.
+- Gallery images upgraded with white editorial frames, softer shadows and restrained hover movement.
+- Venue cards upgraded with event/date labels, cleaner photo framing and premium direction buttons.
+- Closing section redesigned as a dark-plum invitation card with a new P ♥ K signature medallion.
+- Scroll-reveal motion reduced to shorter, smoother movement.
+- Responsive tuning added for tablet and mobile.
+
+Performance approach:
+- No new animated blur/backdrop-filter effects were added.
+- Premium effects rely mainly on static gradients, borders, shadows, transform and opacity.

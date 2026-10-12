@@ -432,23 +432,52 @@
   };
 
   const muhurthamTime = new Date("2026-12-02T09:30:00+05:30").getTime();
+  const weddingDateKey = "2026-12-02";
+  const weddingDayBanner = qs("#weddingDayBanner");
   let countdownTimer = null;
+  let countdownState = "counting";
+
+  function getIndiaDateKey(date = new Date()) {
+    const parts = new Intl.DateTimeFormat("en-CA", {
+      timeZone: "Asia/Kolkata",
+      year: "numeric",
+      month: "2-digit",
+      day: "2-digit"
+    }).formatToParts(date);
+    const values = Object.fromEntries(parts.map(part => [part.type, part.value]));
+    return `${values.year}-${values.month}-${values.day}`;
+  }
+
+  function renderCountdownMessage(message, symbol = "♥", state = "special") {
+    if (!countdownRoot || countdownState === state) return;
+    countdownState = state;
+    countdownRoot.innerHTML = `
+      <div class="count-card countdown-complete countdown-special-state" style="grid-column:1/-1">
+        <span>${symbol}</span>
+        <small>${message}</small>
+      </div>`;
+  }
 
   function updateCountdown() {
     if (!countdownRoot) return;
 
-    const distance = muhurthamTime - Date.now();
+    const indiaDateKey = getIndiaDateKey();
+    const isWeddingDay = indiaDateKey === weddingDateKey;
+    const isAfterWeddingDay = indiaDateKey > weddingDateKey;
 
-    if (distance <= 0) {
-      countdownRoot.innerHTML = `
-        <div class="count-card countdown-complete" style="grid-column:1/-1">
-          <span>♥</span>
-          <small>The celebration has begun</small>
-        </div>`;
-      if (countdownTimer) window.clearInterval(countdownTimer);
+    if (weddingDayBanner) weddingDayBanner.hidden = !isWeddingDay;
+
+    if (isWeddingDay) {
+      renderCountdownMessage("Today Is The Day ♥", "✦", "wedding-day");
       return;
     }
 
+    if (isAfterWeddingDay) {
+      renderCountdownMessage("Thank You for Celebrating With Us", "♥", "after-wedding");
+      return;
+    }
+
+    const distance = Math.max(0, muhurthamTime - Date.now());
     const values = {
       days: Math.floor(distance / 86400000),
       hours: Math.floor(distance / 3600000) % 24,
@@ -535,6 +564,67 @@
   let touchStartX = 0;
   let previouslyFocusedElement = null;
 
+  // Preload and decode gallery images after the essential page assets are ready.
+  // This keeps first paint light while making lightbox swipes feel immediate.
+  const galleryPreloadCache = new Map();
+
+  function gallerySourceAt(index) {
+    const item = galleryItems[index];
+    const image = item ? qs("img", item) : null;
+    return image ? (image.currentSrc || image.getAttribute("src") || "") : "";
+  }
+
+  function preloadGalleryPhoto(index) {
+    if (!galleryItems.length) return Promise.resolve();
+    const normalizedIndex = (index + galleryItems.length) % galleryItems.length;
+    const src = gallerySourceAt(normalizedIndex);
+    if (!src) return Promise.resolve();
+    if (galleryPreloadCache.has(src)) return galleryPreloadCache.get(src);
+
+    const task = new Promise(resolve => {
+      const image = new Image();
+      image.decoding = "async";
+      image.fetchPriority = "low";
+      image.onload = async () => {
+        try {
+          if (typeof image.decode === "function") await image.decode();
+        } catch (_) {
+          // The browser cache is still useful even if decode() rejects.
+        }
+        resolve();
+      };
+      image.onerror = resolve;
+      image.src = src;
+      if (image.complete) image.onload();
+    });
+
+    galleryPreloadCache.set(src, task);
+    return task;
+  }
+
+  function warmAdjacentGalleryPhotos(index) {
+    preloadGalleryPhoto(index);
+    preloadGalleryPhoto(index + 1);
+    preloadGalleryPhoto(index - 1);
+  }
+
+  function warmFullGallery() {
+    galleryItems.forEach((_, index) => preloadGalleryPhoto(index));
+  }
+
+  if (galleryItems.length) {
+    const scheduleGalleryWarmup = () => {
+      if ("requestIdleCallback" in window) {
+        window.requestIdleCallback(warmFullGallery, { timeout: 2200 });
+      } else {
+        window.setTimeout(warmFullGallery, 900);
+      }
+    };
+
+    if (document.readyState === "complete") scheduleGalleryWarmup();
+    else window.addEventListener("load", scheduleGalleryWarmup, { once: true });
+  }
+
   function renderLightboxPhoto(direction = 0) {
     if (!lightboxImage || galleryItems.length === 0) return;
 
@@ -560,6 +650,7 @@
 
     previouslyFocusedElement = document.activeElement;
     currentPhotoIndex = index;
+    warmAdjacentGalleryPhotos(currentPhotoIndex);
     renderLightboxPhoto();
 
     photoLightbox.classList.add("open");
@@ -587,6 +678,7 @@
   function moveLightbox(step) {
     if (galleryItems.length === 0) return;
     currentPhotoIndex = (currentPhotoIndex + step + galleryItems.length) % galleryItems.length;
+    warmAdjacentGalleryPhotos(currentPhotoIndex);
     renderLightboxPhoto(step);
   }
 
@@ -612,9 +704,34 @@
   document.addEventListener("keydown", event => {
     if (!photoLightbox?.classList.contains("open")) return;
 
-    if (event.key === "Escape") closeLightbox();
-    else if (event.key === "ArrowLeft") moveLightbox(-1);
-    else if (event.key === "ArrowRight") moveLightbox(1);
+    if (event.key === "Escape") {
+      closeLightbox();
+      return;
+    }
+    if (event.key === "ArrowLeft") {
+      moveLightbox(-1);
+      return;
+    }
+    if (event.key === "ArrowRight") {
+      moveLightbox(1);
+      return;
+    }
+
+    // Keep keyboard focus inside the open photo viewer.
+    if (event.key === "Tab") {
+      const focusable = [lightboxClose, lightboxPrev, lightboxNext].filter(Boolean);
+      if (!focusable.length) return;
+      const first = focusable[0];
+      const last = focusable[focusable.length - 1];
+
+      if (event.shiftKey && document.activeElement === first) {
+        event.preventDefault();
+        last.focus();
+      } else if (!event.shiftKey && document.activeElement === last) {
+        event.preventDefault();
+        first.focus();
+      }
+    }
   });
 
   photoLightbox?.addEventListener(
@@ -667,6 +784,64 @@
       clearEventFocus();
     });
   }
+  // -------------------------------------------------------
+  // SHARE INVITATION
+  // Native share sheet on supported mobile devices; clipboard fallback elsewhere.
+  // -------------------------------------------------------
+  const shareInvitationButton = qs("#shareInvitationButton");
+  const shareInvitationLabel = qs("#shareInvitationLabel");
+  const shareInvitationStatus = qs("#shareInvitationStatus");
+
+  async function copyInvitationLink(url) {
+    if (navigator.clipboard && window.isSecureContext) {
+      await navigator.clipboard.writeText(url);
+      return;
+    }
+
+    const helper = document.createElement("textarea");
+    helper.value = url;
+    helper.setAttribute("readonly", "");
+    helper.style.position = "fixed";
+    helper.style.opacity = "0";
+    document.body.appendChild(helper);
+    helper.select();
+    document.execCommand("copy");
+    helper.remove();
+  }
+
+  if (shareInvitationButton) {
+    shareInvitationButton.addEventListener("click", async () => {
+      const shareUrl = `${window.location.origin}${window.location.pathname}`;
+      const shareData = {
+        title: "Praveen & Kavya | Wedding Invitation",
+        text: "Join us as we celebrate the wedding of Praveen & Kavya on 02 December 2026.",
+        url: shareUrl
+      };
+
+      if (navigator.share) {
+        try {
+          await navigator.share(shareData);
+          if (shareInvitationStatus) shareInvitationStatus.textContent = "Invitation shared ♥";
+          return;
+        } catch (error) {
+          if (error?.name === "AbortError") return;
+        }
+      }
+
+      try {
+        await copyInvitationLink(shareUrl);
+        if (shareInvitationLabel) shareInvitationLabel.textContent = "Link Copied ✓";
+        if (shareInvitationStatus) shareInvitationStatus.textContent = "Invitation link copied to clipboard";
+        window.setTimeout(() => {
+          if (shareInvitationLabel) shareInvitationLabel.textContent = "Invite Your Loved Ones Along";
+          if (shareInvitationStatus) shareInvitationStatus.textContent = "";
+        }, 2600);
+      } catch {
+        if (shareInvitationStatus) shareInvitationStatus.textContent = "Please copy the page link from your browser.";
+      }
+    });
+  }
+
   // -------------------------------------------------------
   // HOSTED-PAGE RELIABILITY
   // -------------------------------------------------------
