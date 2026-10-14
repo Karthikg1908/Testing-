@@ -1,69 +1,103 @@
-# 💜 Praveen & Kavya — Wedding Invitation Website
+<div align="center">
 
-A beautiful wedding invitation website created with love for my sister’s marriage.
+# 💜 Praveen & Kavya 💜
 
-> A brother’s small effort to make his sister’s special day even more memorable. 💜
+## Wedding Invitation Website
 
----
+### ✨ A Brother’s Special Gift for His Sister ✨
 
-## ✨ About the Project
+<br>
 
-This website was designed and developed as a digital wedding invitation for:
+> **Some gifts are bought.  
+> Some gifts are made with love.  
+> This one was built with code and heart. 💜**
 
-### 💍 Praveen & Kavya
+<br>
 
-It is more than just a webpage — it is a small gift from a brother to his sister, created with love, memories, and countless little details to make the wedding invitation feel special.
+[![Wedding Invitation](https://img.shields.io/badge/View-Wedding%20Invitation-8B5CF6?style=for-the-badge&logo=githubpages&logoColor=white)](https://karthikg1908.github.io/Testing-/)
 
-The website combines a premium lavender wedding theme, smooth animations, Kannada and English content, event details, memories, locations, and a cinematic opening experience.
-
----
-
-## 🌸 Highlights
-
-- Premium lavender, plum, ivory and champagne-gold theme
-- Smooth 50/50 cinematic invitation opening
-- Elegant `P & K` wedding seal
-- Kannada + English wedding content
-- Wedding video invitation
-- Meet the Couple section
-- Save the Date timeline
-- Live wedding countdown
-- Smart wedding-day message
-- Couple memories gallery
-- Full-screen photo lightbox
-- Wedding venue details
-- One-tap Google Maps directions
-- Background wedding music
-- Social sharing preview
-- Mobile responsive design
-- Custom `P ♥ K` favicon
-- Smooth scroll animations
-- Premium footer styling
-- Accessibility and performance optimizations
+</div>
 
 ---
 
-## 🗓️ Wedding Details
+## 💍 About This Project
 
-**Reception**  
-01 December 2026
+This website was created as a **digital wedding invitation for Praveen & Kavya**.
 
-**Muhurtham**  
-02 December 2026 — 9:30 AM
+It is more than just a webpage.
 
-**Beegara Oota**  
-13 December 2026 — 12:30 PM onwards
+It is a small and meaningful gift created by a brother for his sister’s wedding, with the aim of making her special day even more memorable.
+
+The website combines elegant design, smooth animations, Kannada and English content, wedding memories, event details, venue information and a premium cinematic experience.
+
+---
+
+## 🌸 Wedding Details
+
+<div align="center">
+
+### 💐 Reception
+**01 December 2026**
+
+### 💍 Muhurtham
+**02 December 2026 — 9:30 AM**
+
+### 🍽️ Beegara Oota
+**13 December 2026 — 12:30 PM onwards**
+
+</div>
+
+---
+
+## ✨ Website Highlights
+
+- 💜 Premium lavender, plum, ivory and champagne-gold theme
+- 🎞️ Smooth cinematic 50/50 invitation opening
+- 💌 Elegant `P & K` wedding seal
+- 🌺 Kannada + English wedding content
+- 🎥 Wedding video invitation
+- 👫 Meet the Couple section
+- 📅 Save the Date timeline
+- ⏳ Live wedding countdown
+- 💖 Smart wedding-day message
+- 🖼️ Our Moments photo gallery
+- 🔍 Full-screen lightbox with swipe support
+- 📍 Wedding venue details
+- 🗺️ One-tap Google Maps directions
+- 🎵 Background wedding music
+- 📲 Social sharing preview
+- 💜 Custom `P ♥ K` favicon
+- 📱 Fully responsive mobile design
+- ✨ Smooth section reveal animations
+- ♿ Accessibility improvements
+- ⚡ Gallery preload and performance optimization
+- 🪄 Premium footer and scroll progress styling
+
+---
+
+## 🎨 Design Theme
+
+The website follows a soft and elegant wedding color palette:
+
+- 💜 Lavender
+- 🍇 Deep Plum
+- 🤍 Ivory
+- ✨ Champagne Gold
+
+The overall design is intentionally minimal, premium and romantic without adding excessive effects.
 
 ---
 
 ## 🛠️ Built With
 
-- HTML5
-- CSS3
-- JavaScript
-- GitHub Pages
+<div align="center">
 
-No frameworks were required — the website is built using simple frontend technologies.
+![HTML5](https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=html5&logoColor=white)
+![CSS3](https://img.shields.io/badge/CSS3-1572B6?style=for-the-badge&logo=css3&logoColor=white)
+![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black)
+![GitHub Pages](https://img.shields.io/badge/GitHub%20Pages-222222?style=for-the-badge&logo=github&logoColor=white)
+
+</div>
 
 ---
 
@@ -71,55 +105,87 @@ No frameworks were required — the website is built using simple frontend techn
 
 My sister’s wedding is one of the most important moments for our family.
 
-I wanted to create something personal instead of using a regular digital invitation.
+Instead of using a regular digital invitation, I wanted to create something more personal.
 
-So I built this website to preserve the memories, share the celebration with family and friends, and give my sister a small surprise from her brother.
+Something that could carry the memories, emotions and happiness of the celebration.
 
-> Some gifts are bought.  
-> Some gifts are made with love.  
-> This one was built with both code and heart. 💜
+So I decided to build this website.
 
----
+Every section, color, animation, photo and small detail was carefully added to make the invitation feel special.
 
-## 🌐 Live Website
-
-**Praveen & Kavya Wedding Invitation**
-
-[View Wedding Invitation](https://karthikg1908.github.io/Testing-/)
+> ### A small effort from a brother  
+> ### for one of the biggest days in his sister’s life. 💜
 
 ---
 
-## 📱 Best Experience
+## 🌐 Live Wedding Invitation
+
+<div align="center">
+
+### ✨ Praveen & Kavya ✨
+
+[![Open Wedding Website](https://img.shields.io/badge/💍_OPEN_WEDDING_INVITATION-6D4C8B?style=for-the-badge)](https://karthikg1908.github.io/Testing-/)
+
+**02 December 2026**
+
+</div>
+
+---
+
+## 📱 Best Viewing Experience
 
 For the best experience:
 
-- Open on a mobile phone
-- Turn the sound on
-- Tap the wedding seal
-- Enjoy the invitation from beginning to end
+1. Open the website on a mobile phone
+2. Keep your sound turned on
+3. Tap the wedding seal
+4. Watch the invitation open
+5. Scroll through the complete celebration
+6. Explore the photos, event details and venue locations
+
+---
+
+## 💌 A Note From the Brother
+
+> This project was not created for an assignment.  
+> It was not created just for a portfolio.  
+>  
+> It was created for family.  
+>  
+> For my sister.  
+>  
+> For a once-in-a-lifetime celebration. 💜
 
 ---
 
 ## 👨‍💻 Designed & Developed By
 
+<div align="center">
+
 ### Karthik G
 
-**Thoughtfully crafted for my sister’s special day.**
+**Brother • Developer • Designer**
 
-`✦ Made with love, memories & code ✦`
+### ✦ Thoughtfully crafted for my sister’s special day ✦
+
+<br>
+
+`Made with Love • Memories • Code`
+
+</div>
 
 ---
 
-## 💜 Final Note
+<div align="center">
 
-This project will always remain special to me because it was not built as an assignment or portfolio project.
+## 💜 Praveen ♥ Kavya 💜
 
-It was built for family.
+### 02 December 2026
 
-For a sister.
+### शुभ विवाह • ಶುಭ ವಿವಾಹ
 
-For a once-in-a-lifetime celebration.
+<br>
 
-### Praveen ♥ Kavya
+**A beautiful beginning to forever.**
 
-**02 December 2026**
+</div>
